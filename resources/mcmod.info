@@ -1,0 +1,17 @@
+[
+  {
+    "modid": "framespike",
+    "name": "FrameSpike 帧刺",
+    "description": "Minecraft 帧时间尖峰与卡顿分析 mod（Forge coremod，1.8.9 / 1.12.2）。在主线程冻住的那一刻抓调用栈：真实停顿时长、原因归因、GC 关联、崩溃现场，并生成可导入其他日志的分析网页。纯客户端，不向外部发送任何数据。",
+    "version": "0.7.0",
+    "mcversion": "[1.8.9,1.12.2]",
+    "authorList": [
+      "Trusler"
+    ],
+    "logoFile": "framespike/logo.png",
+    "url": "https://github.com/Trusler258",
+    "updateUrl": "",
+    "parent": "",
+    "screenshots": []
+  }
+]

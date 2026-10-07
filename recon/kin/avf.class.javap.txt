@@ -1,0 +1,11 @@
+Compiled from "SourceFile"
+public class avf {
+  public int a;
+  public int b;
+  public avf();
+  public void a();
+  public void b();
+  public void c();
+}
+
+=== STDERR ===

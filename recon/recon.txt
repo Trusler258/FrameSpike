@@ -1,0 +1,39 @@
+### JARS FOUND: 21
+  3.6 MB  C:\Users\Huang\.lunarclient\offline\multiver\Forge_v1_8.jar
+  2.5 MB  C:\Users\Huang\.lunarclient\offline\multiver\OptiFine_v1_8.jar
+  14.9 MB  C:\Users\Huang\.lunarclient\offline\multiver\ReplayMod-v1_8-2.6.14.jar
+  16.2 MB  C:\Users\Huang\.lunarclient\offline\multiver\ReplayMod-v1_8-2.6.24.jar
+  0.1 MB  C:\Users\Huang\.lunarclient\offline\multiver\common-0.1.0-SNAPSHOT-all-nomappings.jar
+  7.8 MB  C:\Users\Huang\.lunarclient\offline\multiver\forge-0.1.0-SNAPSHOT-all.jar
+  10.7 MB  C:\Users\Huang\.lunarclient\offline\multiver\genesis-0.1.0-SNAPSHOT-all.jar
+  1.6 MB  C:\Users\Huang\.lunarclient\offline\multiver\legacy-0.1.0-SNAPSHOT-all-nomappings.jar
+  3.1 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar-lang.jar
+  3.2 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar-platform-mappings-v1_8.jar
+  0.1 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar-replaymod-forge-mixins-0.1.0-SNAPSHOT-all.jar
+  62.5 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar.jar
+  0.4 MB  C:\Users\Huang\.lunarclient\offline\multiver\optifine-0.1.0-SNAPSHOT-all.jar
+  3.5 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\!!!CrashAssistant-forge-1.8.9-1.11.12.jar
+  0.0 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\HitRangeMod-1.2 [1.8.9].jar
+  0.5 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\SimpleToggleSprint-2.3.0.jar
+  0.7 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\Xaeros_Minimap_21.10.41_Forge_1.8.9.jar
+  0.3 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\jei_1.8.9-2.28.18.187.jar
+  3.0 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\spark-forge189-bde4ce2ff-mod.jar
+  0.0 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\[1.8.9]+Lunar+Kyestrokes+V2.jar
+  0.0 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\攻击范围显示 HitRangeMod 1.0 MC1.8.9.jar
+
+### ASM / FML CAPABILITY MATRIX
+  --- Forge_v1_8.jar
+      fml_IFMLLoadingPlugin, MC_GuiIngameForge_MCP
+  --- ReplayMod-v1_8-2.6.14.jar
+      mixin_core
+  --- ReplayMod-v1_8-2.6.24.jar
+      mixin_core
+  --- genesis-0.1.0-SNAPSHOT-all.jar
+      asm_core, asm_tree, asm_module_visitor_ASM6+, asm_RecordComponent_ASM8+, asm_SymbolTable_ASM7+, asm_ConstantDynamic_ASM7+, lw_IClassTransformer, mixin_core  [ClassReader compiled for class-file major 49] consts=[]
+
+### CLASSES REFERENCING org/lwjgl/opengl/GL11 (+glFinish)
+
+### EXTRACTED FOR JAVAP
+
+### OBF/MCP NAMING CHECK (which jar holds the game classes)
+  genesis-0.1.0-SNAPSHOT-all.jar             mcp_classes=5      obf_pkg=0     obf_root=0    

@@ -5,7 +5,8 @@ JAVAC = os.path.join(JDKBIN, "javac.exe")
 JAVA = os.path.join(JDKBIN, "java.exe")
 JAR = os.path.join(JDKBIN, "jar.exe")
 NODE = r"C:\Users\Huang\.workbuddy\binaries\node\versions\22.22.2-3\node.exe"
-ROOT = r"C:\Users\Huang\WorkBuddy\2026-10-05-03-06-50"
+# 项目根 = 本文件所在目录（G 盘仓库或 C 盘工作副本都能跑，不写死）
+ROOT = os.path.dirname(os.path.abspath(__file__))
 SEP = os.pathsep
 
 VER = "0.7.0"

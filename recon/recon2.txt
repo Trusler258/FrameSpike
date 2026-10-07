@@ -1,0 +1,817 @@
+### ichor-boot.log (full, exists)
+[02:58:14] [Genesis/main/INFO] Found external file: Forge_v1_8.jar
+[02:58:14] [Genesis/main/INFO] Found external file: ReplayMod-v1_8-2.6.24.jar
+[02:58:14] [Genesis/main/INFO] Found external file: OptiFine_v1_8.jar
+[02:58:14] [Genesis/main/INFO] Found external file: kill-sound-chat-patterns.json
+[02:58:14] [Genesis/main/INFO] Found external file: vanilla_capes.json
+[02:58:14] [Genesis/main/INFO] Found external file: waypoint-patterns.json
+[02:58:14] [Genesis/main/INFO] Found external file: user-message-patterns.json
+[02:58:14] [Genesis/main/INFO] Found external file: tier-tagger.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/teamview.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/quickplay.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/bedwars.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/max-levels.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/important-items.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/deployable-textures.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/metal-detector-locations.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/glacite-tunnels.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/tab-widgets.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/hoppity-eggs.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/item-shop-prices.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/kuudra-waypoints.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/commands.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/splits.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/chocolate-factory-prices.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/stacking-enchants.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/garden.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/sphinx-key.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/vendor-items.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/autocomplete-warps.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/minions.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/enchants.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/important-npc-locations.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/api-materials-override.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/adblock-websites.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/skill-xp.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/api-items-override.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/item-abilities.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/middle-click.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/modern-islands.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/mineshaft-corpse-waypoints.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/skyblock-vanilla-items.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/fairy-souls.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/dungeon/quiz-key.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/dungeon/rooms.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/dungeon/routes.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/dungeon/trash-items.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/dungeon/waterboard-solutions.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/fishing/sea-creatures.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/fishing/trophy-fish-fillet.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/fishing/baits.json
+[02:58:14] [Genesis/main/INFO] Found external file: hypixel/skyblock/fishing/trophy-frog-fillet.json
+[02:58:14] [Genesis/main/INFO] Found classpath URL: C:\Users\Huang\.lunarclient\offline\multiver\common-0.1.0-SNAPSHOT-all-nomappings.jar with checksum dedebe83
+[02:58:14] [Genesis/main/INFO] Found classpath URL: C:\Users\Huang\.lunarclient\offline\multiver\lunar-platform-mappings-v1_8.jar with checksum d70f9ed7
+[02:58:14] [Genesis/main/INFO] Found classpath URL: C:\Users\Huang\.lunarclient\offline\multiver\forge-0.1.0-SNAPSHOT-all.jar with checksum 1c39ec66
+[02:58:14] [Genesis/main/INFO] Found classpath URL: C:\Users\Huang\.lunarclient\offline\multiver\lunar-replaymod-forge-mixins-0.1.0-SNAPSHOT-all.jar with checksum 7a3a7bb8
+[02:58:14] [Genesis/main/INFO] Found classpath URL: C:\Users\Huang\.lunarclient\offline\multiver\optifine-0.1.0-SNAPSHOT-all.jar with checksum b9f801e2
+[02:58:14] [Genesis/main/INFO] Found classpath URL: C:\Users\Huang\.lunarclient\offline\multiver\genesis-0.1.0-SNAPSHOT-all.jar with checksum 49749ddf
+[02:58:14] [Genesis/main/INFO] Found classpath URL: C:\Users\Huang\.lunarclient\offline\multiver\legacy-0.1.0-SNAPSHOT-all-nomappings.jar with checksum c45b3822
+[02:58:14] [Genesis/main/INFO] Found classpath URL: C:\Users\Huang\.lunarclient\offline\multiver\lunar-lang.jar with checksum ee3b8064
+[02:58:14] [Genesis/main/INFO] Found classpath URL: C:\Users\Huang\.lunarclient\offline\multiver\lunar.jar with checksum 8e55a13e
+[02:58:14] [Genesis/GameBootstrap/main/INFO] Launching Minecraft 1.8.9 v1_8 (parsed from 1.8.9)
+[02:58:15] [IchorPipeline/main/WARN] MappingSet for com.moonsworth.lunar.forge.runtime.IOCIHHIRIROCOIROOCORCCIOOIIIRR.COHCCRCCIOORIRIIRIRCIHHCHIRCOH.OORHOOOICICORIOHHCHICRRIHCHRRR has 0 field mappings.
+[02:58:15] [IchorPipeline/main/WARN] MappingSet for com.moonsworth.lunar.forge.runtime.IOCIHHIRIROCOIROOCORCCIOOIIIRR.COHCCRCCIOORIRIIRIRCIHHCHIRCOH.OORHOOOICICORIOHHCHICRRIHCHRRR has 0 method mappings.
+[02:58:15] [IchorPipeline/main/WARN] MappingSet for com.moonsworth.lunar.forge.runtime.IOCIHHIRIROCOIROOCORCCIOOIIIRR.OCRRORHCHRCRIIHRORIRIRROCORHCI.OORHOOOICICORIOHHCHICRRIHCHRRR has 0 field mappings.
+[02:58:15] [IchorPipeline/main/WARN] MappingSet for com.moonsworth.lunar.forge.runtime.IOCIHHIRIROCOIROOCORCCIOOIIIRR.OCRRORHCHRCRIIHRORIRIRROCORHCI.OORHOOOICICORIOHHCHICRRIHCHRRR has 0 method mappings.
+[02:58:15] [Ichor/Forge/main/INFO] Registering internal mod: replaymod -> com.replaymod.core.ReplayModBackend
+[02:58:15] [Ichor/Forge/main/INFO] Parsed 825 Forge patches (811 modifications, 14 additions)
+LUNARCLIENT_STATUS_PREINIT
+[02:58:17] [Genesis/GameBootstrap/main/INFO] Starting game!
+[02:58:17] [Genesis/GameBootstrap/main/INFO] Branch: master
+[02:58:17] [Genesis/GameBootstrap/main/INFO] Commit Hash: 86f9c396b61f694a21e744af1b24761912dc408a
+[02:58:18] [IchorPipeline/main/INFO] Built mapping set for com.moonsworth.lunar.forge.IOCIHHIRIROCOIROOCORCCIOOIIIRR.IHCCRCCOHRCCIORHHCROORROCICRHI.IHCCRCCOHRCCIORHHCROORROCICRHI 226ms on thread main
+[02:58:19] [IchorPipeline/main/INFO] Built mapping set for com.moonsworth.lunar.ichor.ROOCCIHRCCHORHCCOIIRIHHHIIHHHO.IOHOHIHHHHORRCCRHCRCHCRIOIHRHH.OIRIRHRCCIHOHRROCOHICIRIHIIHCH$IOHOHIHHHHORRCCRHCRCHCRIOIHRHH.ORIIOCOORHRRCRCIROICOOICRIRIRO 2169ms on thread main
+[02:58:20] [IchorPipeline/main/INFO] Built mapping set for com.moonsworth.lunar.ichor.HHICICROOCIIROOHOORRCIHOICHOIH.OCCRIICCOCOIORRORHIRHCHCOHHHHC.IOIRIIRHHCCRIHCOOHHHIIIRCICCRI 821ms on thread main
+[02:58:22] [OptiFine/main/INFO] Skipping OptiFine patch for bot
+[02:58:23] [OptiFine/main/INFO] Skipping OptiFine patch for bot
+[02:58:23] [OptiFine/main/INFO] Skipping OptiFine patch for bot
+[02:58:24] [IchorPipeline/main/INFO] Built mapping set for com.moonsworth.lunar.ichor.ROOCCIHRCCHORHCCOIIRIHHHIIHHHO.IOHOHIHHHHORRCCRHCRCHCRIOIHRHH.COHCCRCCIOORIRIIRIRCIHHCHIRCOH.OCRRORHCHRCRIIHRORIRIRROCORHCI 4316ms on thread main
+[02:58:25] [IchorPipeline/main/WARN] MappingSet for com.moonsworth.lunar.OIRIRHRCCIHOHRROCOHICIRIHIIHCH.IOHOHIHHHHORRCCRHCRCHCRIOIHRHH.IOHOHIHHHHORRCCRHCRCHCRIOIHRHH.HHHCHRIHOCRRCIOHHCHOOHHCCCIROH has 0 field mappings.
+[02:58:25] [IchorPipeline/main/INFO] Loading Mixin runtime for META_MIXIN parent classloader: GenesisClassLoader(v1_8)
+[02:58:25] [Ichor/mixin(META_MIXIN)/INFO] SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Huang/.lunarclient/offline/multiver/genesis-0.1.0-SNAPSHOT-all.jar Service=Ichor Env=CLIENT
+ERROR StatusConsoleListener Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND
+ERROR StatusConsoleListener Error processing element Listener ([Appenders: null]): CLASS_NOT_FOUND
+ERROR StatusConsoleListener Unable to locate appender "ServerGuiConsole" for logger config "root"
+ERROR StatusConsoleListener Unable to locate appender "Tracy" for logger config "root"
+[02:58:25] [Genesis/IchorMixinService/main/INFO] Initializing MixinExtras 0.5.5 in IchorClassLoader(META_MIXIN)
+[02:58:25] [IchorPipeline/main/INFO] Loading Mixin runtime for MIXIN parent classloader: GenesisClassLoader(v1_8)
+[02:58:26] [Ichor/mixin(MIXIN)/INFO] SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Huang/.lunarclient/offline/multiver/genesis-0.1.0-SNAPSHOT-all.jar Service=Ichor Env=CLIENT
+WARN StatusConsoleListener Error parsing URI C:\Users\Huang\.lunarclient\profiles\1.8\logs\config.xml
+ERROR StatusConsoleListener Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND
+ERROR StatusConsoleListener Error processing element Listener ([Appenders: null]): CLASS_NOT_FOUND
+ERROR StatusConsoleListener Unable to locate appender "ServerGuiConsole" for logger config "root"
+ERROR StatusConsoleListener Unable to locate appender "Tracy" for logger config "root"
+[02:58:26] [Genesis/IchorMixinService/main/INFO] Initializing MixinExtras 0.5.5 in Genesis
+[02:58:26] [IchorPipeline/main/INFO] Done loading Mixin runtimes in 1207ms
+[02:58:26] [IchorPipeline/main/INFO] Setting up mixins for META_MIXIN
+[02:58:26] [IchorPipeline/main/INFO] Setting up mixins for MIXIN
+[02:58:26] [Ichor/main/INFO] Mixin config mixins.legacy_optifine.json doesn't exist in Genesis
+[02:58:26] [Ichor/main/INFO] Mixin config mixins.legacy.json doesn't exist in Genesis
+[02:58:26] [Ichor/main/INFO] Mixin config mixins.legacy_lunar.json doesn't exist in Genesis
+[02:58:26] [IchorPipeline/main/INFO] Done registering Mixins in 244ms
+[02:58:26] [IchorPipeline/main/INFO] Going to default mixins stage for META_MIXIN
+[02:58:27] [OptiFine/ForkJoinPool.commonPool-worker-4/INFO] Skipping OptiFine patch for bot
+[02:58:27] [OptiFine/ForkJoinPool.commonPool-worker-4/INFO] Skipping OptiFine patch for bot
+[02:58:28] [IchorPipeline/main/INFO] Built mapping set for com.moonsworth.lunar.forge.IOCIHHIRIROCOIROOCORCCIOOIIIRR.IOCIHHIRIROCOIROOCORCCIOOIIIRR.IOCIHHIRIROCOIROOCORCCIOOIIIRR 1782ms on thread main
+[02:58:28] [IchorPipeline/main/INFO] Going to default mixins stage for MIXIN
+[02:58:28] [Ichor/MixinExtras|Service(META_MIXIN)/INFO] Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[02:58:29] [OptiFine/main/INFO] Skipping OptiFine patch for bot
+[02:58:29] [OptiFine/main/INFO] Skipping OptiFine patch for bot
+[02:58:29] [OptiFine/main/INFO] Skipping OptiFine patch for bot
+[02:58:29] [OptiFine/main/INFO] Skipping OptiFine patch for bot
+[02:58:29] [OptiFine/main/INFO] Skipping OptiFine patch for bot
+[02:58:29] [OptiFine/main/INFO] Skipping OptiFine patch for bot
+[02:58:32] [IchorPipeline/main/INFO] Built mapping set for com.moonsworth.lunar.ichor.HHICICROOCIIROOHOORRCIHOICHOIH.OCCRIICCOCOIORRORHIRHCHCOHHHHC.IOIRIIRHHCCRIHCOOHHHIIIRCICCRI 213ms o
+
+### ALL JARS UNDER LUNAR / MINECRAFT ROOTS
+        0.11 MB  C:\Users\Huang\.lunarclient\jre\5a6eb763f735cdeb6ad9d2c080e07ef2b949a771\zulu17.64.17-ca-jre17.0.18-win_x64\lib\jrt-fs.jar
+        0.88 MB  C:\Users\Huang\.lunarclient\launcher-cache\Badlion Client\libs\caffeine-2.8.8.jar
+        0.08 MB  C:\Users\Huang\.lunarclient\launcher-cache\Badlion Client\libs\disruptor-3.4.2.jar
+        0.69 MB  C:\Users\Huang\.lunarclient\launcher-cache\Badlion Client\libs\joml-jdk8-1.9.25.jar
+        0.00 MB  C:\Users\Huang\.lunarclient\launcher-cache\Badlion Client\libs\optifineinstallwrapper.jar
+        0.06 MB  C:\Users\Huang\.lunarclient\offline\multiver\common-0.1.0-SNAPSHOT-all-nomappings.jar
+        7.84 MB  C:\Users\Huang\.lunarclient\offline\multiver\forge-0.1.0-SNAPSHOT-all.jar
+        3.63 MB  C:\Users\Huang\.lunarclient\offline\multiver\Forge_v1_8.jar
+       10.74 MB  C:\Users\Huang\.lunarclient\offline\multiver\genesis-0.1.0-SNAPSHOT-all.jar
+        1.61 MB  C:\Users\Huang\.lunarclient\offline\multiver\legacy-0.1.0-SNAPSHOT-all-nomappings.jar
+        3.07 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar-lang.jar
+        3.17 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar-platform-mappings-v1_8.jar
+        0.15 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar-replaymod-forge-mixins-0.1.0-SNAPSHOT-all.jar
+       62.48 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar.jar
+        0.40 MB  C:\Users\Huang\.lunarclient\offline\multiver\optifine-0.1.0-SNAPSHOT-all.jar
+        2.46 MB  C:\Users\Huang\.lunarclient\offline\multiver\OptiFine_v1_8.jar
+       14.94 MB  C:\Users\Huang\.lunarclient\offline\multiver\ReplayMod-v1_8-2.6.14.jar
+       16.18 MB  C:\Users\Huang\.lunarclient\offline\multiver\ReplayMod-v1_8-2.6.24.jar
+        3.53 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\!!!CrashAssistant-forge-1.8.9-1.11.12.jar
+        0.01 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\HitRangeMod-1.2 [1.8.9].jar
+        0.28 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\jei_1.8.9-2.28.18.187.jar
+        0.49 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\SimpleToggleSprint-2.3.0.jar
+        3.02 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\spark-forge189-bde4ce2ff-mod.jar
+        0.72 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\Xaeros_Minimap_21.10.41_Forge_1.8.9.jar
+        0.03 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\[1.8.9]+Lunar+Kyestrokes+V2.jar
+        0.01 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\攻击范围显示 HitRangeMod 1.0 MC1.8.9.jar
+        0.88 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\libs\caffeine-2.8.8.jar
+        0.08 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\libs\disruptor-3.4.2.jar
+        0.69 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\libs\joml-jdk8-1.9.25.jar
+        0.00 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\libs\optifineinstallwrapper.jar
+        0.03 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\resources\resources\fabric-shim\lunar-resolve-shim.jar
+       48.41 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data0.jar
+       48.24 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data1.jar
+       47.72 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data2.jar
+       47.70 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data3.jar
+       48.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data4.jar
+       55.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data5.jar
+       47.91 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data6.jar
+       47.76 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data7.jar
+       47.83 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data8.jar
+        3.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data9.jar
+       53.76 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\Essential (forge_1.8.9).jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\annotations-23.0.0.jar
+        0.83 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\caffeine-2.9.0.jar
+        2.58 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\elementa-774.jar
+        3.81 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\essential-loader-mixin-0.2.0+mixin.0.8.7.jar
+        0.54 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kodein-di-jvm-7.6.0.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kodein-type-jvm-1.7.1.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\Koffee-88ba1b0.jar
+        3.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlin-reflect-2.3.0.jar
+        1.71 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlin-stdlib-2.3.0.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlin-stdlib-jdk7-2.3.0.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlin-stdlib-jdk8-2.3.0.jar
+        1.41 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlinx-coroutines-core-jvm-1.10.2.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlinx-coroutines-jdk8-1.10.2.jar
+        0.38 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlinx-serialization-core-jvm-1.9.0.jar
+        0.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlinx-serialization-json-jvm-1.9.0.jar
+        0.19 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\mixinextras-0.4.0.jar
+        0.33 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\universalcraft-1.8.9-forge-534.jar
+        0.79 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\vigilance-306.jar
+        0.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\loader\stage0\launchwrapper\stage1.jar
+        0.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\loader\stage1\launchwrapper\stage2.embedded.jar
+        0.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\loader\stage1\launchwrapper\stage2.forge_1.8.9.jar
+        0.87 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\at\yawk\lz4\lz4-java\1.10.1\lz4-java-1.10.1.jar
+        0.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\azure\azure-json\1.4.0\azure-json-1.4.0.jar
+        0.37 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\electronwill\night-config\core\3.8.3\core-3.8.3.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\electronwill\night-config\toml\3.8.3\toml-3.8.3.jar
+        0.88 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\github\ben-manes\caffeine\caffeine\2.8.8\caffeine-2.8.8.jar
+        0.90 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\github\oshi\oshi-core\6.2.2\oshi-core-6.2.2.jar
+        0.93 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\github\oshi\oshi-core\6.4.10\oshi-core-6.4.10.jar
+        0.97 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\github\oshi\oshi-core\6.9.0\oshi-core-6.9.0.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar
+        0.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\code\gson\gson\2.10\gson-2.10.jar
+        0.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar
+        0.28 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\code\gson\gson\2.13.2\gson-2.13.2.jar
+        0.18 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar
+        0.25 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\errorprone\error_prone_annotations\2.18.0\error_prone_annotations-2.18.0.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\guava\failureaccess\1.0.3\failureaccess-1.0.3.jar
+        2.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\guava\guava\17.0\guava-17.0.jar
+        2.33 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\guava\guava\20.0\guava-20.0.jar
+        2.82 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\guava\guava\31.1-jre\guava-31.1-jre.jar
+        2.90 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\guava\guava\32.1.2-jre\guava-32.1.2-jre.jar
+        2.88 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\guava\guava\33.5.0-jre\guava-33.5.0-jre.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\google\j2objc\j2objc-annotations\2.8\j2objc-annotations-2.8.jar
+       13.32 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\ibm\icu\icu4j\71.1\icu4j-71.1.jar
+       13.89 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\ibm\icu\icu4j\73.2\icu4j-73.2.jar
+       13.98 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\ibm\icu\icu4j\77.1\icu4j-77.1.jar
+        1.56 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\ibm\icu\icu4j-core-mojang\51.2\icu4j-core-mojang-51.2.jar
+        0.24 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\machinezoo\noexception\noexception\1.7.1\noexception-1.7.1.jar
+        0.37 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\microsoft\azure\msal4j\1.23.1\msal4j-1.23.1.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\authlib\1.5.21\authlib-1.5.21.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\authlib\1.5.25\authlib-1.5.25.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\authlib\4.0.43\authlib-4.0.43.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\authlib\6.0.54\authlib-6.0.54.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\authlib\7.0.63\authlib-7.0.63.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\blocklist\1.0.10\blocklist-1.0.10.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\brigadier\1.1.8\brigadier-1.1.8.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\brigadier\1.3.10\brigadier-1.3.10.jar
+        0.66 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\datafixerupper\6.0.8\datafixerupper-6.0.8.jar
+        0.69 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\datafixerupper\8.0.16\datafixerupper-8.0.16.jar
+        0.70 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\datafixerupper\9.0.19\datafixerupper-9.0.19.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\jtracy\1.0.37\jtracy-1.0.37-natives-windows.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\jtracy\1.0.37\jtracy-1.0.37.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\logging\1.1.1\logging-1.1.1.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\logging\1.2.7\logging-1.2.7.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\logging\1.6.11\logging-1.6.11.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\netty\1.6\netty-1.6.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\netty\1.8.8\netty-1.8.8.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\patchy\2.1.6\patchy-2.1.6.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\patchy\2.2.10\patchy-2.2.10.jar
+        1.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\realms\1.7.59\realms-1.7.59.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\text2speech\1.17.9\text2speech-1.17.9.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\text2speech\1.18.11\text2speech-1.18.11.jar
+        0.16 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\opencsv\opencsv\4.4\opencsv-4.4.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\paulscode\codecjorbis\20101023\codecjorbis-20101023.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\paulscode\codecwav\20101023\codecwav-20101023.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\paulscode\libraryjavasound\20101123\libraryjavasound-20101123.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\paulscode\librarylwjglopenal\20100824\librarylwjglopenal-20100824.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\paulscode\soundsystem\20120107\soundsystem-20120107.jar
+        2.40 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\typesafe\akka\akka-actor_2.11\2.3.3\akka-actor_2.11-2.3.3.jar
+        0.21 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\typesafe\config\1.2.1\config-1.2.1.jar
+        0.23 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-beanutils\commons-beanutils\1.9.3\commons-beanutils-1.9.3.jar
+        0.34 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-codec\commons-codec\1.15\commons-codec-1.15.jar
+        0.34 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-codec\commons-codec\1.16.0\commons-codec-1.16.0.jar
+        0.36 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-codec\commons-codec\1.19.0\commons-codec-1.19.0.jar
+        0.25 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-codec\commons-codec\1.9\commons-codec-1.9.jar
+        0.56 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar
+        0.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar
+        0.48 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-io\commons-io\2.15.1\commons-io-2.15.1.jar
+        0.54 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-io\commons-io\2.20.0\commons-io-2.20.0.jar
+        0.18 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-io\commons-io\2.4\commons-io-2.4.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-logging\commons-logging\1.1.3\commons-logging-1.1.3.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\commons-logging\commons-logging\1.2\commons-logging-1.2.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\cpw\mods\bootstraplauncher\2.0.2\bootstraplauncher-2.0.2.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\cpw\mods\modlauncher\11.0.5\modlauncher-11.0.5.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\cpw\mods\securejarhandler\3.0.8\securejarhandler-3.0.8.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\de\siegmar\fastcsv\2.0.0\fastcsv-2.0.0.jar
+        1.70 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-all\4.0.23.Final\netty-all-4.0.23.Final.jar
+        0.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-buffer\4.1.82.Final\netty-buffer-4.1.82.Final.jar
+        0.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-buffer\4.1.97.Final\netty-buffer-4.1.97.Final.jar
+        0.36 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-buffer\4.2.7.Final\netty-buffer-4.2.7.Final.jar
+        0.32 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-codec\4.1.82.Final\netty-codec-4.1.82.Final.jar
+        0.33 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-codec\4.1.97.Final\netty-codec-4.1.97.Final.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-codec-base\4.2.7.Final\netty-codec-base-4.2.7.Final.jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-codec-compression\4.2.7.Final\netty-codec-compression-4.2.7.Final.jar
+        0.65 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-codec-http\4.2.7.Final\netty-codec-http-4.2.7.Final.jar
+        0.62 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-common\4.1.82.Final\netty-common-4.1.82.Final.jar
+        0.63 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-common\4.1.97.Final\netty-common-4.1.97.Final.jar
+        0.75 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-common\4.2.7.Final\netty-common-4.2.7.Final.jar
+        0.51 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-handler\4.1.82.Final\netty-handler-4.1.82.Final.jar
+        0.53 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-handler\4.1.97.Final\netty-handler-4.1.97.Final.jar
+        0.55 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-handler\4.2.7.Final\netty-handler-4.2.7.Final.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-resolver\4.1.82.Final\netty-resolver-4.1.82.Final.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-resolver\4.1.97.Final\netty-resolver-4.1.97.Final.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-resolver\4.2.7.Final\netty-resolver-4.2.7.Final.jar
+        0.46 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport\4.1.82.Final\netty-transport-4.1.82.Final.jar
+        0.47 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport\4.1.97.Final\netty-transport-4.1.97.Final.jar
+        0.54 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport\4.2.7.Final\netty-transport-4.2.7.Final.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport-classes-epoll\4.1.82.Final\netty-transport-classes-epoll-4.1.82.Final.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport-classes-epoll\4.1.97.Final\netty-transport-classes-epoll-4.1.97.Final.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport-classes-epoll\4.2.7.Final\netty-transport-classes-epoll-4.2.7.Final.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport-classes-kqueue\4.2.7.Final\netty-transport-classes-kqueue-4.2.7.Final.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport-native-unix-common\4.1.82.Final\netty-transport-native-unix-common-4.1.82.Final.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport-native-unix-common\4.1.97.Final\netty-transport-native-unix-common-4.1.97.Final.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport-native-unix-common\4.2.7.Final\netty-transport-native-unix-common-4.2.7.Final.jar
+       22.25 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\it\unimi\dsi\fastutil\8.5.12\fastutil-8.5.12.jar
+       22.86 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\it\unimi\dsi\fastutil\8.5.18\fastutil-8.5.18.jar
+       22.47 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\it\unimi\dsi\fastutil\8.5.6\fastutil-8.5.6.jar
+       22.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\it\unimi\dsi\fastutil\8.5.9\fastutil-8.5.9.jar
+        0.30 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\java3d\vecmath\1.5.2\vecmath-1.5.2.jar
+        0.24 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\jline\jline\2.13\jline-2.13.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\lzma\lzma\0.0.1\lzma-0.0.1.jar
+        0.21 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\me\friwi\jcef-api\jcef-3583e1f%2Bcef-127.3.1%2Bg6cbb30e%2Bchromium-127.0.6533.100\jcef-api-jcef-3583e1f%2Bcef-127.3.1%2Bg6cbb30e%2Bchromium-127.0.6533.100-signed.jar
+      122.89 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\me\friwi\jcef-natives-windows-amd64\jcef-3583e1f%2Bcef-127.3.1%2Bg6cbb30e%2Bchromium-127.0.6533.100\jcef-natives-windows-amd64-jcef-3583e1f%2Bcef-127.3.1%2Bg6cbb30e%2Bchromium-127.0.6533.100-signed.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\me\friwi\jcefmaven\jcef-3583e1f%2Bcef-127.3.1%2Bg6cbb30e%2Bchromium-127.0.6533.100\jcefmaven-jcef-3583e1f%2Bcef-127.3.1%2Bg6cbb30e%2Bchromium-127.0.6533.100.jar
+        4.87 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\badlion\odinwrapper\0.1.2\odinwrapper-0.1.2-natives-windows.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\badlion\odinwrapper\0.1.2\odinwrapper-0.1.2.jar
+        1.88 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\fabricmc\fabric-loader\0.19.3\fabric-loader-0.19.3.jar
+        0.55 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\fabricmc\intermediary\1.20.1\intermediary-1.20.1.jar
+        1.43 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\fabricmc\sponge-mixin\0.15.2+mixin.0.8.7\sponge-mixin-0.15.2+mixin.0.8.7.jar
+        1.47 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\fabricmc\sponge-mixin\0.17.3+mixin.0.8.7\sponge-mixin-0.17.3+mixin.0.8.7.jar
+        0.96 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna\3.4.0\jna-3.4.0.jar
+        1.78 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna\5.12.1\jna-5.12.1.jar
+        1.79 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar
+        1.79 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna\5.14.0\jna-5.14.0.jar
+        1.91 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna\5.17.0\jna-5.17.0.jar
+        1.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna-platform\5.12.1\jna-platform-5.12.1.jar
+        1.30 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna-platform\5.13.0\jna-platform-5.13.0.jar
+        1.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna-platform\5.14.0\jna-platform-5.14.0.jar
+        1.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\jna-platform\5.17.0\jna-platform-5.17.0.jar
+        0.87 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\dev\jna\platform\3.4.0\platform-3.4.0.jar
+        0.20 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\jinput\jinput\2.0.5\jinput-2.0.5.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\jinput\jinput-platform\2.0.5\jinput-platform-2.0.5-natives-windows.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\java\jutils\jutils\1.0.0\jutils-1.0.0.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\jodah\typetools\0.6.3\typetools-0.6.3.jar
+        0.62 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\jpountz\lz4\lz4-java\1.7.1\lz4-java-1.7.1.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\md-5\SpecialSource\1.11.0\SpecialSource-1.11.0.jar
+       11.80 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-extra.jar
+       13.79 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-slim.jar
+       17.86 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-srg.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\launchwrapper\1.12\launchwrapper-1.12.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\launchwrapper\1.7\launchwrapper-1.7.jar
+        3.58 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraftforge\forge\1.8.9-11.15.1.1902-1.8.9\forge-1.8.9-11.15.1.1902-1.8.9.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraftforge\srgutils\0.4.15\srgutils-0.4.15.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecrell\terminalconsoleappender\1.3.0\terminalconsoleappender-1.3.0.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\accesstransformers\10.0.1\accesstransformers-10.0.1.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\accesstransformers\at-modlauncher\10.0.1\at-modlauncher-10.0.1.jar
+        0.71 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\AutoRenamingTool\2.0.3\AutoRenamingTool-2.0.3-all.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\bus\8.0.5\bus-8.0.5.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\coremods\7.0.3\coremods-7.0.3.jar
+        0.25 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\fancymodloader\earlydisplay\4.0.42\earlydisplay-4.0.42.jar
+        0.48 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\fancymodloader\loader\4.0.42\loader-4.0.42.jar
+        0.60 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\installertools\binarypatcher\2.1.2\binarypatcher-2.1.2-fatjar.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\installertools\cli-utils\2.1.2\cli-utils-2.1.2.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\installertools\installertools\2.1.2\installertools-2.1.2.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\installertools\jarsplitter\2.1.2\jarsplitter-2.1.2.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\JarJarFileSystems\0.4.1\JarJarFileSystems-0.4.1.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\JarJarMetadata\0.4.1\JarJarMetadata-0.4.1.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\JarJarSelector\0.4.1\JarJarSelector-0.4.1.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\mergetool\2.0.0\mergetool-2.0.0-api.jar
+        5.41 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\neoforge\21.1.235\neoforge-21.1.235-client.jar
+        3.38 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\neoforge\21.1.235\neoforge-21.1.235-universal.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\srgutils\1.0.0\srgutils-1.0.0.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\sf\jopt-simple\jopt-simple\4.6\jopt-simple-4.6.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\sf\jopt-simple\jopt-simple\5.0.4\jopt-simple-5.0.4.jar
+        2.41 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\sf\trove4j\trove4j\3.0.3\trove4j-3.0.3.jar
+        0.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\antlr\antlr4-runtime\4.13.1\antlr4-runtime-4.13.1.jar
+        0.72 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-collections4\4.2\commons-collections4-4.2.jar
+        0.97 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-compress\1.21\commons-compress-1.21.jar
+        1.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-compress\1.26.0\commons-compress-1.26.0.jar
+        1.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-compress\1.28.0\commons-compress-1.28.0.jar
+        0.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-compress\1.8.1\commons-compress-1.8.1.jar
+        0.56 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar
+        0.63 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-lang3\3.14.0\commons-lang3-3.14.0.jar
+        0.68 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-lang3\3.19.0\commons-lang3-3.19.0.jar
+        0.39 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-lang3\3.3.2\commons-lang3-3.3.2.jar
+        0.48 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-lang3\3.8.1\commons-lang3-3.8.1.jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-text\1.3\commons-text-1.3.jar
+        0.56 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.3.3\httpclient-4.3.3.jar
+        0.74 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar
+        0.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpcore\4.3.2\httpcore-4.3.2.jar
+        0.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpcore\4.4.15\httpcore-4.4.15.jar
+        0.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-api\2.0-beta9\log4j-api-2.0-beta9.jar
+        0.30 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-api\2.19.0\log4j-api-2.19.0.jar
+        0.32 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-api\2.22.1\log4j-api-2.22.1.jar
+        0.33 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-api\2.25.2\log4j-api-2.25.2.jar
+        0.65 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-core\2.0-beta9\log4j-core-2.0-beta9.jar
+        1.78 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-core\2.19.0\log4j-core-2.19.0.jar
+        1.81 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-core\2.22.1\log4j-core-2.22.1.jar
+        1.92 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-core\2.25.2\log4j-core-2.25.2.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-slf4j-impl\2.22.1\log4j-slf4j-impl-2.22.1.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-slf4j2-impl\2.19.0\log4j-slf4j2-impl-2.19.0.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-slf4j2-impl\2.22.1\log4j-slf4j2-impl-2.22.1.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\logging\log4j\log4j-slf4j2-impl\2.25.2\log4j-slf4j2-impl-2.25.2.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\maven\maven-artifact\3.8.5\maven-artifact-3.8.5.jar
+        0.21 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\checkerframework\checker-qual\3.33.0\checker-qual-3.33.0.jar
+        0.25 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\codehaus\plexus\plexus-utils\3.3.0\plexus-utils-3.3.0.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\jcraft\jorbis\0.0.17\jorbis-0.0.17.jar
+        0.16 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\jline\jline-reader\3.20.0\jline-reader-3.20.0.jar
+        0.22 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\jline\jline-terminal\3.20.0\jline-terminal-3.20.0.jar
+        0.68 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\joml\joml\1.10.5\joml-1.10.5.jar
+        0.74 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\joml\joml\1.10.8\joml-1.10.8.jar
+        0.69 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\joml\joml-jdk8\1.9.25\joml-jdk8-1.9.25.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.1\lwjgl-3.3.1-natives-windows-arm64.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.1\lwjgl-3.3.1-natives-windows-x86.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.1\lwjgl-3.3.1-natives-windows.jar
+        0.69 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.1\lwjgl-3.3.1.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.3\lwjgl-3.3.3-natives-linux-arm64.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.3\lwjgl-3.3.3-natives-linux.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.3\lwjgl-3.3.3-natives-macos-arm64.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.3\lwjgl-3.3.3-natives-macos.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.3\lwjgl-3.3.3-natives-windows-arm64.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.3\lwjgl-3.3.3-natives-windows-x86.jar
+        0.16 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.3\lwjgl-3.3.3-natives-windows.jar
+        0.75 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.3.3\lwjgl-3.3.3.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.4.1\lwjgl-3.4.1-natives-windows-arm64.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.4.1\lwjgl-3.4.1-natives-windows-x86.jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.4.1\lwjgl-3.4.1-natives-windows.jar
+        1.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\3.4.1\lwjgl-3.4.1.jar
+        1.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\lwjgl\2.9.4-nightly-20150209\lwjgl-2.9.4-nightly-20150209.jar
+        1.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\lwjgl\2.9.4-nightly-20230316\lwjgl-2.9.4-nightly-20230316.jar
+        0.59 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\lwjgl-platform\2.9.4-nightly-20150209\lwjgl-platform-2.9.4-nightly-20150209-natives-windows.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\lwjgl-platform\2.9.4-nightly-20150209\lwjgl-platform-2.9.4-nightly-20150209.jar
+        0.61 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\lwjgl-platform\2.9.4-nightly-20220817\lwjgl-platform-2.9.4-nightly-20220817-natives-windows.jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl\lwjgl_util\2.9.4-nightly-20150209\lwjgl_util-2.9.4-nightly-20150209.jar
+        0.85 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-freetype\3.3.3\lwjgl-freetype-3.3.3-natives-windows-arm64.jar
+        0.84 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-freetype\3.3.3\lwjgl-freetype-3.3.3-natives-windows-x86.jar
+        0.99 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-freetype\3.3.3\lwjgl-freetype-3.3.3-natives-windows.jar
+        0.43 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-freetype\3.3.3\lwjgl-freetype-3.3.3.jar
+        0.93 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-freetype\3.4.1\lwjgl-freetype-3.4.1-natives-windows-arm64.jar
+        0.89 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-freetype\3.4.1\lwjgl-freetype-3.4.1-natives-windows-x86.jar
+        1.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-freetype\3.4.1\lwjgl-freetype-3.4.1-natives-windows.jar
+        0.44 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-freetype\3.4.1\lwjgl-freetype-3.4.1.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.1\lwjgl-glfw-3.3.1-natives-windows-arm64.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.1\lwjgl-glfw-3.3.1-natives-windows-x86.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.1\lwjgl-glfw-3.3.1-natives-windows.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.1\lwjgl-glfw-3.3.1.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.3\lwjgl-glfw-3.3.3-natives-linux-arm64.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.3\lwjgl-glfw-3.3.3-natives-linux.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.3\lwjgl-glfw-3.3.3-natives-macos-arm64.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.3\lwjgl-glfw-3.3.3-natives-macos.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.3\lwjgl-glfw-3.3.3-natives-windows-arm64.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.3\lwjgl-glfw-3.3.3-natives-windows-x86.jar
+        0.16 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.3\lwjgl-glfw-3.3.3-natives-windows.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.3\lwjgl-glfw-3.3.3.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.4.1\lwjgl-glfw-3.4.1-natives-windows-arm64.jar
+        0.16 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.4.1\lwjgl-glfw-3.4.1-natives-windows-x86.jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.4.1\lwjgl-glfw-3.4.1-natives-windows.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.4.1\lwjgl-glfw-3.4.1.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.1\lwjgl-jemalloc-3.3.1-natives-windows-arm64.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.1\lwjgl-jemalloc-3.3.1-natives-windows-x86.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.1\lwjgl-jemalloc-3.3.1-natives-windows.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.1\lwjgl-jemalloc-3.3.1.jar
+        0.20 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.3\lwjgl-jemalloc-3.3.3-natives-linux-arm64.jar
+        0.20 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.3\lwjgl-jemalloc-3.3.3-natives-linux.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.3\lwjgl-jemalloc-3.3.3-natives-macos-arm64.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.3\lwjgl-jemalloc-3.3.3-natives-macos.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.3\lwjgl-jemalloc-3.3.3-natives-windows-arm64.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.3\lwjgl-jemalloc-3.3.3-natives-windows-x86.jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.3\lwjgl-jemalloc-3.3.3-natives-windows.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.3\lwjgl-jemalloc-3.3.3.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.4.1\lwjgl-jemalloc-3.4.1-natives-windows-arm64.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.4.1\lwjgl-jemalloc-3.4.1-natives-windows-x86.jar
+        0.18 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.4.1\lwjgl-jemalloc-3.4.1-natives-windows.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.4.1\lwjgl-jemalloc-3.4.1.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-lz4\3.3.3\lwjgl-lz4-3.3.3-natives-linux-arm64.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-lz4\3.3.3\lwjgl-lz4-3.3.3-natives-linux.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-lz4\3.3.3\lwjgl-lz4-3.3.3-natives-macos-arm64.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-lz4\3.3.3\lwjgl-lz4-3.3.3-natives-macos.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-lz4\3.3.3\lwjgl-lz4-3.3.3-natives-windows.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-lz4\3.3.3\lwjgl-lz4-3.3.3.jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-nanovg\3.3.3\lwjgl-nanovg-3.3.3-natives-linux-arm64.jar
+        0.20 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-nanovg\3.3.3\lwjgl-nanovg-3.3.3-natives-linux.jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-nanovg\3.3.3\lwjgl-nanovg-3.3.3-natives-macos-arm64.jar
+        0.19 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-nanovg\3.3.3\lwjgl-nanovg-3.3.3-natives-macos.jar
+        0.26 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-nanovg\3.3.3\lwjgl-nanovg-3.3.3-natives-windows.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-nanovg\3.3.3\lwjgl-nanovg-3.3.3.jar
+        0.48 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.1\lwjgl-openal-3.3.1-natives-windows-arm64.jar
+        0.50 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.1\lwjgl-openal-3.3.1-natives-windows-x86.jar
+        0.55 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.1\lwjgl-openal-3.3.1-natives-windows.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.1\lwjgl-openal-3.3.1.jar
+        0.57 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.3\lwjgl-openal-3.3.3-natives-linux-arm64.jar
+        0.55 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.3\lwjgl-openal-3.3.3-natives-linux.jar
+        0.45 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.3\lwjgl-openal-3.3.3-natives-macos-arm64.jar
+        0.50 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.3\lwjgl-openal-3.3.3-natives-macos.jar
+        0.60 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.3\lwjgl-openal-3.3.3-natives-windows-arm64.jar
+        0.61 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.3\lwjgl-openal-3.3.3-natives-windows-x86.jar
+        0.67 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.3\lwjgl-openal-3.3.3-natives-windows.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.3\lwjgl-openal-3.3.3.jar
+        0.84 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.4.1\lwjgl-openal-3.4.1-natives-windows-arm64.jar
+        0.86 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.4.1\lwjgl-openal-3.4.1-natives-windows-x86.jar
+        0.93 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.4.1\lwjgl-openal-3.4.1-natives-windows.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.4.1\lwjgl-openal-3.4.1.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.1\lwjgl-opengl-3.3.1-natives-windows-arm64.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.1\lwjgl-opengl-3.3.1-natives-windows-x86.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.1\lwjgl-opengl-3.3.1-natives-windows.jar
+        0.88 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.1\lwjgl-opengl-3.3.1.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.3\lwjgl-opengl-3.3.3-natives-linux-arm64.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.3\lwjgl-opengl-3.3.3-natives-linux.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.3\lwjgl-opengl-3.3.3-natives-macos-arm64.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.3\lwjgl-opengl-3.3.3-natives-macos.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.3\lwjgl-opengl-3.3.3-natives-windows-arm64.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.3\lwjgl-opengl-3.3.3-natives-windows-x86.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.3\lwjgl-opengl-3.3.3-natives-windows.jar
+        0.89 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.3\lwjgl-opengl-3.3.3.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.4.1\lwjgl-opengl-3.4.1-natives-windows-arm64.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.4.1\lwjgl-opengl-3.4.1-natives-windows-x86.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.4.1\lwjgl-opengl-3.4.1-natives-windows.jar
+        0.89 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.4.1\lwjgl-opengl-3.4.1.jar
+        0.23 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opus\3.3.3\lwjgl-opus-3.3.3-natives-linux-arm64.jar
+        0.25 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opus\3.3.3\lwjgl-opus-3.3.3-natives-linux.jar
+        0.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opus\3.3.3\lwjgl-opus-3.3.3-natives-macos-arm64.jar
+        0.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opus\3.3.3\lwjgl-opus-3.3.3-natives-macos.jar
+        0.28 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opus\3.3.3\lwjgl-opus-3.3.3-natives-windows.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-opus\3.3.3\lwjgl-opus-3.3.3.jar
+        0.21 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.1\lwjgl-stb-3.3.1-natives-windows-arm64.jar
+        0.21 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.1\lwjgl-stb-3.3.1-natives-windows-x86.jar
+        0.24 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.1\lwjgl-stb-3.3.1-natives-windows.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.1\lwjgl-stb-3.3.1.jar
+        0.20 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.3\lwjgl-stb-3.3.3-natives-linux-arm64.jar
+        0.22 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.3\lwjgl-stb-3.3.3-natives-linux.jar
+        0.18 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.3\lwjgl-stb-3.3.3-natives-macos-arm64.jar
+        0.21 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.3\lwjgl-stb-3.3.3-natives-macos.jar
+        0.21 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.3\lwjgl-stb-3.3.3-natives-windows-arm64.jar
+        0.22 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.3\lwjgl-stb-3.3.3-natives-windows-x86.jar
+        0.25 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.3\lwjgl-stb-3.3.3-natives-windows.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.3\lwjgl-stb-3.3.3.jar
+        0.23 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.4.1\lwjgl-stb-3.4.1-natives-windows-arm64.jar
+        0.24 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.4.1\lwjgl-stb-3.4.1-natives-windows-x86.jar
+        0.28 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.4.1\lwjgl-stb-3.4.1-natives-windows.jar
+        0.14 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.4.1\lwjgl-stb-3.4.1.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.1\lwjgl-tinyfd-3.3.1-natives-windows-arm64.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.1\lwjgl-tinyfd-3.3.1-natives-windows-x86.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.1\lwjgl-tinyfd-3.3.1-natives-windows.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.1\lwjgl-tinyfd-3.3.1.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.3\lwjgl-tinyfd-3.3.3-natives-windows-arm64.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.3\lwjgl-tinyfd-3.3.3-natives-windows-x86.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.3\lwjgl-tinyfd-3.3.3-natives-windows.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.3\lwjgl-tinyfd-3.3.3.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.4\lwjgl-tinyfd-3.3.4-natives-linux-arm64.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.4\lwjgl-tinyfd-3.3.4-natives-linux.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.4\lwjgl-tinyfd-3.3.4-natives-macos-arm64.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.4\lwjgl-tinyfd-3.3.4-natives-macos.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.4\lwjgl-tinyfd-3.3.4-natives-windows.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.4\lwjgl-tinyfd-3.3.4.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.4.1\lwjgl-tinyfd-3.4.1-natives-windows-arm64.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.4.1\lwjgl-tinyfd-3.4.1-natives-windows-x86.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.4.1\lwjgl-tinyfd-3.4.1-natives-windows.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.4.1\lwjgl-tinyfd-3.4.1.jar
+        0.26 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-zstd\3.3.3\lwjgl-zstd-3.3.3-natives-linux-arm64.jar
+        0.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-zstd\3.3.3\lwjgl-zstd-3.3.3-natives-linux.jar
+        0.28 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-zstd\3.3.3\lwjgl-zstd-3.3.3-natives-macos-arm64.jar
+        0.39 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-zstd\3.3.3\lwjgl-zstd-3.3.3-natives-macos.jar
+        0.25 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-zstd\3.3.3\lwjgl-zstd-3.3.3-natives-windows.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lwjgl\lwjgl-zstd\3.3.3\lwjgl-zstd-3.3.3.jar
+        0.65 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lz4\lz4-java\1.8.0\lz4-java-1.8.0.jar
+        2.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\openjdk\nashorn\nashorn-core\15.4\nashorn-core-15.4.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm\9.10.1\asm-9.10.1.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm\9.3\asm-9.3.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm\9.8\asm-9.8.jar
+        0.23 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-all\5.0.3\asm-all-5.0.3.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-analysis\9.10.1\asm-analysis-9.10.1.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-analysis\9.3\asm-analysis-9.3.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-analysis\9.8\asm-analysis-9.8.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-commons\9.10.1\asm-commons-9.10.1.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-commons\9.3\asm-commons-9.3.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-commons\9.8\asm-commons-9.8.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-tree\9.10.1\asm-tree-9.10.1.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-tree\9.3\asm-tree-9.3.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-tree\9.8\asm-tree-9.8.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-util\9.10.1\asm-util-9.10.1.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\ow2\asm\asm-util\9.8\asm-util-9.8.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\scala-lang\plugins\scala-continuations-library_2.11\1.0.2\scala-continuations-library_2.11-1.0.2.jar
+        0.20 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\scala-lang\plugins\scala-continuations-plugin_2.11.1\1.0.2\scala-continuations-plugin_2.11.1-1.0.2.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\scala-lang\scala-actors-migration_2.11\1.1.0\scala-actors-migration_2.11-1.1.0.jar
+       12.83 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\scala-lang\scala-compiler\2.11.1\scala-compiler-2.11.1.jar
+        5.28 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\scala-lang\scala-library\2.11.1\scala-library-2.11.1.jar
+        0.40 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\scala-lang\scala-parser-combinators_2.11\1.0.1\scala-parser-combinators_2.11-1.0.1.jar
+        4.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\scala-lang\scala-reflect\2.11.1\scala-reflect-2.11.1.jar
+        0.69 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\scala-lang\scala-swing_2.11\1.0.1\scala-swing_2.11-1.0.1.jar
+        0.62 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\scala-lang\scala-xml_2.11\1.0.2\scala-xml_2.11-1.0.2.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\slf4j\slf4j-api\2.0.1\slf4j-api-2.0.1.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\slf4j\slf4j-api\2.0.11\slf4j-api-2.0.11.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\slf4j\slf4j-api\2.0.17\slf4j-api-2.0.17.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\slf4j\slf4j-api\2.0.9\slf4j-api-2.0.9.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\oshi-project\oshi-core\1.1\oshi-core-1.1.jar
+        0.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\rg\apache\logging\log4j\log4j-api\2.17.1\log4j-api-2.17.1.jar
+        1.71 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\rg\apache\logging\log4j\log4j-core\2.17.1\log4j-core-2.17.1.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\tv\twitch\twitch\6.5\twitch-6.5.jar
+        7.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\tv\twitch\twitch-external-platform\4.5\twitch-external-platform-4.5-natives-windows-64.jar
+        0.55 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\tv\twitch\twitch-platform\6.5\twitch-platform-6.5-natives-windows-64.jar
+        2.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\local\crash_assistant\30072_1791140255958_app.jar
+        3.53 MB  C:\Users\Huang\AppData\Roaming\.minecraft\local\crash_assistant\30072_1791140255958_mod.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\mods\HitRangeMod-1.2 [1.8.9].jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\mods\MouseTweaks-2.6.2-mc1.8.9.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\mods\RawInput-0.1.8+1.8.9-forge.jar
+       17.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\OneConfig\OneConfig (1.8.9-forge).jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\OneConfig\launchwrapper\OneConfig-Loader.jar
+        0.10 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\java-runtime-epsilon\lib\jrt-fs.jar
+        2.94 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\charsets.jar
+        2.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\deploy.jar
+        0.46 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\javaws.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\jce.jar
+        0.53 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\jfr.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\jfxswt.jar
+        0.60 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\jsse.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\management-agent.jar
+        0.97 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\plugin.jar
+        3.33 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\resources.jar
+       60.54 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\rt.jar
+        0.18 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\access-bridge-64.jar
+        3.68 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\cldrdata.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\dnsns.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\jaccess.jar
+       17.33 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\jfxrt.jar
+        1.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\localedata.jar
+        1.92 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\nashorn.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\sunec.jar
+        0.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\sunjce_provider.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\sunmscapi.jar
+        0.24 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\sunpkcs11.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\ext\zipfs.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\security\local_policy.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\runtime\jre-legacy\lib\security\US_export_policy.jar
+       21.96 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\1.20.1-Fabric_0.19.3.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\caffeineconfig-1.3.0+1.17-acfd3cc068e2f229.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-api-base-0.4.32+1802ada577-23d60b6040e025e4.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-api-lookup-api-v1-1.6.37+1802ada577-f3ac5430f67942d8.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-biome-api-v1-13.0.15+93aa238b77-37e9b753a30afe0.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-block-api-v1-1.0.12+1802ada577-2e3448011f08f7a9.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-block-view-api-v2-1.0.3+924f046a77-242c146e8e33234e.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-blockrenderlayer-v1-1.1.4+1802ada577-670f216635c0cffd.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-client-tags-api-v1-1.2.0+238242b777-9d099907bcec6f7c.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-command-api-v1-1.2.35+f71b366f77-ad6525c396b89f0d.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-command-api-v2-2.2.14+1802ada577-2e3cf91d720a5c45.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-commands-v0-0.2.52+df3654b377-a4a4ebca1b683dce.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-containers-v0-0.1.68+df3654b377-9fdf5cc271f757e1.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-content-registries-v0-4.0+1802ada577-165f533012b13644.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-convention-tags-v1-1.5.6+1802ada577-c98f0599d42f4c81.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-crash-report-info-v1-0.2.+1802ada577-dbae137cba2b0328.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-data-attachment-api-v1-1.+de0fd6d177-6bcd6a6635e101fc.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-data-generation-api-v1-12+238242b777-ed078194de86955e.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-dimensions-v1-2.1.55+1802ada577-bc9700021130ea9d.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-entity-events-v1-1.6.1+1c78457f77-5d40cdb43547b72f.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-events-interaction-v0-0.6+13a40c6677-59c17f0d1a1ad76e.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-events-lifecycle-v0-0.2.6+df3654b377-f2765b90fe5042eb.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-game-rule-api-v1-1.0.41+1802ada577-952cc503e286e377.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-item-api-v1-2.1.29+1802ada577-25443cc2acd1fe8d.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-item-group-api-v1-4.0.14+1802ada577-65f7306139dbb27d.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-key-binding-api-v1-1.0.38+1802ada577-f49797e6f0f400a.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-keybindings-v0-0.2.36+df3654b377-556e548bdd3961de.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-lifecycle-events-v1-2.2.2+1802ada577-b3f23b2ebb7eacc7.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-loot-api-v2-1.2.3+1802ada577-642694b49b7023d5.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-loot-tables-v1-1.1.47+9e7660c677-26302d8860a10642.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-message-api-v1-5.1.10+1802ada577-73f748c4cec1aec4.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-mining-level-api-v1-2.1.5+1802ada577-efde39f5a9894ead.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-model-loading-api-v1-1.0.+1802ada577-f415600517ac4cdd.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-models-v0-0.4.3+9386d8a777-189b924a9532ccab.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-networking-api-v1-1.3.15+0caff8d077-ba455c2ad96a3ec5.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-networking-v0-0.3.55+df3654b377-dcc6bde80b03eeb5.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-object-builder-api-v1-11.+e35120df77-c89f0d078635543b.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-particles-v1-1.1.3+1802ada577-f4621d59241956c5.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-recipe-api-v1-1.0.25+1802ada577-ef4a6fb42053c95c.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-registry-sync-v0-2.4.1+4c0a70e677-8e5b8dadae7a629b.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-renderer-api-v1-3.2.2+1802ada577-450cd028ebe1be05.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-renderer-indigo-1.5.3+85287f9f77-eb760cabb594e4f9.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-renderer-registries-v1-3.+df3654b377-990564bff124529f.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-rendering-data-attachment+92a0d36777-3201dbcdcc322cbb.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-rendering-fluids-v1-3.0.2+1802ada577-27fc4c268fdb77a8.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-rendering-v0-1.1.50+df3654b377-6306fc6f15e83ed5.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-rendering-v1-3.0.9+1802ada577-9dfbdd3b036f2789.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-resource-conditions-api-v+1802ada577-b8448a66ac916a41.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-resource-loader-v0-0.11.1+fb82e9d777-14fdbb059ba5cd43.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-screen-api-v1-2.0.9+1802ada577-72f49f39b9fd9bcb.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-screen-handler-api-v1-1.3+1802ada577-3f8ad3f85edcbcb4.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-sound-api-v1-1.0.14+1802ada577-738ceba6556064e9.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-tag-api-v1-1.3.0+238242b777-440d05a2cf60c21c.jar
+        0.18 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-transfer-api-v1-3.3.6+8dd72ea377-e049ecc403658818.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-transitive-access-widener+1802ada577-3e2ae96e91b53f0c.jar
+        0.68 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\io_github_douira_glsl-transformer-2.0.1-f38058f2330ca93a.jar
+        0.69 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\mixinextras-0.5.4-edfcdd3df0b35281.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\org_anarres_jcpp-1.4.14-b17d3642a4b336e4.jar
+        0.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\org_antlr_antlr4-runtime-4.13.1-aa40604b69b4ceaf.jar
+       23.59 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\remappedJars\minecraft-1.20.1-0.19.3\client-intermediary.jar
+        2.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\fabric-api-0.92.11+1.20.1.jar
+        2.60 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\iris-1.7.6+mc1.20.1.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\[Reese的钠视频界面] reeses_sodium_options-1.7.2+mc1.20.1-build.101.jar
+        0.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\[钠 · 扩展] sodium-extra-0.5.9+mc1.20.1.jar
+        0.93 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\[钠] sodium-fabric-0.5.13+mc1.20.1.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\[铁氧体磁芯] ferritecore-6.0.1-fabric.jar
+        8.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9\1.8.9.jar
+        8.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\1.8.9-Forge_11.15.1.1902-OptiFine_M5.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\DCCH-2.0+1.8.9.jar
+        2.47 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\OptiFine_1.8.9_HD_U_M5.jar
+        0.72 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[Xaero的小地图] Xaeros_Minimap_21.10.41_Forge_1.8.9.jar
+        3.49 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[实体渲染机制优化] entityculling-forge-mc1.8.9-1.5.0.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[极简血量显示] Neat+1.1-3.jar
+       17.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\OneConfig\OneConfig (1.8.9-forge).jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\OneConfig\launchwrapper\OneConfig-Loader.jar
+        5.32 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\OneConfig\temp\oneconfig-lwjgl3.jar
+       36.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\26.1.2\26.1.2.jar
+       25.59 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\AutumnTown_NeoForge.jar
+        0.58 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\Aquaculture-1.21.1-2.7.21.jar
+        0.56 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\architectury-13.0.8-neoforge.jar
+        4.77 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\autumntown-1.0.4-neoforge-1.21.1.jar
+        2.53 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\bakeries-1.21.1-NeoForge-1.0.1.jar
+        5.38 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\brazil_legends-1.7.0-neoforge-1.21.1.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\caelus-neoforge-7.0.1+1.21.1.jar
+        1.89 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\Camerapture-1.10.12+mc1.21.1-neoforge.jar
+       11.90 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\Chimes-v2.1.1-1.21.1-NeoForge.jar
+        1.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\cloth-config-15.0.140-neoforge.jar
+        0.39 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\curios-neoforge-9.5.1+1.21.1.jar
+       11.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\DungeonsArise-1.21.1-2.1.68-release.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\elytraslot-neoforge-9.0.2+1.21.1.jar
+        3.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\FarmersDelight-1.21.1-1.3.2.jar
+        0.37 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\framework-neoforge-1.21.1-0.13.11.jar
+        1.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ftb-library-neoforge-2101.1.32.jar
+        1.40 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ftb-quests-neoforge-2101.1.27.jar
+        0.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ftb-teams-neoforge-2101.1.10.jar
+        0.59 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\geckolib-neoforge-1.21.1-4.8.4.jar
+        2.33 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\immersive_aircraft-1.4.6+1.21.1-neoforge.jar
+        5.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\immersive_melodies-neoforge-0.6.4+1.21.1.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\invtweaks-1.21.1-1.3.2.jar
+        0.55 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ironfurnaces-neoforge-1.21.1-4.3.2.jar
+        1.46 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\jei-1.21.1-neoforge-19.27.0.340.jar
+        4.79 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\kaleidoscopecookery-1.4.0-neoforge+mc1.21.1.jar
+        2.18 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\kubejs-neoforge-2101.7.2-build.368.jar
+       42.54 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\legendary_monsters-2.1.16 MC 1.21.1.jar
+        1.91 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\letsdo-vinery-neoforge-1.5.3.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\lionfishapi-3.0.jar
+        0.93 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\lootr-neoforge-1.21.1-1.11.37.120.jar
+       69.95 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\L_Ender's Cataclysm 1.21.1-3.31.jar
+        1.20 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar
+       34.37 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\mowziesmobs-1.21.1-1.8.2.jar
+        1.40 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\netmusic-1.5.1-neoforge+mc1.21.1.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\nojbput-1.7.0-neo-1.21.1.jar
+        0.62 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\Patchouli-1.21.1-93-NEOFORGE.jar
+        6.80 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\refurbished_furniture-neoforge-1.21.1-1.0.22.jar
+        0.84 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\rhino-2101.2.7-build.85.jar
+        1.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\sophisticatedbackpacks-1.21.1-3.25.63.1912.jar
+        1.57 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\sophisticatedcore-1.21.1-1.4.58.2026.jar
+        1.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\StorageDrawers-neoforge-1.21.1-13.11.4.jar
+       54.59 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\tacz-neoforge-1.21.1-1.1.8-hotfix-r1.jar
+       23.28 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\touhoulittlemaid-1.5.3-neoforge+mc1.21.1.jar
+       25.90 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\twilightforest-1.21.1-4.8.3345-universal.jar
+        4.68 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\voicechat-neoforge-1.21.1-2.6.18.jar
+       60.52 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ysm-2.6.5-neoforge+mc1.21.1-release.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\CustomSkinLoader\Core\CustomSkinLoader-Common.jar
+        0.52 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\alltheleaks-1.1.11+1.21.1-neoforge.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\appleskin-neoforge-mc1.21-3.0.9.jar
+       14.67 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\automodpack-mc1.21.1-neoforge-4.0.5.jar
+        0.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\BadOptimizations-2.4.1-1.21.1.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\chat_heads-0.15.6-neoforge-1.21.jar
+        1.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\continuity-3.0.0+0.0.1+1.21.1.neoforge-all.jar
+        0.21 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\CustomSkinLoader_Universal-15.0.1.jar
+        1.51 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\entityculling-neoforge-1.10.5-mc1.21.1.jar
+        0.19 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\IMBlocker-5.5.4-neoforge+1.20.6-1.21.8.jar
+        0.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\ImmediatelyFast-NeoForge-1.6.11+1.21.1.jar
+        0.65 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\Ixeris-4.6.2+1.21.1-neoforge.jar
+        0.69 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\Jade-1.21.1-NeoForge-15.10.6.jar
+        0.24 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\jecharacters-1.21.1-neoforge-4.5.27.jar
+        0.74 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\lithium-neoforge-0.15.4+mc1.21.1.jar
+        0.57 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\modernfix-neoforge-5.27.20+mc1.21.1.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\MouseTweaks-neoforge-mc1.21-2.26.1.jar
+        0.44 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\sodium-extra-neoforge-0.9.3+mc1.21.1.jar
+        1.23 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\sodium-neoforge-0.8.13-beta.2+mc1.21.1.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\WI-Zoom-1.6-MC1.21.1-NeoForge.jar
+        2.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\xaerominimap-neoforge-1.21.1-26.4.2.jar
+        1.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\xaeroworldmap-neoforge-1.21.1-1.44.2.jar
+        2.87 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\[neoforge-1.21]AllMusic_Client-3.7.4.jar
+        8.61 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\BLClient\PRODUCTION4\1.8.9\BLClient.jar
+  (missing) C:\Users\Huang\.minecraft
+  total jars: 636
+
+### VERSION-LIKE JARS (1.8.9 / client / minecraft / obf)
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\!!!CrashAssistant-forge-1.8.9-1.11.12.jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\HitRangeMod-1.2 [1.8.9].jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\jei_1.8.9-2.28.18.187.jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\Xaeros_Minimap_21.10.41_Forge_1.8.9.jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\[1.8.9]+Lunar+Kyestrokes+V2.jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\攻击范围显示 HitRangeMod 1.0 MC1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\essential\Essential (forge_1.8.9).jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\universalcraft-1.8.9-forge-534.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\essential\loader\stage1\launchwrapper\stage2.forge_1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\brigadier\1.1.8\brigadier-1.1.8.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\com\mojang\netty\1.8.8\netty-1.8.8.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-buffer\4.1.82.Final\netty-buffer-4.1.82.Final.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-codec\4.1.82.Final\netty-codec-4.1.82.Final.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-common\4.1.82.Final\netty-common-4.1.82.Final.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-handler\4.1.82.Final\netty-handler-4.1.82.Final.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-resolver\4.1.82.Final\netty-resolver-4.1.82.Final.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport\4.1.82.Final\netty-transport-4.1.82.Final.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport-classes-epoll\4.1.82.Final\netty-transport-classes-epoll-4.1.82.Final.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\io\netty\netty-transport-native-unix-common\4.1.82.Final\netty-transport-native-unix-common-4.1.82.Final.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-extra.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-slim.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-srg.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraftforge\forge\1.8.9-11.15.1.1902-1.8.9\forge-1.8.9-11.15.1.1902-1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraftforge\srgutils\0.4.15\srgutils-0.4.15.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\neoforge\21.1.235\neoforge-21.1.235-client.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\srgutils\1.0.0\srgutils-1.0.0.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\commons\commons-compress\1.8.1\commons-compress-1.8.1.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.3.3\httpclient-4.3.3.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\lz4\lz4-java\1.8.0\lz4-java-1.8.0.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\mods\HitRangeMod-1.2 [1.8.9].jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\mods\MouseTweaks-2.6.2-mc1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\mods\RawInput-0.1.8+1.8.9-forge.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\OneConfig\OneConfig (1.8.9-forge).jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-client-tags-api-v1-1.2.0+238242b777-9d099907bcec6f7c.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\remappedJars\minecraft-1.20.1-0.19.3\client-intermediary.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9\1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\1.8.9-Forge_11.15.1.1902-OptiFine_M5.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\DCCH-2.0+1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\OptiFine_1.8.9_HD_U_M5.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[Xaero的小地图] Xaeros_Minimap_21.10.41_Forge_1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[实体渲染机制优化] entityculling-forge-mc1.8.9-1.5.0.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\OneConfig\OneConfig (1.8.9-forge).jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\mowziesmobs-1.21.1-1.8.2.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\tacz-neoforge-1.21.1-1.1.8-hotfix-r1.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\IMBlocker-5.5.4-neoforge+1.20.6-1.21.8.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\[neoforge-1.21]AllMusic_Client-3.7.4.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\BLClient\PRODUCTION4\1.8.9\BLClient.jar
+
+### SCAN: which jar contains a class referencing GL11 + glFinish
+  lwjgl-2.9.4-nightly-20150209.jar                   org/lwjgl/opengl/GL11.class                                  cnt=2 size=89927
+  lwjgl-2.9.4-nightly-20230316.jar                   org/lwjgl/opengl/GL11.class                                  cnt=2 size=89927
+  lwjgl-opengl-3.3.1.jar                             org/lwjgl/opengl/GL11.class                                  cnt=1 size=116514
+  lwjgl-opengl-3.3.1.jar                             org/lwjgl/opengl/GL11C.class                                 cnt=1 size=38536
+  lwjgl-opengl-3.3.3.jar                             org/lwjgl/opengl/GL11.class                                  cnt=1 size=116502
+  lwjgl-opengl-3.3.3.jar                             org/lwjgl/opengl/GL11C.class                                 cnt=1 size=38528
+  lwjgl-opengl-3.4.1.jar                             org/lwjgl/opengl/GL11.class                                  cnt=1 size=116761
+  lwjgl-opengl-3.4.1.jar                             org/lwjgl/opengl/GL11C.class                                 cnt=1 size=38776
+  xaeroworldmap-neoforge-1.21.1-1.44.2.jar           xaero/map/graphics/TextureUploadBenchmark.class              cnt=1 size=1705
+  xaeroworldmap-neoforge-1.21.1-1.44.2.jar           xaero/map/graphics/TextureUploader.class                     cnt=1 size=7214
+  xaeroworldmap-neoforge-1.21.1-1.44.2.jar           xaero/map/misc/Misc.class                                    cnt=1 size=11222

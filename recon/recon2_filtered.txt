@@ -1,0 +1,254 @@
+        0.11 MB  C:\Users\Huang\.lunarclient\jre\5a6eb763f735cdeb6ad9d2c080e07ef2b949a771\zulu17.64.17-ca-jre17.0.18-win_x64\lib\jrt-fs.jar
+        0.88 MB  C:\Users\Huang\.lunarclient\launcher-cache\Badlion Client\libs\caffeine-2.8.8.jar
+        0.08 MB  C:\Users\Huang\.lunarclient\launcher-cache\Badlion Client\libs\disruptor-3.4.2.jar
+        0.69 MB  C:\Users\Huang\.lunarclient\launcher-cache\Badlion Client\libs\joml-jdk8-1.9.25.jar
+        0.00 MB  C:\Users\Huang\.lunarclient\launcher-cache\Badlion Client\libs\optifineinstallwrapper.jar
+        0.06 MB  C:\Users\Huang\.lunarclient\offline\multiver\common-0.1.0-SNAPSHOT-all-nomappings.jar
+        7.84 MB  C:\Users\Huang\.lunarclient\offline\multiver\forge-0.1.0-SNAPSHOT-all.jar
+        3.63 MB  C:\Users\Huang\.lunarclient\offline\multiver\Forge_v1_8.jar
+       10.74 MB  C:\Users\Huang\.lunarclient\offline\multiver\genesis-0.1.0-SNAPSHOT-all.jar
+        1.61 MB  C:\Users\Huang\.lunarclient\offline\multiver\legacy-0.1.0-SNAPSHOT-all-nomappings.jar
+        3.07 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar-lang.jar
+        3.17 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar-platform-mappings-v1_8.jar
+        0.15 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar-replaymod-forge-mixins-0.1.0-SNAPSHOT-all.jar
+       62.48 MB  C:\Users\Huang\.lunarclient\offline\multiver\lunar.jar
+        0.40 MB  C:\Users\Huang\.lunarclient\offline\multiver\optifine-0.1.0-SNAPSHOT-all.jar
+        2.46 MB  C:\Users\Huang\.lunarclient\offline\multiver\OptiFine_v1_8.jar
+       14.94 MB  C:\Users\Huang\.lunarclient\offline\multiver\ReplayMod-v1_8-2.6.14.jar
+       16.18 MB  C:\Users\Huang\.lunarclient\offline\multiver\ReplayMod-v1_8-2.6.24.jar
+        3.53 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\!!!CrashAssistant-forge-1.8.9-1.11.12.jar
+        0.01 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\HitRangeMod-1.2 [1.8.9].jar
+        0.28 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\jei_1.8.9-2.28.18.187.jar
+        0.49 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\SimpleToggleSprint-2.3.0.jar
+        3.02 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\spark-forge189-bde4ce2ff-mod.jar
+        0.72 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\Xaeros_Minimap_21.10.41_Forge_1.8.9.jar
+        0.03 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\[1.8.9]+Lunar+Kyestrokes+V2.jar
+        0.01 MB  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\攻击范围显示 HitRangeMod 1.0 MC1.8.9.jar
+        0.88 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\libs\caffeine-2.8.8.jar
+        0.08 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\libs\disruptor-3.4.2.jar
+        0.69 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\libs\joml-jdk8-1.9.25.jar
+        0.00 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\libs\optifineinstallwrapper.jar
+        0.03 MB  C:\Users\Huang\AppData\Local\Programs\Lunar Client\resources\resources\fabric-shim\lunar-resolve-shim.jar
+       48.41 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data0.jar
+       48.24 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data1.jar
+       47.72 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data2.jar
+       47.70 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data3.jar
+       48.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data4.jar
+       55.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data5.jar
+       47.91 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data6.jar
+       47.76 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data7.jar
+       47.83 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data8.jar
+        3.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\assets\blclient\objects\data9.jar
+       53.76 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\Essential (forge_1.8.9).jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\annotations-23.0.0.jar
+        0.83 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\caffeine-2.9.0.jar
+        2.58 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\elementa-774.jar
+        3.81 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\essential-loader-mixin-0.2.0+mixin.0.8.7.jar
+        0.54 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kodein-di-jvm-7.6.0.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kodein-type-jvm-1.7.1.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\Koffee-88ba1b0.jar
+        3.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlin-reflect-2.3.0.jar
+        1.71 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlin-stdlib-2.3.0.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlin-stdlib-jdk7-2.3.0.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlin-stdlib-jdk8-2.3.0.jar
+        1.41 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlinx-coroutines-core-jvm-1.10.2.jar
+        0.00 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlinx-coroutines-jdk8-1.10.2.jar
+        0.38 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlinx-serialization-core-jvm-1.9.0.jar
+        0.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\kotlinx-serialization-json-jvm-1.9.0.jar
+        0.19 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\mixinextras-0.4.0.jar
+        0.33 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\universalcraft-1.8.9-forge-534.jar
+        0.79 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\vigilance-306.jar
+        0.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\essential\loader\stage1\launchwrapper\stage2.forge_1.8.9.jar
+       11.80 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-extra.jar
+       13.79 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-slim.jar
+       17.86 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-srg.jar
+        3.58 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraftforge\forge\1.8.9-11.15.1.1902-1.8.9\forge-1.8.9-11.15.1.1902-1.8.9.jar
+        5.41 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\neoforge\21.1.235\neoforge-21.1.235-client.jar
+        0.56 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.3.3\httpclient-4.3.3.jar
+        0.74 MB  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\mods\HitRangeMod-1.2 [1.8.9].jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\mods\MouseTweaks-2.6.2-mc1.8.9.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\mods\RawInput-0.1.8+1.8.9-forge.jar
+       17.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\OneConfig\OneConfig (1.8.9-forge).jar
+       21.96 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\1.20.1-Fabric_0.19.3.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\caffeineconfig-1.3.0+1.17-acfd3cc068e2f229.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-api-base-0.4.32+1802ada577-23d60b6040e025e4.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-api-lookup-api-v1-1.6.37+1802ada577-f3ac5430f67942d8.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-biome-api-v1-13.0.15+93aa238b77-37e9b753a30afe0.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-block-api-v1-1.0.12+1802ada577-2e3448011f08f7a9.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-block-view-api-v2-1.0.3+924f046a77-242c146e8e33234e.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-blockrenderlayer-v1-1.1.4+1802ada577-670f216635c0cffd.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-client-tags-api-v1-1.2.0+238242b777-9d099907bcec6f7c.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-command-api-v1-1.2.35+f71b366f77-ad6525c396b89f0d.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-command-api-v2-2.2.14+1802ada577-2e3cf91d720a5c45.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-commands-v0-0.2.52+df3654b377-a4a4ebca1b683dce.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-containers-v0-0.1.68+df3654b377-9fdf5cc271f757e1.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-content-registries-v0-4.0+1802ada577-165f533012b13644.jar
+        0.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-convention-tags-v1-1.5.6+1802ada577-c98f0599d42f4c81.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-crash-report-info-v1-0.2.+1802ada577-dbae137cba2b0328.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-data-attachment-api-v1-1.+de0fd6d177-6bcd6a6635e101fc.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-data-generation-api-v1-12+238242b777-ed078194de86955e.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-dimensions-v1-2.1.55+1802ada577-bc9700021130ea9d.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-entity-events-v1-1.6.1+1c78457f77-5d40cdb43547b72f.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-events-interaction-v0-0.6+13a40c6677-59c17f0d1a1ad76e.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-events-lifecycle-v0-0.2.6+df3654b377-f2765b90fe5042eb.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-game-rule-api-v1-1.0.41+1802ada577-952cc503e286e377.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-item-api-v1-2.1.29+1802ada577-25443cc2acd1fe8d.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-item-group-api-v1-4.0.14+1802ada577-65f7306139dbb27d.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-key-binding-api-v1-1.0.38+1802ada577-f49797e6f0f400a.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-keybindings-v0-0.2.36+df3654b377-556e548bdd3961de.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-lifecycle-events-v1-2.2.2+1802ada577-b3f23b2ebb7eacc7.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-loot-api-v2-1.2.3+1802ada577-642694b49b7023d5.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-loot-tables-v1-1.1.47+9e7660c677-26302d8860a10642.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-message-api-v1-5.1.10+1802ada577-73f748c4cec1aec4.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-mining-level-api-v1-2.1.5+1802ada577-efde39f5a9894ead.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-model-loading-api-v1-1.0.+1802ada577-f415600517ac4cdd.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-models-v0-0.4.3+9386d8a777-189b924a9532ccab.jar
+        0.13 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-networking-api-v1-1.3.15+0caff8d077-ba455c2ad96a3ec5.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-networking-v0-0.3.55+df3654b377-dcc6bde80b03eeb5.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-object-builder-api-v1-11.+e35120df77-c89f0d078635543b.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-particles-v1-1.1.3+1802ada577-f4621d59241956c5.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-recipe-api-v1-1.0.25+1802ada577-ef4a6fb42053c95c.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-registry-sync-v0-2.4.1+4c0a70e677-8e5b8dadae7a629b.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-renderer-api-v1-3.2.2+1802ada577-450cd028ebe1be05.jar
+        0.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-renderer-indigo-1.5.3+85287f9f77-eb760cabb594e4f9.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-renderer-registries-v1-3.+df3654b377-990564bff124529f.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-rendering-data-attachment+92a0d36777-3201dbcdcc322cbb.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-rendering-fluids-v1-3.0.2+1802ada577-27fc4c268fdb77a8.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-rendering-v0-1.1.50+df3654b377-6306fc6f15e83ed5.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-rendering-v1-3.0.9+1802ada577-9dfbdd3b036f2789.jar
+        0.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-resource-conditions-api-v+1802ada577-b8448a66ac916a41.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-resource-loader-v0-0.11.1+fb82e9d777-14fdbb059ba5cd43.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-screen-api-v1-2.0.9+1802ada577-72f49f39b9fd9bcb.jar
+        0.03 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-screen-handler-api-v1-1.3+1802ada577-3f8ad3f85edcbcb4.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-sound-api-v1-1.0.14+1802ada577-738ceba6556064e9.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-tag-api-v1-1.3.0+238242b777-440d05a2cf60c21c.jar
+        0.18 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-transfer-api-v1-3.3.6+8dd72ea377-e049ecc403658818.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-transitive-access-widener+1802ada577-3e2ae96e91b53f0c.jar
+        0.68 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\io_github_douira_glsl-transformer-2.0.1-f38058f2330ca93a.jar
+        0.69 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\mixinextras-0.5.4-edfcdd3df0b35281.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\org_anarres_jcpp-1.4.14-b17d3642a4b336e4.jar
+        0.31 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\org_antlr_antlr4-runtime-4.13.1-aa40604b69b4ceaf.jar
+       23.59 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\remappedJars\minecraft-1.20.1-0.19.3\client-intermediary.jar
+        2.04 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\fabric-api-0.92.11+1.20.1.jar
+        2.60 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\iris-1.7.6+mc1.20.1.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\[Reese的钠视频界面] reeses_sodium_options-1.7.2+mc1.20.1-build.101.jar
+        0.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\[钠 · 扩展] sodium-extra-0.5.9+mc1.20.1.jar
+        0.93 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\[钠] sodium-fabric-0.5.13+mc1.20.1.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\mods\[铁氧体磁芯] ferritecore-6.0.1-fabric.jar
+        8.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9\1.8.9.jar
+        8.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\1.8.9-Forge_11.15.1.1902-OptiFine_M5.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\DCCH-2.0+1.8.9.jar
+        2.47 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\OptiFine_1.8.9_HD_U_M5.jar
+        0.72 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[Xaero的小地图] Xaeros_Minimap_21.10.41_Forge_1.8.9.jar
+        3.49 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[实体渲染机制优化] entityculling-forge-mc1.8.9-1.5.0.jar
+        0.01 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[极简血量显示] Neat+1.1-3.jar
+       17.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\OneConfig\OneConfig (1.8.9-forge).jar
+        0.17 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\OneConfig\launchwrapper\OneConfig-Loader.jar
+        5.32 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\OneConfig\temp\oneconfig-lwjgl3.jar
+       36.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\26.1.2\26.1.2.jar
+       25.59 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\AutumnTown_NeoForge.jar
+        0.58 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\Aquaculture-1.21.1-2.7.21.jar
+        0.56 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\architectury-13.0.8-neoforge.jar
+        4.77 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\autumntown-1.0.4-neoforge-1.21.1.jar
+        2.53 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\bakeries-1.21.1-NeoForge-1.0.1.jar
+        5.38 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\brazil_legends-1.7.0-neoforge-1.21.1.jar
+        0.05 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\caelus-neoforge-7.0.1+1.21.1.jar
+        1.89 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\Camerapture-1.10.12+mc1.21.1-neoforge.jar
+       11.90 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\Chimes-v2.1.1-1.21.1-NeoForge.jar
+        1.11 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\cloth-config-15.0.140-neoforge.jar
+        0.39 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\curios-neoforge-9.5.1+1.21.1.jar
+       11.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\DungeonsArise-1.21.1-2.1.68-release.jar
+        0.06 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\elytraslot-neoforge-9.0.2+1.21.1.jar
+        3.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\FarmersDelight-1.21.1-1.3.2.jar
+        0.37 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\framework-neoforge-1.21.1-0.13.11.jar
+        1.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ftb-library-neoforge-2101.1.32.jar
+        1.40 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ftb-quests-neoforge-2101.1.27.jar
+        0.29 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ftb-teams-neoforge-2101.1.10.jar
+        0.59 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\geckolib-neoforge-1.21.1-4.8.4.jar
+        2.33 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\immersive_aircraft-1.4.6+1.21.1-neoforge.jar
+        5.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\immersive_melodies-neoforge-0.6.4+1.21.1.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\invtweaks-1.21.1-1.3.2.jar
+        0.55 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ironfurnaces-neoforge-1.21.1-4.3.2.jar
+        1.46 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\jei-1.21.1-neoforge-19.27.0.340.jar
+        4.79 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\kaleidoscopecookery-1.4.0-neoforge+mc1.21.1.jar
+        2.18 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\kubejs-neoforge-2101.7.2-build.368.jar
+       42.54 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\legendary_monsters-2.1.16 MC 1.21.1.jar
+        1.91 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\letsdo-vinery-neoforge-1.5.3.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\lionfishapi-3.0.jar
+        0.93 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\lootr-neoforge-1.21.1-1.11.37.120.jar
+       69.95 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\L_Ender's Cataclysm 1.21.1-3.31.jar
+        1.20 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar
+       34.37 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\mowziesmobs-1.21.1-1.8.2.jar
+        1.40 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\netmusic-1.5.1-neoforge+mc1.21.1.jar
+        0.02 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\nojbput-1.7.0-neo-1.21.1.jar
+        0.62 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\Patchouli-1.21.1-93-NEOFORGE.jar
+        6.80 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\refurbished_furniture-neoforge-1.21.1-1.0.22.jar
+        0.84 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\rhino-2101.2.7-build.85.jar
+        1.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\sophisticatedbackpacks-1.21.1-3.25.63.1912.jar
+        1.57 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\sophisticatedcore-1.21.1-1.4.58.2026.jar
+        1.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\StorageDrawers-neoforge-1.21.1-13.11.4.jar
+       54.59 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\tacz-neoforge-1.21.1-1.1.8-hotfix-r1.jar
+       23.28 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\touhoulittlemaid-1.5.3-neoforge+mc1.21.1.jar
+       25.90 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\twilightforest-1.21.1-4.8.3345-universal.jar
+        4.68 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\voicechat-neoforge-1.21.1-2.6.18.jar
+       60.52 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\ysm-2.6.5-neoforge+mc1.21.1-release.jar
+        0.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\CustomSkinLoader\Core\CustomSkinLoader-Common.jar
+        0.52 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\alltheleaks-1.1.11+1.21.1-neoforge.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\appleskin-neoforge-mc1.21-3.0.9.jar
+       14.67 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\automodpack-mc1.21.1-neoforge-4.0.5.jar
+        0.27 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\BadOptimizations-2.4.1-1.21.1.jar
+        0.09 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\chat_heads-0.15.6-neoforge-1.21.jar
+        1.12 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\continuity-3.0.0+0.0.1+1.21.1.neoforge-all.jar
+        0.21 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\CustomSkinLoader_Universal-15.0.1.jar
+        1.51 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\entityculling-neoforge-1.10.5-mc1.21.1.jar
+        0.19 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\IMBlocker-5.5.4-neoforge+1.20.6-1.21.8.jar
+        0.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\ImmediatelyFast-NeoForge-1.6.11+1.21.1.jar
+        0.65 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\Ixeris-4.6.2+1.21.1-neoforge.jar
+        0.69 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\Jade-1.21.1-NeoForge-15.10.6.jar
+        0.24 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\jecharacters-1.21.1-neoforge-4.5.27.jar
+        0.74 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\lithium-neoforge-0.15.4+mc1.21.1.jar
+        0.57 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\modernfix-neoforge-5.27.20+mc1.21.1.jar
+        0.07 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\MouseTweaks-neoforge-mc1.21-2.26.1.jar
+        0.44 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\sodium-extra-neoforge-0.9.3+mc1.21.1.jar
+        1.23 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\sodium-neoforge-0.8.13-beta.2+mc1.21.1.jar
+        0.15 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\WI-Zoom-1.6-MC1.21.1-NeoForge.jar
+        2.08 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\xaerominimap-neoforge-1.21.1-26.4.2.jar
+        1.35 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\xaeroworldmap-neoforge-1.21.1-1.44.2.jar
+        2.87 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\[neoforge-1.21]AllMusic_Client-3.7.4.jar
+        8.61 MB  C:\Users\Huang\AppData\Roaming\.minecraft\versions\BLClient\PRODUCTION4\1.8.9\BLClient.jar
+### VERSION-LIKE JARS (1.8.9 / client / minecraft / obf)
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\!!!CrashAssistant-forge-1.8.9-1.11.12.jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\HitRangeMod-1.2 [1.8.9].jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\jei_1.8.9-2.28.18.187.jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\forge-1.8.9\Xaeros_Minimap_21.10.41_Forge_1.8.9.jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\[1.8.9]+Lunar+Kyestrokes+V2.jar
+  C:\Users\Huang\.lunarclient\profiles\1.8\mods\ichor-1.8.9\攻击范围显示 HitRangeMod 1.0 MC1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\essential\Essential (forge_1.8.9).jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\essential\libraries\forge_1.8.9\universalcraft-1.8.9-forge-534.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\essential\loader\stage1\launchwrapper\stage2.forge_1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-extra.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-slim.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraft\client\1.21.1-20240808.144430\client-1.21.1-20240808.144430-srg.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\minecraftforge\forge\1.8.9-11.15.1.1902-1.8.9\forge-1.8.9-11.15.1.1902-1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\net\neoforged\neoforge\21.1.235\neoforge-21.1.235-client.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.3.3\httpclient-4.3.3.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\mods\HitRangeMod-1.2 [1.8.9].jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\mods\MouseTweaks-2.6.2-mc1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\mods\RawInput-0.1.8+1.8.9-forge.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\OneConfig\OneConfig (1.8.9-forge).jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\processedMods\fabric-client-tags-api-v1-1.2.0+238242b777-9d099907bcec6f7c.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.20.1-Fabric_0.19.3\.fabric\remappedJars\minecraft-1.20.1-0.19.3\client-intermediary.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9\1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\1.8.9-Forge_11.15.1.1902-OptiFine_M5.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\DCCH-2.0+1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\OptiFine_1.8.9_HD_U_M5.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[Xaero的小地图] Xaeros_Minimap_21.10.41_Forge_1.8.9.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\mods\[实体渲染机制优化] entityculling-forge-mc1.8.9-1.5.0.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\1.8.9-Forge_11.15.1.1902-OptiFine_M5\OneConfig\OneConfig (1.8.9-forge).jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\mowziesmobs-1.21.1-1.8.2.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\automodpack\modpacks\AutumnTown\mods\tacz-neoforge-1.21.1-1.1.8-hotfix-r1.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\IMBlocker-5.5.4-neoforge+1.20.6-1.21.8.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\AutumnTown_NeoForge\mods\[neoforge-1.21]AllMusic_Client-3.7.4.jar
+  C:\Users\Huang\AppData\Roaming\.minecraft\versions\BLClient\PRODUCTION4\1.8.9\BLClient.jar

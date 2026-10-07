@@ -1,0 +1,33 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "GPL-3.0-only"
+issueTrackerURL = "https://github.com/Trusler258"
+
+[[mods]]
+modId = "framespike"
+version = "${file.jarVersion}"
+displayName = "FrameSpike 帧刺"
+logoFile = "framespike/logo.png"
+authors = "Trusler"
+description = '''
+Minecraft 帧时间尖峰与卡顿分析 mod。
+在主线程冻住的那一刻抓调用栈：真实停顿时长、原因归因、GC 关联、崩溃现场，
+并生成可导入其他日志的分析网页。纯客户端，不向外部发送任何数据。
+'''
+
+[[dependencies.framespike]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.framespike]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.21)"
+ordering = "NONE"
+side = "CLIENT"
+# 本模块编译期零 MC 类引用（NeoEvents 用 TickEvent、NeoChat 反射、NeoCommands 纯 Brigadier），
+# 与映射无关，所以不需要 mixin 配置
+

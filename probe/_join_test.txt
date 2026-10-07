@@ -1,0 +1,70 @@
+=== 输入 ===
+  mod 停顿记录 : 132 条  (C:\Users\Huang\.lunarclient\profiles\1.8\framespike\frame-spikes.log)
+               其中带真实时长(STALL-END)的 0 条
+  Lunar 时长   : 142 条 Unknown / 22 条 GC
+  整机采样     : 14 条
+
+=== 整机基线（所有 sys 采样）===
+  cpu     中位     22.0   最大     24.8
+  dpc     中位     0.39   最大     0.78
+  isr     中位     0.39   最大     0.78
+  diskQ   中位     0.00   最大     0.00
+  wMs     中位     1.79   最大     5.88
+  memMB   中位     6913   最大     6940
+
+=== >= 200ms 的停顿：12 次冻结（含 16 条 mod 记录）===
+
+--- 12:21:39  1589 ms  (时长来源 Lunar, 4 条记录, since=runGameLoop,renderWorldPass,hudForge,runGameLoop) ---
+      [runGameLoop] sun.nio.fs.WindowsNativeDispatcher.GetFileAttributesEx0(Native Method)
+      [renderWorldPass] org.lwjgl.opengl.GL11.nglDrawArrays(Native Method)
+      [hudForge] java.util.stream.AbstractPipeline.copyIntoWithCancel(Unknown Source)
+      [runGameLoop] org.lwjgl.opengl.GL15.nglGenBuffers(Native Method)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:25:21  750 ms  (时长来源 Lunar, 1 条记录, since=hudForge) ---
+      [hudForge] org.lwjgl.opengl.WindowsDisplay.defWindowProc(Native Method)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:21:41  620 ms  (时长来源 Lunar, 2 条记录, since=hudForge,runTick) ---
+      [hudForge] java.awt.image.BufferedImage.getRGB(Unknown Source)
+      [runTick] java.util.Arrays.hashCode(Unknown Source)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:23:01  472 ms  (时长来源 Lunar, 1 条记录, since=runGameLoop) ---
+      [runGameLoop] paulscode.sound.SoundSystem.CommandQueue(SoundSystem.java:2359)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:47:35  372 ms  (时长来源 Lunar, 1 条记录, since=runGameLoop) ---
+      [runGameLoop] java.io.FileOutputStream.writeBytes(Native Method)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:27:31  343 ms  (时长来源 Lunar, 1 条记录, since=runGameLoop) ---
+      [runGameLoop] java.io.FileOutputStream.writeBytes(Native Method)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:47:27  332 ms  (时长来源 Lunar, 1 条记录, since=runGameLoop) ---
+      [runGameLoop] java.io.FileOutputStream.writeBytes(Native Method)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:30:37  309 ms  (时长来源 Lunar, 1 条记录, since=runGameLoop) ---
+      [runGameLoop] java.lang.StringLatin1.hashCode(Unknown Source)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:26:12  295 ms  (时长来源 Lunar, 1 条记录, since=runGameLoop) ---
+      [runGameLoop] java.io.FileOutputStream.writeBytes(Native Method)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:26:45  249 ms  (时长来源 Lunar, 1 条记录, since=runGameLoop) ---
+      [runGameLoop] java.io.FileOutputStream.writeBytes(Native Method)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:49:04  219 ms  (时长来源 Lunar, 1 条记录, since=runGameLoop) ---
+      [runGameLoop] java.io.FileOutputStream.writeBytes(Native Method)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+--- 12:23:44  203 ms  (时长来源 Lunar, 1 条记录, since=hudForge) ---
+      [hudForge] org.lwjgl.opengl.WindowsDisplay.nUpdate(Native Method)
+      整机: 窗口内没有采样（sysprobe 当时没在跑）
+
+=== 汇总（12 次 >= 200ms 的冻结）===
+  无整机数据          12

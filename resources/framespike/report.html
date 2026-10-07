@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>__TITLE__</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0d1015; --side:#090b0f; --hover:#141920; --code:#080a0e;
+  --line:#252d3a; --line2:#1a2029;
+  --tx:#dce3ee; --tx2:#8b97ab; --tx3:#586377;
+  --ac:#4cc9f0; --rd:#ff5d5d; --am:#f5a524;
+  --r:6px;
+
+  /* 字体：先圆体拉丁 -> 再圆体中文 -> 最后系统兜底，装了哪个用哪个。
+     想换成自己的字体：把 ttf/otf/woff2 拖进本页，或点右上角「导入字体」。 */
+  --stack-ui:"Nunito","Quicksand","Varela Round","MiSans","MiSans VF","HarmonyOS Sans SC",
+    "HarmonyOS Sans","OPPO Sans","HYQiHei 55S","Alibaba PuHuiTi 3.0","Alibaba PuHuiTi 3",
+    "Source Han Sans SC","Noto Sans SC","PingFang SC","Microsoft YaHei UI","Microsoft YaHei",
+    system-ui,-apple-system,"Segoe UI",sans-serif;
+  --stack-num:"Nunito","Quicksand","Varela Round","MiSans","HarmonyOS Sans SC",
+    "PingFang SC","Microsoft YaHei UI",system-ui,sans-serif;
+  --stack-mono:ui-monospace,"Cascadia Mono",Consolas,"JetBrains Mono",Menlo,
+    "HarmonyOS Sans SC","Microsoft YaHei UI",monospace;
+
+  --font-ui:var(--stack-ui);
+  --font-num:var(--stack-num);
+  --font-mono:var(--stack-mono);
+}
+*{box-sizing:border-box;scrollbar-width:thin;scrollbar-color:#2a3446 transparent}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{margin:0;overflow:hidden;background:var(--bg);color:var(--tx);
+  font-family:var(--font-ui);font-size:13px;line-height:1.7;letter-spacing:.015em}
+code,pre,.mono,.fnode,#crumbs,#tip,#src,.cl,.ct{font-family:var(--font-mono);letter-spacing:0}
+button:focus-visible,.tab:focus-visible{outline:1px solid var(--ac);outline-offset:-1px}
+
+.layout{display:grid;grid-template-columns:272px minmax(0,1fr);height:100vh}
+
+/* ============ 左：资源树 ============ */
+aside{display:flex;flex-direction:column;min-height:0;background:var(--side);
+  border-right:1px solid var(--line2);padding:18px 0 12px}
+.brand{display:flex;align-items:center;gap:9px;padding:0 18px;font-size:13.5px;
+  font-weight:600;letter-spacing:.03em}
+.brand svg{width:22px;height:22px;flex:none;color:var(--ac)}
+.srcbox{margin:12px 0 10px;padding:0 18px 12px;border-bottom:1px solid var(--line2)}
+#src{font-size:11px;line-height:1.55;color:var(--tx2);word-break:break-all}
+#gen{margin-top:3px;font-size:11px;line-height:1.5;color:var(--tx3)}
+
+.tree{flex:1;min-height:0;overflow-y:auto;padding:0 8px;display:flex;flex-direction:column;gap:1px;font-size:12.5px}
+.tree button{font:inherit;color:var(--tx2);background:none;border:0;text-align:left;cursor:pointer}
+.leaf,.grp-btn{display:flex;align-items:center;gap:7px;width:100%;padding:5px 8px;
+  border-radius:5px;position:relative;transition:color .12s,background .12s}
+.tree>.leaf{padding-left:21px}
+.leaf:hover,.grp-btn:hover{background:var(--hover);color:var(--tx)}
+.leaf.on{color:var(--ac);background:rgba(76,201,240,.09)}
+.leaf.on::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;
+  border-radius:2px;background:var(--ac)}
+.caret{width:0;height:0;border-left:5px solid var(--tx3);border-top:4px solid transparent;
+  border-bottom:4px solid transparent;flex:none;transition:transform .14s ease}
+.grp.open>.grp-btn .caret{transform:rotate(90deg)}
+.grp.open>.grp-btn{color:var(--tx)}
+.kids{display:none;margin:1px 0 3px 12px;padding-left:5px;border-left:1px solid var(--line2)}
+.grp.open>.kids{display:block}
+.kids .leaf{padding-left:10px}
+.cnt{margin-left:auto;font-family:var(--font-num);font-variant-numeric:tabular-nums;
+  font-size:11px;color:var(--tx3)}
+.gd{width:7px;height:7px;border-radius:2px;flex:none}
+.leaf.s{font-family:var(--font-mono);font-size:11.5px;gap:10px;padding-left:12px}
+.leaf.s .lt{color:inherit}
+.leaf.s .lm{margin-left:auto;font-family:var(--font-num);font-variant-numeric:tabular-nums;
+  font-weight:600;color:var(--tx2)}
+.leaf.s .lm.rd{color:var(--rd)} .leaf.s .lm.am{color:var(--am)}
+.kids .kids .leaf{padding-left:8px}
+
+.aside-foot{padding:12px 18px 0;border-top:1px solid var(--line2);font-size:11px;line-height:1.7;color:var(--tx3)}
+.aside-foot p{margin:0 0 4px}
+.aside-foot footer{margin-top:8px}
+
+/* ============ 右：查看器 ============ */
+main{display:flex;flex-direction:column;min-width:0;min-height:0}
+.intro{flex:none;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:flex-start;
+  justify-content:space-between;padding:16px 24px 14px;border-bottom:1px solid var(--line2)}
+.intro h1{margin:0;font-size:14.5px;font-weight:600;line-height:1.5;letter-spacing:.02em}
+.intro p{margin:2px 0 0;font-size:12.5px;color:var(--tx2)}
+.tools{display:flex;gap:6px;flex:none}
+.btn{font:inherit;font-size:12px;color:var(--tx2);background:transparent;
+  border:1px solid var(--line);border-radius:var(--r);padding:4px 12px;cursor:pointer;
+  letter-spacing:.03em;transition:color .15s,border-color .15s,background .15s}
+.btn:hover{color:var(--ac);border-color:rgba(76,201,240,.4);background:rgba(76,201,240,.06)}
+.btn.ghost{border-color:transparent;color:var(--tx3)}
+.btn.ghost:hover{color:var(--tx2);border-color:var(--line);background:transparent}
+.btn.sm{padding:2px 10px;font-size:11.5px}
+
+.tabs{flex:none;display:flex;overflow-x:auto;min-height:36px;background:var(--side);
+  border-bottom:1px solid var(--line2)}
+.tab{display:flex;align-items:center;gap:8px;height:36px;padding:0 8px 0 14px;flex:none;
+  font-size:12.5px;color:var(--tx3);cursor:pointer;white-space:nowrap;position:relative;
+  border-right:1px solid var(--line2);user-select:none;transition:color .12s,background .12s}
+.tab:hover{color:var(--tx2)}
+.tab.on{background:var(--bg);color:var(--tx)}
+.tab.on::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--ac)}
+.tab .dot{width:7px;height:7px;border-radius:2px;flex:none}
+.tab .x{width:17px;height:17px;border-radius:4px;display:grid;place-items:center;
+  font-size:14px;line-height:1;color:var(--tx3);opacity:0}
+.tab:hover .x,.tab.on .x{opacity:1}
+.tab .x:hover{background:var(--hover);color:var(--tx)}
+.tab:not(.on) .x{margin-left:-2px}
+.tab:first-child{padding-right:14px}
+
+.editor{flex:1;min-height:0;overflow:auto;padding:22px 28px 36px}
+.pane{animation:paneIn .14s ease-out}
+@keyframes paneIn{from{opacity:0}to{opacity:1}}
+.phead{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin:0 0 14px}
+.phead h2{margin:0;font-size:14px;font-weight:600;letter-spacing:.03em}
+.phead span{font-size:12px;color:var(--tx3)}
+.phead .btn{margin-left:auto}
+.phead .btn + .btn{margin-left:0}
+
+.statusbar{flex:none;display:flex;gap:9px;align-items:center;min-height:26px;padding:3px 24px;
+  border-top:1px solid var(--line2);background:var(--side);font-size:11.5px;line-height:1.5;color:var(--tx3)}
+.statusbar::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ac);flex:none}
+.statusbar.warn::before{background:var(--am)}
+.statusbar.warn #status{color:var(--am)}
+
+/* ---- 概览 ---- */
+.kpis{display:flex;flex-wrap:wrap;gap:14px 0}
+.kpi{padding:0 26px;border-left:1px solid var(--line2)}
+.kpi:first-child{padding-left:0;border-left:0}
+.kpi .v{font-family:var(--font-num);font-variant-numeric:tabular-nums;font-size:20px;
+  line-height:1.3;font-weight:600;letter-spacing:0;white-space:nowrap}
+.kpi .k{margin-top:1px;font-size:11.5px;color:var(--tx3)}
+.c-rd .v{color:var(--rd)} .c-cy .v{color:var(--ac)}
+.row{display:grid;grid-template-columns:148px minmax(0,1fr);gap:0 32px;
+  margin-top:22px;padding-top:20px;border-top:1px solid var(--line2);max-width:1040px}
+.row h2{margin:3px 0 0;font-size:13px;font-weight:600;letter-spacing:.03em}
+.row h2 small{display:block;margin-top:3px;font-size:11.5px;font-weight:400;
+  line-height:1.6;color:var(--tx3);letter-spacing:.02em}
+.bar{display:flex;gap:2px;height:24px}
+.bar i{position:relative;display:grid;place-items:center;border-radius:3px;
+  font-family:var(--font-num);font-size:11px;font-weight:600;font-style:normal;
+  color:rgba(0,0,0,.72);white-space:nowrap;overflow:hidden;transition:filter .15s}
+.bar i:hover{filter:brightness(1.12)}
+.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:4px 26px;margin-top:12px}
+.lg div{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--tx2)}
+.lg em{width:8px;height:8px;border-radius:2px;flex:none;font-style:normal}
+.lg b{margin-left:auto;color:var(--tx);font-weight:600;font-family:var(--font-num);
+  font-variant-numeric:tabular-nums}
+.t5{display:flex;align-items:center;gap:12px;width:100%;padding:5px 8px;margin:0 -8px;
+  font:inherit;font-size:12.5px;color:var(--tx2);background:none;border:0;border-radius:5px;
+  text-align:left;cursor:pointer;transition:background .12s}
+.t5:hover{background:var(--hover);color:var(--tx)}
+.t5 .gd{flex:none}
+.t5 .lt{font-family:var(--font-mono);font-size:12px;letter-spacing:0;width:104px;flex:none}
+.t5 .lm{width:64px;flex:none;font-family:var(--font-num);font-variant-numeric:tabular-nums;font-weight:600;color:var(--tx)}
+.t5 .lm.rd{color:var(--rd)} .t5 .lm.am{color:var(--am)}
+.t5 .lr{width:96px;flex:none}
+.t5 .ls{color:var(--tx3);font-family:var(--font-mono);font-size:11.5px;letter-spacing:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---- 时间轴 ---- */
+.tlwrap{border:1px solid var(--line2);border-radius:var(--r);background:var(--code);overflow:hidden}
+#tl-mini{display:block;width:100%;height:56px;border-bottom:1px solid var(--line);cursor:grab;touch-action:none}
+#tl-main{display:block;width:100%;touch-action:none;user-select:none}
+.tlsum{display:grid;grid-template-columns:minmax(240px,340px) minmax(0,1fr);gap:8px 44px;margin-top:22px}
+.tlsum .sec{margin-top:0}
+.sr{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--tx2);padding:2px 0}
+.sr b{margin-left:auto;color:var(--tx);font-family:var(--font-num);font-variant-numeric:tabular-nums;font-weight:600}
+.sr .gd{flex:none}
+.sr.sp{margin-top:10px;padding-top:10px;border-top:1px solid var(--line2)}
+
+/* ---- 归因列表：竖排 + 大类可展开看成员 ---- */
+#reasonlg .rr{display:flex;align-items:center;gap:9px;width:100%;background:none;border:0;
+  color:var(--tx2);font:inherit;text-align:left;padding:4px 6px;border-radius:5px;cursor:pointer;
+  transition:background .12s,color .12s}
+#reasonlg .rr:hover{background:var(--hover);color:var(--tx)}
+#reasonlg .rr .caret{width:0;height:0;border-left:5px solid var(--tx3);border-top:4px solid transparent;
+  border-bottom:4px solid transparent;flex:none;transition:transform .16s ease}
+#reasonlg .rr.on .caret{transform:rotate(90deg)}
+#reasonlg .rr.on{color:var(--tx)}
+#reasonlg .rr em{width:8px;height:8px;border-radius:2px;flex:none;font-style:normal}
+#reasonlg .rr b{margin-left:auto;padding-left:14px;white-space:nowrap;color:var(--tx);
+  font-family:var(--font-num);font-variant-numeric:tabular-nums;font-weight:600}
+/* 关键：老规则 .lg div{display:flex} 会把 .rgrp 变成横排，导致子列表跑到右边 —— 显式改回块级 */
+#reasonlg .rgrp{display:block;margin:0;padding:0;font-size:inherit;color:inherit;gap:0}
+#reasonlg .rsub{display:none;margin:2px 0 8px 9px;padding:2px 0 2px 14px;
+  border-left:1px solid var(--line2)}
+#reasonlg .rsub.on{display:block}
+#reasonlg .rm{display:flex;align-items:center;gap:10px;font-size:11.5px;line-height:1.7;
+  padding:0;margin:0;color:var(--tx3)}
+#reasonlg .rm .rmn{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--tx2)}
+#reasonlg .rm .rmc{flex:none;color:var(--tx3)}
+#reasonlg .rm b{margin:0;flex:none;min-width:66px;text-align:right;color:var(--tx2);font-weight:500}
+#reasonlg .rm .rmc{min-width:34px;text-align:right}
+#reasonlg .rm .rmp{flex:none;min-width:40px;text-align:right;color:var(--tx3)}
+#reasonlg .rmt{flex:none;min-width:150px;text-align:right;color:var(--tx3);
+  font-family:var(--font-mono);font-size:11px;white-space:nowrap}
+#reasonlg .rr .rmt{color:var(--tx3);font-weight:400}
+
+/* ---- 旧的横排规则（保留给分档图例） ---- */
+#reasonlg{display:flex;flex-direction:column;gap:2px;margin-top:12px}
+#reasonlg div{gap:10px;padding:3px 6px;margin:0;border-radius:4px}
+#reasonlg div:hover{background:var(--hover)}
+#reasonlg div b{margin-left:auto;white-space:nowrap;padding-left:16px}
+#reasonlg div em{margin-top:1px}
+.tlsum .lg{display:flex;flex-direction:column;gap:2px}
+
+/* ---- 火焰图 ---- */
+#crumbs{font-size:11.5px;line-height:1.7;color:var(--tx2);margin-bottom:10px;min-height:20px}
+#crumbs u{cursor:pointer;color:var(--ac);text-decoration:none}
+#crumbs u:hover{text-decoration:underline}
+#flame{max-height:calc(100vh - 250px);min-height:120px;overflow:auto;padding:3px;
+  border:1px solid var(--line2);border-radius:var(--r)}
+.fz{display:flex;min-height:21px}
+.fnode{margin:1px;padding:0 6px;border-radius:3px;font-size:11px;line-height:19px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;
+  color:#0b1220;border:1px solid transparent;box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+.fnode:hover{outline:1px solid #fff;outline-offset:-1px}
+
+/* ---- 调用树（spark 式） ---- */
+.cth,.ctrow{display:flex;align-items:center;gap:10px}
+.cth{padding:0 10px 6px 8px;font-size:11.5px;color:var(--tx3);border-bottom:1px solid var(--line)}
+.cth .a{flex:1}
+.cm,.cp,.cx{flex:none;text-align:right;font-variant-numeric:tabular-nums}
+.cm{width:64px}.cp{width:52px}.cx{width:46px}
+#ctree{font-size:12px}
+.ctrow{position:relative;min-height:24px;padding-right:10px;cursor:pointer}
+.ctrow:hover{background:var(--hover)}
+.cbar{position:absolute;left:0;top:2px;bottom:2px;opacity:.17;border-radius:2px;pointer-events:none}
+.cc{position:relative;width:12px;flex:none;display:grid;place-items:center}
+.cc i{width:0;height:0;border-left:5px solid var(--tx3);border-top:4px solid transparent;
+  border-bottom:4px solid transparent;transition:transform .12s ease}
+.ct.open>.ctrow .cc i{transform:rotate(90deg)}
+.cname{position:relative;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ctrow .cm{position:relative;color:var(--tx)}
+.ctrow .cp{position:relative;color:var(--tx2)}
+.ctrow .cx{position:relative;color:var(--tx3)}
+.ctkids{display:none}
+.ct.open>.ctkids{display:block}
+.pk,.lc,.at{color:#66738a}
+.cn{color:#d4dce9}
+.mt{color:var(--ac)}
+
+/* ---- CPU ---- */
+svg.spark{width:100%;height:230px;display:block;
+  border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);
+  background:repeating-linear-gradient(to bottom,transparent 0,transparent calc(25% - 1px),
+    var(--line2) calc(25% - 1px),var(--line2) 25%)}
+
+/* ---- 日志表 ---- */
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;font-weight:500;color:var(--tx3);font-size:11.5px;padding:0 10px 8px;
+  border-bottom:1px solid var(--line);white-space:nowrap;letter-spacing:.04em}
+td{padding:6px 10px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--tx2)}
+tbody{counter-reset:ln}
+tr.main td:first-child{white-space:nowrap}
+tr.main{counter-increment:ln;cursor:pointer;transition:background .12s}
+tr.main td:first-child::before{content:counter(ln);display:inline-block;width:26px;margin-right:10px;
+  text-align:right;color:var(--tx3);opacity:.7;user-select:none}
+tr.main:hover td{background:rgba(255,255,255,.025)}
+.ms{font-family:var(--font-num);font-variant-numeric:tabular-nums;font-size:13px;
+  font-weight:600;color:var(--tx);white-space:nowrap}
+.ms.rd{color:var(--rd)} .ms.am{color:var(--am)}
+.dbar{height:3px;border-radius:2px;background:rgba(255,255,255,.06);overflow:hidden;margin-top:5px}
+.dbar i{display:block;height:100%;background:var(--ac);opacity:.6}
+.tag{display:inline-block;padding:0 8px;border-radius:4px;font-size:11px;white-space:nowrap}
+.why{color:var(--tx3);font-size:11px;user-select:none;white-space:nowrap}
+tr.main:hover .why{color:var(--ac)}
+td.mono>span{display:inline-block;margin-right:12px}
+.detail{display:none}
+.detail.open{display:table-row}
+.detail td{background:var(--code);padding:10px 16px}
+.tl{display:flex;flex-wrap:wrap;gap:4px 12px;margin-bottom:8px}
+.tl span{font-family:var(--font-mono);font-size:11px;line-height:1.8;color:var(--tx2);letter-spacing:0}
+.tl b{color:var(--ac);font-weight:400}
+pre{margin:0;padding-left:12px;border-left:2px solid var(--line);font-size:11px;line-height:1.7;
+  color:#b9c4d6;white-space:pre-wrap;word-break:break-all;max-height:280px;overflow:auto}
+.empty{color:var(--tx3);font-size:12.5px;padding:10px 0}
+
+/* ---- 单次停顿（标签页里的代码视图） ---- */
+.sh{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:18px}
+.sh .big{font-family:var(--font-num);font-variant-numeric:tabular-nums;font-size:24px;
+  font-weight:600;line-height:1.3;letter-spacing:0}
+.sh .big.rd{color:var(--rd)} .sh .big.am{color:var(--am)}
+.sh .meta{font-family:var(--font-mono);font-size:12px;color:var(--tx2);letter-spacing:0}
+.sh .sub{width:100%;font-size:12px;color:var(--tx3)}
+.sec{display:flex;align-items:center;gap:12px;margin:22px 0 8px;font-size:12px;color:var(--tx3)}
+.sec .btn{margin-left:auto}
+.tlr{display:grid;grid-template-columns:200px minmax(0,1fr) 84px;align-items:center;gap:14px;
+  min-height:24px;max-width:860px;font-size:12px}
+.tlr .tn{font-family:var(--font-mono);color:var(--tx2);letter-spacing:0;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.tlr .tb{height:6px;border-radius:3px;background:rgba(255,255,255,.05);overflow:hidden}
+.tlr .tb i{display:block;height:100%;background:var(--ac);opacity:.75}
+.tlr .tv{text-align:right;font-family:var(--font-num);font-variant-numeric:tabular-nums;color:var(--tx)}
+.code{background:var(--code);border:1px solid var(--line2);border-radius:var(--r);padding:8px 0;overflow-x:auto}
+.cl{display:flex;gap:14px;min-width:max-content;padding:0 16px 0 0;font-size:12px;line-height:22px;color:var(--tx2)}
+.cl:hover{background:rgba(255,255,255,.03)}
+.cl .ln{width:44px;flex:none;text-align:right;color:var(--tx3);user-select:none}
+.cl.top{background:rgba(76,201,240,.06);box-shadow:inset 2px 0 0 var(--ac)}
+
+#tip{position:fixed;pointer-events:none;z-index:9;background:#06080c;border:1px solid var(--line);
+  border-radius:var(--r);padding:7px 10px;font-size:11px;line-height:1.6;color:var(--tx2);
+  max-width:520px;display:none;white-space:pre-wrap}
+#drop{position:fixed;inset:0;z-index:30;display:none;place-items:center;
+  background:rgba(6,9,14,.88);border:2px dashed rgba(76,201,240,.45)}
+#drop.on{display:grid}
+#drop div{font-size:15px;font-weight:600;color:var(--ac);text-align:center;
+  padding:22px 30px;border-radius:var(--r);background:rgba(76,201,240,.07)}
+#drop span{display:block;margin-top:6px;font-size:12px;font-weight:400;color:var(--tx3)}
+
+@media (prefers-reduced-motion:reduce){
+  .pane{animation:none}
+  *{transition:none!important}
+}
+@media (max-width:900px){
+  body{overflow:auto}
+  .layout{display:block;height:auto}
+  aside{border-right:0;border-bottom:1px solid var(--line2)}
+  .tree{max-height:300px}
+  main{display:block}
+  .editor{padding:18px 14px 32px;overflow:visible}
+  .intro{padding:14px}
+  .row{display:block}
+  .row h2{margin-bottom:12px}
+  .tlr{grid-template-columns:120px minmax(0,1fr) 72px}
+  .tlsum{display:block}
+  #flame{max-height:60vh}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<aside>
+  <div class="brand">
+    <svg viewBox="0 0 24 24" role="img" aria-label="FrameSpike 帧刺" fill="none"
+         stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke-opacity=".45"/>
+      <path d="M5.5 14.5h3l1.8-3.5 2.2 7.5 2.2-10.5 1.6 6.5h2.2"/>
+    </svg>
+    <span>FrameSpike 帧刺</span>
+  </div>
+  <div class="srcbox">
+    <div id="src">__SOURCE__</div>
+    <div id="gen">生成时间 __GENERATED__</div>
+  </div>
+
+  <nav class="tree" id="tree" aria-label="报告资源树">
+    <button class="leaf on" type="button" data-key="p-overview">概览</button>
+    <div class="grp open">
+      <button class="grp-btn" type="button" aria-expanded="true"><i class="caret"></i>分析</button>
+      <div class="kids">
+        <button class="leaf" type="button" data-key="p-timeline">时间轴</button>
+        <button class="leaf" type="button" data-key="p-flame">火焰图</button>
+        <button class="leaf" type="button" data-key="p-calltree">调用树</button>
+        <button class="leaf" type="button" data-key="p-cpu">CPU 与帧率</button>
+      </div>
+    </div>
+    <div class="grp open">
+      <button class="grp-btn" type="button" aria-expanded="true"><i class="caret"></i>停顿<span class="cnt" data-cnt="stalls"></span></button>
+      <div class="kids">
+        <button class="leaf" type="button" data-key="p-rows">全部日志</button>
+        <div id="stallgroups"></div>
+      </div>
+    </div>
+    <div class="grp open" id="grp-crash" hidden>
+      <button class="grp-btn" type="button" aria-expanded="true"><i class="caret"></i>崩溃<span class="cnt" data-cnt="crashes"></span></button>
+      <div class="kids">
+        <button class="leaf" type="button" data-key="p-crash">崩溃记录</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="aside-foot">
+    <footer>FrameSpike 帧刺 v__VERSION__ · by __AUTHOR__</footer>
+  </div>
+</aside>
+
+<main>
+  <div class="intro">
+    <div>
+      <h1>FrameSpike 帧刺：Minecraft 1.8.9 主线程帧时间尖峰采样</h1>
+      <p>这份报告记录主线程停顿的调用栈、时长与归因。采样间隔 2ms，不含后台线程。</p>
+    </div>
+    <div class="tools">
+      <button class="btn" id="blog" type="button">导入日志</button>
+      <button class="btn" id="bfont" type="button">导入字体</button>
+      <button class="btn" id="bcmp" type="button">对比日志</button>
+      <button class="btn ghost" id="bcclear" type="button" style="display:none">取消对比</button>
+      <button class="btn ghost" id="breset" type="button">重置</button>
+    </div>
+  </div>
+  <div class="tabs" id="tabs" role="tablist"></div>
+
+  <div class="editor" id="editor">
+    <section class="pane" id="p-overview">
+      <div class="kpis" id="kpis"></div>
+      <div class="row" id="sec-buckets">
+        <h2>时长分档</h2>
+        <div>
+          <div class="bar" id="buckets"></div>
+          <div class="lg" id="bucketlg"></div>
+        </div>
+      </div>
+      <div class="row" id="sec-reasons">
+        <h2>原因归因</h2>
+        <div>
+          <div class="bar" id="reasons"></div>
+          <div class="lg" id="reasonlg"></div>
+        </div>
+      </div>
+      <div class="row">
+        <h2>最长的几次</h2>
+        <div id="top5"></div>
+      </div>
+      <div class="row">
+        <h2>会话</h2>
+        <div id="sessinfo"></div>
+      </div>
+    </section>
+
+    <section class="pane" id="p-timeline" hidden>
+      <div class="phead"><h2>时间轴</h2>
+        <button class="btn sm" type="button" id="tl-in">放大</button>
+        <button class="btn sm" type="button" id="tl-out">缩小</button>
+        <button class="btn sm ghost" type="button" id="tl-fit">全程</button></div>
+      <div class="tlwrap">
+        <canvas id="tl-mini" aria-label="全程缩略图，拖动框选窗口"></canvas>
+        <canvas id="tl-main" aria-label="时间轴：卡顿占比、停顿、时长、栈深、帧率"></canvas>
+      </div>
+      <div class="tlsum" id="tl-sum"></div>
+    </section>
+
+    <section class="pane" id="p-flame" hidden>
+      <div class="phead"><h2>火焰图</h2></div>
+      <div id="crumbs"></div>
+      <div id="flame"></div>
+    </section>
+
+    <section class="pane" id="p-calltree" hidden>
+      <div class="phead"><h2>调用树</h2>
+        <button class="btn sm" type="button" id="ct-all">展开全部</button>
+        <button class="btn sm ghost" type="button" id="ct-none">收起</button></div>
+      <div class="cth"><span class="cc"></span><span class="a">调用栈</span><span class="cm">累计</span><span class="cp">占比</span><span class="cx">次数</span></div>
+      <div id="ctree"></div>
+    </section>
+
+    <section class="pane" id="p-cpu" hidden>
+      <div class="phead"><h2>CPU 与帧率</h2></div>
+      <div id="cpupanel"></div>
+    </section>
+
+    <section class="pane" id="p-crash" hidden>
+      <div class="phead"><h2>崩溃</h2><span>从 crash-reports 解析，归因用的是和停顿同一套分类器</span></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th style="width:96px">时刻</th><th>异常</th><th style="width:112px">归因</th>
+            <th style="width:230px">报告文件</th></tr></thead>
+          <tbody id="crashrows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="pane" id="p-cmp" hidden>
+      <div class="phead"><h2>对比</h2><span>当前这份 vs 对比基准，变差标红、变好标绿</span></div>
+      <div id="cmppanel"></div>
+    </section>
+
+    <section class="pane" id="p-rows" hidden>
+      <div class="phead"><h2>全部日志</h2></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th style="width:172px">时刻</th><th style="width:88px">真实时长</th>
+            <th style="width:112px">原因</th><th style="width:120px">卡在哪一步</th>
+            <th>帧内时间线</th><th style="width:52px"></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="pane" id="p-stall" hidden></section>
+  </div>
+
+  <div class="statusbar" id="statusbar"><span id="status"></span></div>
+</main>
+</div>
+
+<div id="drop"><div>松手就导入</div></div>
+<input type="file" id="flog" style="display:none" accept=".log,.txt,.text,.json,.out,text/*">
+<input type="file" id="ffont" style="display:none" accept=".ttf,.otf,.woff,.woff2,.ttc,font/*">
+<input type="file" id="fcmp" style="display:none" accept=".log,.txt,.text,.json,.out,text/*">
+<div id="tip"></div>
+
+<script>
+/*==PARSE-BEGIN==*/
+/* FrameSpike 日志解析（自带一份，页面/命令行都能用）
+   node 用法: node test/parse_check.js <log>   会导出 parseLog */
+var FS_MAX_STALLS = 400;   /* 栈不再截断：日志里有多少层就展示多少层 */
+var FS_DEPTH_COLOR = ["#8b6dff","#4cc9f0","#2dd4bf","#a3e635","#f5a524","#f472b6","#7c8aa5"];
+var FS_UNKNOWN = "未知";
+
+/* 归因规则表：与 Java 侧同一张表（parse_check 会逐字段对口径，漂移会立刻红） */
+var FS_RULES = [
+  ["写文件", "FileOutputStream|FileChannel.write|writeBytes|BufferedOutputStream|FileWriter|PrintStream|RandomAccessFile.write"],
+  ["读文件", "RandomAccessFile|FileInputStream|FileReader|BufferedReader|WinNTFileSystem|getBooleanAttributes|Files.read|File.length|File.exists"],
+  ["Mixin 注入", "mixin|spongepowered|LateApplyingInject|InjectorWrapper|Coprocessor|$sp."],
+  ["类加载/remap", "defineClass|ClassLoader|findClass|ClassReader|ClassWriter|SymbolTable|MethodWriter|ByteVector|objectweb.asm|cadixdev|JarFile|ZipFile|Inflater|URLClassPath|MethodHandles|getDeclared|JarURLConnection"],
+  ["窗口合成", "WindowsDisplay|WindowsNativeDispatche|Dwm|nUpdate"],
+  ["GL驱动", "lwjgl.opengl|nglDraw|nglCallList|nglFinish|nSwapBuffers|glTexImage|glFinish|nglDeleteBuffers"],
+  ["音效", "paulscode|SoundSystem|SoundManager"],
+  ["字体缓存", "FontRenderer|fontRendererObj"],
+  ["小地图", "xaero"],
+  ["OptiFine", "optifine"],
+  ["网络", "io.netty|Channel.read|NetworkManager"],
+  ["区块渲染", "RenderChunk|VboChunkFactory|ExtendedBlockStor|ChunkRender|Chunk.func_"],
+  ["实体/模型渲染", "RendererLivingEnti|RenderLiving|AnimationControlle|VanillaVertexConsu|ModelBiped|RenderPlayer|ModelRenderer"],
+  ["GUI", "net.minecraft.client.gui|GuiScreen|GuiIngame|GuiChat"],
+  ["直接内存", "allocateDirect|allocateMemory|tryReserveMemory|reserveMemory|copyMemory"],
+  ["等待/限速", "Unsafe.park|LockSupport|Thread.sleep|Object.wait|.await"],
+  ["压缩/解压", "Zstd|zstd|Deflater|nZSTD|compress"],
+  ["序列化/解析", "protobuf|newBuilderForType|StreamingJsonDecod|JsonFormat|beginStructure|ObjectMapper|Gson|JsonReader"],
+  ["图像", "BufferedImage|ImageIO|getRGB|NativeImage|TextureUtil"],
+  ["内嵌浏览器", "WebEngine|org.cef|CefBrowser|javafx.scene.web"],
+  ["Essential", "gg.essential|SubscriptionServic|EssentialLoader|EssentialConfig"],
+  ["异常构造", "fillInStackTrace|Throwable.<init>|Exception.<init>"],
+];
+var FS_FIRST = [
+  ["游戏自身", "net.minecraft."],
+  ["JDK 内部", "java."],
+  ["JDK 内部", "javax."],
+  ["JDK 内部", "jdk."],
+  ["JDK 内部", "sun."],
+];
+
+function fsContainsAny(tt, tokens){
+  var parts = tokens.split("|");
+  for (var i = 0; i < parts.length; i++){
+    if (parts[i].length && tt.indexOf(parts[i].toLowerCase()) >= 0) return true;
+  }
+  return false;
+}
+function fsIsObfuscated(c){
+  if (!c) return false;
+  var cls = c.substring(c.lastIndexOf(".") + 1);
+  var dl = cls.lastIndexOf("$");
+  if (dl >= 0) cls = cls.substring(dl + 1);
+  if (cls.length < 8) return false;
+  for (var i = 0; i < cls.length; i++){
+    var ch = cls.charAt(i);
+    if (!((ch >= "A" && ch <= "Z") || (ch >= "0" && ch <= "9"))) return false;
+  }
+  return true;
+}
+/** 与 Java 的 FrameSpike.classifyFromText 同口径 */
+function fsClassify(t, firstClass, firstMethod){
+  try {
+    var tt = String(t || "").toLowerCase();
+    for (var i = 0; i < FS_RULES.length; i++) if (fsContainsAny(tt, FS_RULES[i][1])) return FS_RULES[i][0];
+    var fc = firstClass || "", fm = firstMethod || "";
+    for (var j = 0; j < FS_FIRST.length; j++) if (fc.indexOf(FS_FIRST[j][1]) === 0) return FS_FIRST[j][0];
+    if (/^func_\d{5}_/.test(fm) || /^field_\d{5}_/.test(fm)) return "游戏自身";
+    if (fsIsObfuscated(fc)){
+      var low = fc.toLowerCase();
+      return (low.indexOf("moonsworth") >= 0 || low.indexOf("lunar") >= 0) ? "Lunar 混淆类" : "混淆类";
+    }
+    var cls = fc.substring(fc.lastIndexOf(".") + 1);
+    if (cls.length > 18) cls = cls.substring(0, 18);
+    return cls + "." + fm;
+  } catch (e) { return "未知"; }
+}
+/** 老日志的兜底原因（含 . 或 未知）用栈重新归类 */
+function fsReclassify(reason, stack){
+  if (!stack || !stack.length) return reason;
+  if (reason === undefined || reason === null || reason === "") reason = "未知";
+  if (reason.indexOf(".") < 0 && reason.indexOf("未知") < 0) return reason;
+  var top = "", fc = "", fm = "";
+  for (var i = 0; i < stack.length && i < 6; i++){
+    var t = String(stack[i]);
+    var p = t.indexOf("(");
+    var cm = (p > 0 ? t.substring(0, p) : t).replace(/^\s+|\s+$/g, "");
+    top += cm + " ";
+    if (!fc){
+      var d = cm.lastIndexOf(".");
+      if (d > 0){ fc = cm.substring(0, d); fm = cm.substring(d + 1); }
+    }
+  }
+  return top ? fsClassify(top, fc, fm) : reason;
+}
+
+var FS_COLORS = [
+  ["写文件", "#8b6dff"],
+  ["读文件", "#6f8cff"],
+  ["类加载/remap", "#d85a30"],
+  ["Mixin 注入", "#ef4b6b"],
+  ["窗口合成", "#ef9f27"],
+  ["GL驱动", "#2dd4bf"],
+  ["音效", "#f472b6"],
+  ["字体缓存", "#4cc9f0"],
+  ["小地图", "#a3e635"],
+  ["OptiFine", "#f5a524"],
+  ["网络", "#8b8a80"],
+  ["区块渲染", "#37b0e6"],
+  ["实体/模型渲染", "#7fd8a8"],
+  ["GUI", "#c9a227"],
+  ["游戏自身", "#7f9bb5"],
+  ["直接内存", "#9ad0ff"],
+  ["等待/限速", "#b0b7c3"],
+  ["压缩/解压", "#b58cff"],
+  ["序列化/解析", "#a9c46c"],
+  ["图像", "#e07ab8"],
+  ["内嵌浏览器", "#8fa3c8"],
+  ["Essential", "#59c4a8"],
+  ["Lunar 混淆类", "#6b7480"],
+  ["混淆类", "#6b7480"],
+  ["JDK 内部", "#93a0b5"],
+  ["异常构造", "#e08a5a"]
+];
+/** 与 Java Report.colorOf 同序同值：子串匹配，先具体后泛化 */
+function fsColorOf(reason){
+  if (!reason) return "#7c8aa5";
+  for (var i = 0; i < FS_COLORS.length; i++){
+    if (reason.indexOf(FS_COLORS[i][0]) >= 0) return FS_COLORS[i][1];
+  }
+  return "#7c8aa5";
+}
+
+function fsNum(s, re){
+  var m = new RegExp(re).exec(s);
+  return m ? parseInt(m[1], 10) : 0;
+}
+function fsStr(s, re){
+  var m = new RegExp(re).exec(s);
+  return m ? m[1] : "";
+}
+
+/* 判头行：日志行是以时间戳开头的（`HH:mm:ss.SSS  STALL-DETECT ...`），不能用 indexOf===0 判 */
+function fsIsHeader(s){
+  if (s.indexOf("STALL-DETECT") >= 0) return true;
+  if (s.indexOf("SNAPSHOT ") >= 0 && s.indexOf("ms  since=") > 0) return true;
+  return s.indexOf("STALL ") >= 0 && s.indexOf("ms  since='") > 0;
+}
+
+function fsParseCpu(text){
+  var out = [], lines = String(text).split(/\r?\n/);
+  for (var i = 0; i < lines.length; i++){
+    var l = lines[i];
+    if (l.indexOf("[CPU]") < 0) continue;
+    var t = l.replace(/^\s+/, "");
+    var sp = t.indexOf(" ");
+    var fps = fsStr(l, "fps\u2248([\\d.]+)");
+    var tps = fsStr(l, "tps\u2248([\\d.]+)");
+    var busy = fsStr(l, "machine busy=([\\d.]+)");
+    if (!fps.length && !tps.length) continue;
+    out.push([sp > 0 ? t.substring(0, sp) : "", fps, tps, busy]);
+  }
+  return out;
+}
+
+function fsSegDuration(text){
+  var lines = String(text).split(/\r?\n/), start = null, end = null;
+  for (var i = 0; i < lines.length; i++){
+    if (lines[i].indexOf("RECORDING STARTED") >= 0 && start === null) start = lines[i];
+    if (lines[i].indexOf("RECORDING STOPPED") >= 0) end = lines[i];
+  }
+  if (start === null) return "";
+  var a = fsStr(start, "(\\d\\d:\\d\\d:\\d\\d)");
+  var b = end !== null ? fsStr(end, "(\\d\\d:\\d\\d:\\d\\d)") : "";
+  return b.length ? (a + " \u2192 " + b) : a;
+}
+
+function fsSortTree(n){
+  n.kids.sort(function(a, b){ return b.ms - a.ms; });
+  for (var i = 0; i < n.kids.length; i++) fsSortTree(n.kids[i]);
+}
+
+/** 报告默认只统计最后一段记录（RECORDING STARTED → STOPPED）；没有标记就退回最后一次会话 */
+function fsSegment(text){
+  if (!text) return text;
+  var a = text.lastIndexOf("RECORDING STARTED");
+  if (a < 0){
+    var b = text.lastIndexOf("=== FrameSpike started ===");
+    if (b < 0) return text;
+    var ls0 = text.lastIndexOf("\n", b);
+    return text.substring(ls0 < 0 ? b : ls0);
+  }
+  var ls = text.lastIndexOf("\n", a);
+  var start = ls < 0 ? 0 : ls;
+  var e = text.indexOf("RECORDING STOPPED", a);
+  if (e < 0) return text.substring(start);
+  var le = text.lastIndexOf("\n", e);
+  return text.substring(start, le < 0 ? e : le);
+}
+
+/** 日志文本 -> {summary, stalls, cpu, flame}；和 Java 侧 Report.buildJson 的口径一致 */
+function parseLog(text, wholeLog){
+  var fullText = String(text === null || text === undefined ? "" : text);
+  /* 停顿与 CPU 采样只统计最后一段记录；崩溃块与会话信息用整份日志（见下） */
+  var lines = (wholeLog ? fullText : fsSegment(fullText)).split(/\r?\n/);
+  var list = [], crashes = [], cur = null, curCrash = null, mode = 0;
+
+  for (var i = 0; i < lines.length; i++){
+    var l = lines[i], s = l.replace(/^\s+|\s+$/g, "");
+
+    if (s.indexOf("STALL-END") >= 0){
+      if (cur){
+        var v = fsNum(s, "total=(\\d+)ms");
+        if (v > 0){ cur.total = v; cur.ended = true; }
+        var t1v = fsNum(s, "t1=(\\d+)");
+        if (t1v) cur.t1 = t1v;
+        var gv = fsStr(s, "gc=(.+)$");
+        if (gv.length) cur.gc = gv;
+        cur = null;
+      }
+      mode = 0;
+      continue;
+    }
+    if (s.indexOf("=== CRASH ===") >= 0){
+      var spc = l.indexOf(" ");
+      curCrash = { t: spc > 0 ? l.substring(0, spc) : "",
+                   file: fsStr(s, "file=([^\\s]+)"), time: "", desc: "", reason: "" };
+      crashes.push(curCrash);
+      cur = null;
+      mode = 0;
+      continue;
+    }
+    if (curCrash){
+      if (s.indexOf("time=") === 0){ curCrash.time = s.substring(5); continue; }
+      if (s.indexOf("desc=") === 0){ curCrash.desc = s.substring(5); continue; }
+      if (s.indexOf("reason=") === 0){ curCrash.reason = s.substring(7); continue; }
+      if (s.indexOf("---") === 0){ curCrash = null; continue; }
+    }
+    if (fsIsHeader(s)){
+      var sp = l.indexOf(" ");
+      var d = fsNum(s, "STALL-DETECT (\\d+)ms");
+      if (!d) d = fsNum(s, "SNAPSHOT (\\d+)ms");
+      if (!d) d = fsNum(s, "STALL (\\d+)ms");
+      var r = fsStr(s, "reason=([^\\s]+)");
+      cur = { t: sp > 0 ? l.substring(0, sp) : "", detect: d, total: 0, ended: false,
+              since: fsStr(s, "since='([^']*)'"), reason: r.length ? r : FS_UNKNOWN,
+              timeline: [], stack: [] };
+      var t0v = fsNum(s, "t0=(\\d+)");
+      if (t0v) cur.t0 = t0v;
+      var cv = fsStr(s, "ctx=(.+)$");
+      if (cv.length) cur.ctx = cv;
+      list.push(cur);
+      mode = 0;
+      continue;
+    }
+    if (!cur) continue;
+
+    if (s.indexOf("timeline:") === 0){ mode = 1; continue; }
+    if (s.indexOf("stack of") === 0){ mode = 2; continue; }
+
+    if (mode === 1 && l.indexOf("    ") === 0 && l.indexOf("t+") > 0){
+      /* 形状是 `runTick   t+   0.412ms`：t+ 和数值可能被 %8.3f 的补位空格分开，数值够宽时又粘在一起 */
+      var p = s.split(/\s+/), k = -1;
+      for (var j = 0; j < p.length; j++) if (p[j].indexOf("t+") === 0){ k = j; break; }
+      if (k >= 0){
+        var raw = p[k].length > 2 ? p[k].substring(2) : "";
+        if (!raw.length && k + 1 < p.length) raw = p[k + 1];
+        raw = raw.replace("ms", "").replace(/^\s+|\s+$/g, "");
+        var f = parseFloat(raw);
+        if (raw.length && !isNaN(f)) cur.timeline.push([p[0], Math.round(f * 100) / 100]);
+      }
+      continue;
+    }
+    if (mode === 2 && l.indexOf("    ") === 0 && s.length > 0
+        && s.charAt(0) !== "<" && s.indexOf("...") !== 0 && s.indexOf("STALL-") !== 0){
+      cur.stack.push(s);
+    }
+  }
+
+  /* 兜底原因（旧日志的「类.方法」）按新规则重新归类 */
+  for (var ri = 0; ri < list.length; ri++) list[ri].reason = fsReclassify(list[ri].reason, list[ri].stack);
+
+  /* 崩溃块与会话信息从整份日志扫（崩溃可能发生在记录段之后）；
+     停顿/CPU 只保留本段 —— 和 Java 侧两段式解析同口径 */
+  var sess = { t0: 0, t1: 0, exit: "", pending: false };
+  var fullLines = fullText.split(/\r?\n/);
+  var crashesAll = [];
+  var curC2 = null;
+  for (var fi = 0; fi < fullLines.length; fi++){
+    var fl = fullLines[fi], fs2 = fl.replace(/^\s+|\s+$/g, "");
+    if (fs2.indexOf("=== CRASH ===") >= 0){
+      var spc2 = fl.indexOf(" ");
+      curC2 = { t: spc2 > 0 ? fl.substring(0, spc2) : "", file: fsStr(fs2, "file=([^\\s]+)"),
+                time: "", desc: "", reason: "" };
+      crashesAll.push(curC2);
+      continue;
+    }
+    if (curC2){
+      if (fs2.indexOf("time=") === 0){ curC2.time = fs2.substring(5); continue; }
+      if (fs2.indexOf("desc=") === 0){ curC2.desc = fs2.substring(5); continue; }
+      if (fs2.indexOf("reason=") === 0){ curC2.reason = fs2.substring(7); continue; }
+      if (fs2.indexOf("---") === 0){ curC2 = null; continue; }
+    }
+  }
+  for (var si = 0; si < fullLines.length; si++){     /* 会话起止/退出钩子也用整份日志 */
+    var sl = fullLines[si];
+    if (sl.indexOf("=== FrameSpike started ===") >= 0 && !sess.t0) sess.t0 = fsNum(sl, "t0=(\\d+)");
+    if (sl.indexOf("RECORDING STARTED") >= 0) sess.t0 = fsNum(sl, "t0=(\\d+)") || sess.t0;
+    if (sl.indexOf("RECORDING STOPPED") >= 0) sess.t1 = fsNum(sl, "t1=(\\d+)") || sess.t1;
+    if (sl.indexOf("=== JVM EXIT ===") >= 0){
+      sess.exit = fsStr(sl, "uptime=([^\\s]+)");
+      sess.pending = sl.indexOf("pendingStall=true") >= 0;
+    }
+  }
+
+  /* 没结算完的（会话被中断）：用检测值兜底，UI 会标成"旧格式"。
+     est 这个字段和 Java 侧 JSON 对齐，渲染层只认它，两边的数据长得一模一样。 */
+  for (var q = 0; q < list.length; q++){
+    if (!(list[q].total > 0)) list[q].total = list[q].detect;
+    list[q].est = !list[q].ended;
+  }
+
+  var allStalls = list.length, truncated = false;
+  if (list.length > FS_MAX_STALLS){
+    list.sort(function(a, b){ return b.total - a.total; });
+    list = list.slice(0, FS_MAX_STALLS);
+    truncated = true;
+  }
+
+  var cpu = fsParseCpu(text);
+  var totalMs = 0, maxMs = 0, measured = 0, b = [0, 0, 0, 0];
+  for (var i2 = 0; i2 < list.length; i2++){
+    var st = list[i2];
+    if (!st.ended) continue;            /* 旧格式的 total 只是检测值，混进统计会把分档带偏 */
+    measured++;
+    totalMs += st.total;
+    if (st.total > maxMs) maxMs = st.total;
+    if (st.total < 100) b[0]++;
+    else if (st.total < 200) b[1]++;
+    else if (st.total < 500) b[2]++;
+    else b[3]++;
+  }
+
+  var fpsMax = 0, tpsMax = 0, fpsSum = 0, tpsSum = 0;
+  for (var i3 = 0; i3 < cpu.length; i3++){
+    var fv = parseFloat(cpu[i3][1]) || 0, tv = parseFloat(cpu[i3][2]) || 0;
+    fpsSum += fv; tpsSum += tv;
+    if (fv > fpsMax) fpsMax = fv;
+    if (tv > tpsMax) tpsMax = tv;
+  }
+  /* cpu 这里就从字符串数组转成活对象，形状和 Java 侧 JSON 一模一样 —— 渲染层只认一种 */
+  var cpuOut = [];
+  for (var i5 = 0; i5 < cpu.length; i5++){
+    cpuOut.push({ t: cpu[i5][0], cpu: parseFloat(cpu[i5][3]) || 0,
+                  fps: parseFloat(cpu[i5][1]) || 0, tps: parseFloat(cpu[i5][2]) || 0 });
+  }
+
+  var root = { name: "Client thread", ms: 0, count: 0, color: null, kids: [] };
+  for (var i4 = 0; i4 < list.length; i4++){
+    var s4 = list[i4], node = root;
+    root.ms += s4.total; root.count++;
+    for (var j4 = 0; j4 < s4.stack.length; j4++){
+      var fn = s4.stack[j4], kid = null;
+      for (var k4 = 0; k4 < node.kids.length; k4++){
+        if (node.kids[k4].name === fn){ kid = node.kids[k4]; break; }
+      }
+      if (!kid){
+        kid = { name: fn, ms: 0, count: 0,
+                color: j4 === 0 ? fsColorOf(s4.reason)
+                                : FS_DEPTH_COLOR[(j4 + 1) % FS_DEPTH_COLOR.length],
+                kids: [] };
+        node.kids.push(kid);
+      }
+      kid.ms += s4.total; kid.count++;
+      node = kid;
+    }
+  }
+  fsSortTree(root);
+
+  return {
+    summary: {
+      stalls: list.length, measured: measured, allStalls: allStalls,
+      totalMs: totalMs, maxMs: maxMs, buckets: b, truncated: truncated,
+      fps: fpsMax, tps: tpsMax,
+      fpsAvg: cpu.length ? fpsSum / cpu.length : 0,
+      tpsAvg: cpu.length ? tpsSum / cpu.length : 0,
+      cpuSamples: cpu.length,
+      crashes: crashesAll.length,
+      sessT0: sess.t0, sessT1: sess.t1, exitUptime: sess.exit, exitPending: sess.pending,
+      durText: fsSegDuration(text)
+    },
+    stalls: list, crashes: crashesAll, cpu: cpuOut, flame: root
+  };
+}
+
+if (typeof module !== "undefined" && module.exports){
+  module.exports = { parseLog: parseLog, FS_MAX_STALLS: FS_MAX_STALLS };
+}
+/*==PARSE-END==*/
+
+/* ---- 内嵌数据（Java 侧已经解析好，页面直接渲染） ---- */
+var DATA = __DATA__;
+var EMBEDDED = DATA;      /* 「重置」就是回到这一份 */
+var IMPORTED = false;
+
+var RC = {"写文件":"#8b6dff","读文件":"#6f8cff","类加载/remap":"#d85a30","Mixin 注入":"#ef4b6b","窗口合成":"#ef9f27","GL驱动":"#2dd4bf","音效":"#f472b6","字体缓存":"#4cc9f0","小地图":"#a3e635","OptiFine":"#f5a524","网络":"#8b8a80","区块渲染":"#37b0e6","实体/模型渲染":"#7fd8a8","GUI":"#c9a227","游戏自身":"#7f9bb5","直接内存":"#9ad0ff","等待/限速":"#b0b7c3","压缩/解压":"#b58cff","序列化/解析":"#a9c46c","图像":"#e07ab8","内嵌浏览器":"#8fa3c8","Essential":"#59c4a8","Lunar 混淆类":"#6b7480","混淆类":"#6b7480","JDK 内部":"#93a0b5","异常构造":"#e08a5a"};
+function col(r){ return RC[r] || fsColorOf(r); }
+function el(id){ return document.getElementById(id); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function fmtMs(v){
+  v = +v || 0;
+  return v >= 1000 ? (v / 1000).toFixed(2) + "s" : Math.round(v) + "ms";
+}
+function short(s){
+  s = String(s).replace(/\(.*?\)/g, "");
+  var m = s.match(/([\w$]+)\.([\w$<>]+)$/);
+  return m ? m[1] + "." + m[2] : s;
+}
+
+var srcEl = el("src"), genEl = el("gen");
+var SOURCE0 = srcEl.textContent, GEN0 = genEl.textContent;
+
+/* ---- KPI ---- */
+function renderKpis(){
+  var s = DATA.summary || {};
+  var k = [
+    ["停顿次数", (s.stalls || 0) + " 次" + (s.measured && s.measured < s.stalls ? "（可测 " + s.measured + "）" : ""), ""],
+    ["累计停顿时长", fmtMs(s.totalMs || 0), ""],
+    ["最长一次", fmtMs(s.maxMs || 0), "c-rd"],
+    ["平均帧率", s.cpuSamples ? (s.fpsAvg || 0).toFixed(0) + " fps" : "无采样", "c-cy"],
+    ["平均 tick", s.cpuSamples ? (s.tpsAvg || 0).toFixed(1) + " tps" : "无采样", "c-vi"],
+    ["采集时长", s.durText || "-", "c-li"]
+  ];
+  el("kpis").innerHTML = k.map(function(x){
+    return '<div class="kpi ' + x[2] + '"><div class="v">' + esc(x[1])
+         + '</div><div class="k">' + x[0] + '</div></div>';
+  }).join("");
+}
+
+/* ---- 时长分档 ---- */
+function renderBuckets(){
+  var b = (DATA.summary && DATA.summary.buckets) || [0, 0, 0, 0];
+  var t = b.reduce(function(a, c){ return a + c; }, 0) || 1;
+  var names = ["<100ms", "100-199ms", "200-499ms", ">=500ms"];
+  var cols = ["#3f6f8f", "#4cc9f0", "#f5a524", "#ff5d5d"];
+  el("buckets").innerHTML = b.map(function(v, i){
+    if (!v) return "";
+    return '<i style="flex:' + v + ';background:' + cols[i] + '">' + (v / t * 100).toFixed(0) + "%</i>";
+  }).join("") || '<i style="flex:1;background:#1c2436;color:var(--tx3)">没有数据</i>';
+  el("bucketlg").innerHTML = names.map(function(n, i){
+    return "<div><em style='background:" + cols[i] + "'></em>" + n + "<b>" + b[i] + " 次</b></div>";
+  }).join("");
+}
+
+/* ---- 原因归因 ---- */
+function hhmmss(t){ return t ? String(t).replace(/\.\d+$/, "") : ""; }
+/* 一个成员/大类分布在哪些时刻：只出现一次就显示单个时刻，否则显示跨度 */
+function timeSpan(a, b){
+  a = hhmmss(a); b = hhmmss(b);
+  if (!a) return "";
+  return a === b ? a : a + " → " + b;
+}
+
+function renderReasons(){
+  var agg = {}, tot = 0, members = {}, spans = {};
+  (DATA.stalls || []).forEach(function(s){
+    var v = s.total || s.detect || 0, r = s.reason || "未知", t = s.t || "";
+    agg[r] = (agg[r] || 0) + v; tot += v;
+
+    var full = (s.stack && s.stack[0]) ? s.stack[0] : "";
+    var key = full ? short(full) : "（没有抓到栈）";
+    var g = members[r] || (members[r] = {});
+    var e = g[key] || (g[key] = { n: 0, ms: 0, sample: full, max: 0, a: t, b: t });
+    e.n++; e.ms += v;
+    if (v >= e.max) { e.max = v; e.sample = full; }
+    if (t){ if (!e.a || t < e.a) e.a = t; if (!e.b || t > e.b) e.b = t; }
+
+    var sp = spans[r] || (spans[r] = { a: t, b: t });
+    if (t){ if (!sp.a || t < sp.a) sp.a = t; if (!sp.b || t > sp.b) sp.b = t; }
+  });
+
+  var arr = Object.keys(agg).map(function(k){ return [k, agg[k]]; })
+                  .sort(function(a, b){ return b[1] - a[1]; });
+  if (!tot) tot = 1;
+
+  el("reasons").innerHTML = arr.map(function(x){
+    return '<i style="flex:' + x[1] + ';background:' + col(x[0]) + '">'
+         + (x[1] / tot * 100).toFixed(1) + "%</i>";
+  }).join("") || '<i style="flex:1;background:#1c2436;color:var(--tx3)">没有数据</i>';
+
+  el("reasonlg").innerHTML = arr.map(function(x, i){
+    var g = members[x[0]] || {};
+    var list = Object.keys(g).map(function(k){ return [k, g[k]]; })
+                     .sort(function(p, q){ return q[1].ms - p[1].ms; });
+    var show = list.slice(0, 40);
+    var rows = show.map(function(m){
+      var e = m[1], share = x[1] ? (e.ms / x[1] * 100) : 0;
+      return '<div class="rm" title="' + esc(e.sample || m[0]) + '"><span class="rmn mono">' + esc(m[0])
+        + '</span><span class="rmc">×' + e.n + "</span><span class=\"rmt\">" + timeSpan(e.a, e.b)
+        + "</span><b>" + fmtMs(e.ms) + '</b><span class="rmp">' + share.toFixed(0) + "%</span></div>";
+    }).join("");
+    if (list.length > show.length){
+      rows += '<div class="rm"><span class="rmn">…还有 ' + (list.length - show.length) + " 条成员</span></div>";
+    }
+    return '<div class="rgrp"><button class="rr" type="button" data-i="' + i + '" aria-expanded="false">'
+      + '<i class="caret"></i><em style="background:' + col(x[0]) + '"></em>' + esc(x[0])
+      + '<span class="rmt">' + timeSpan((spans[x[0]] || {}).a, (spans[x[0]] || {}).b) + "</span>"
+      + "<b>" + fmtMs(x[1]) + " · " + (x[1] / tot * 100).toFixed(1) + "%</b></button>"
+      + '<div class="rsub" id="rsub' + i + '">' + rows + "</div></div>";
+  }).join("");
+
+  el("reasonlg").onclick = function(e){
+    var b = e.target.closest(".rr");
+    if (!b) return;
+    var sub = el("rsub" + b.getAttribute("data-i"));
+    if (!sub) return;
+    var on = sub.classList.toggle("on");
+    b.classList.toggle("on", on);
+    b.setAttribute("aria-expanded", on ? "true" : "false");
+  };
+}
+
+/* ---- 火焰图（icicle）：宽度 = 累计时长，点一下聚焦 ---- */
+var fstack = [];
+function renderFlame(reset){
+  if (reset || !fstack.length) fstack = [DATA.flame || { name: "(空)", ms: 0, count: 0, kids: [] }];
+  flamePaint();
+}
+function flamePaint(){
+  var cur = fstack[fstack.length - 1] || { name: "(空)", ms: 0, count: 0, kids: [] };
+  var crumbs = el("crumbs"), flame = el("flame");
+  crumbs.innerHTML = fstack.map(function(n, i){
+    return "<u data-i='" + i + "'>" + esc(short(n.name)) + "</u>";
+  }).join(" <span>›</span> ") + "   <span style='color:var(--tx3)'>"
+    + fmtMs(cur.ms) + " · " + cur.count + " 次</span>";
+
+  var rows = "", byDepth = {}, queue = [[cur, 0]], maxd = 0;
+  while (queue.length){
+    var it = queue.shift(), n = it[0], d = it[1];
+    (byDepth[d] = byDepth[d] || []).push(n);
+    if (d > maxd) maxd = d;
+    (n.kids || []).forEach(function(k){ queue.push([k, d + 1]); });
+  }
+  for (var d2 = 0; d2 <= maxd; d2++){
+    rows += '<div class="fz">';
+    (byDepth[d2] || []).forEach(function(n){
+      var w = cur.ms ? (n.ms / cur.ms) * 100 : 0;
+      if (w < 0.4) return;
+      rows += '<div class="fnode" data-name="' + esc(n.name) + '" data-ms="' + n.ms
+           + '" data-count="' + n.count + '" style="flex:' + Math.max(w, 0.4)
+           + ';background:' + (n.color || col(n.reason || "")) + '">'
+           + esc(short(n.name)) + '</div>';
+    });
+    rows += "</div>";
+  }
+  flame.innerHTML = rows || '<div class="empty">这一支没有更深的帧</div>';
+}
+
+/* ---- CPU / 帧率趋势 ---- */
+function renderCpu(){
+  var p = el("cpupanel"), c = DATA.cpu || [];
+  if (!c.length){
+    p.innerHTML = '<div class="empty">这份日志里没有 CPU 采样行（cpuSampleSec 太大，或者会话太短）</div>';
+    return;
+  }
+  function line(key, color, maxv){
+    var pts = c.map(function(x, i){
+      var v = +x[key] || 0;
+      var X = c.length > 1 ? i / (c.length - 1) * 100 : 0;
+      var Y = 100 - Math.min(100, v / (maxv || 100) * 100);
+      return X.toFixed(2) + "," + Y.toFixed(2);
+    }).join(" ");
+    return '<polyline points="' + pts + '" fill="none" stroke="' + color
+         + '" stroke-width="1.6" vector-effect="non-scaling-stroke"/>';
+  }
+  function mx(key){ return Math.max.apply(null, c.map(function(x){ return +x[key] || 0; })); }
+  function av(key){ return c.reduce(function(a, x){ return a + (+x[key] || 0); }, 0) / c.length; }
+  p.innerHTML = '<svg class="spark" viewBox="0 0 100 100" preserveAspectRatio="none">'
+    + line("fps", "#4cc9f0", 200) + line("tps", "#a3e635", 20) + line("cpu", "#f5a524", 100)
+    + '</svg><div class="lg">'
+    + '<div><em style="background:#4cc9f0"></em>fps（上限 200）<b>峰 ' + mx("fps").toFixed(0)
+      + ' · 均 ' + av("fps").toFixed(0) + '</b></div>'
+    + '<div><em style="background:#a3e635"></em>tps（上限 20）<b>峰 ' + mx("tps").toFixed(1)
+      + ' · 均 ' + av("tps").toFixed(1) + '</b></div>'
+    + '<div><em style="background:#f5a524"></em>整机 CPU%（上限 100）<b>峰 ' + mx("cpu").toFixed(0)
+      + '%</b></div></div>';
+}
+
+/* ---- 停顿明细 ---- */
+function renderRows(){
+  var tbody = el("rows"), list = (DATA.stalls || []).slice();
+  if (!list.length){
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">没有记录到停顿</td></tr>';
+    return;
+  }
+  var max = Math.max.apply(null, list.map(function(s){ return s.total || s.detect || 1; }));
+  list.sort(function(a, b){ return (b.total || b.detect || 0) - (a.total || a.detect || 0); });
+  tbody.innerHTML = list.map(function(s, i){
+    var v = s.total || s.detect || 0;
+    var cls = v >= 500 ? "rd" : (v >= 200 ? "am" : "");
+    var tl = (s.timeline || []).map(function(x){
+      return "<span>" + esc(x[0]) + " <b>+" + (+x[1]).toFixed(2) + "</b></span>";
+    }).join("");
+    var frames = s.stack || [];
+    return '<tr class="main" data-i="' + i + '">'
+      + '<td class="mono">' + esc(s.t) + '</td>'
+      + '<td><div class="ms ' + cls + '">' + (s.est ? "~" : "") + fmtMs(v) + '</div>'
+        + '<div class="dbar"><i style="width:' + (v / max * 100).toFixed(1) + '%"></i></div></td>'
+      + '<td><span class="tag" style="background:' + col(s.reason) + '22;color:' + col(s.reason) + '">'
+        + esc(s.reason) + '</span>'
+        + (s.gc ? ' <span class="tag" style="background:rgba(45,212,191,.14);color:var(--tl)">GC</span>' : "")
+        + (s.est ? ' <span class="tag" style="background:rgba(255,255,255,.07);color:var(--tx3)">旧格式</span>' : "")
+        + '</td>'
+      + '<td class="mono" style="color:var(--tx3)">' + esc(s.since || "-") + '</td>'
+      + '<td class="mono" style="color:var(--tx3)">' + (tl || "-") + '</td>'
+      + '<td><span class="why">栈 ▾</span></td></tr>'
+      + (frames.length ? '<tr class="detail" id="d' + i + '"><td colspan="6">'
+          + (tl ? '<div class="tl">' + tl + "</div>" : "")
+          + "<pre>" + esc(frames.join("\n")) + "</pre></td></tr>" : "");
+  }).join("");
+}
+
+function renderAll(){
+  renderKpis();
+  renderBuckets();
+  renderReasons();
+  renderFlame(true);
+  renderCpu();
+  renderRows();
+  renderNote();
+}
+
+function renderNote(){
+  var s = DATA.summary || {}, msg = [];
+  if (IMPORTED) msg.push("已导入");
+  if (s.sessT0){
+    function hh(t){ var d = new Date(t); function p(n){ return (n < 10 ? "0" : "") + n; }
+      return p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds()); }
+    msg.push("本段 " + fmtClockDay(s.sessT0) + (s.sessT1 ? (" → " + fmtClockDay(s.sessT1)) : " → 未停止"));
+  }
+  msg.push(s.stalls + " 条停顿");
+  if (s.measured < s.stalls) msg.push("其中 " + s.measured + " 条有真实时长");
+  if (!s.measured) msg.push("没有 STALL-END，这次的日志多半是旧格式");
+  if (s.truncated) msg.push("日志共 " + s.allStalls + " 条，只展示最长的 " + s.stalls + " 条");
+  if (!s.cpuSamples) msg.push("没有 CPU 采样行");
+  if (!IMPORTED) msg.push("拖 .log 进来换数据，拖 .ttf 进来换字体");
+  setStatus(msg.join("　·　"), !s.measured);
+}
+
+/* ---- 顶部状态条 ---- */
+function setStatus(text, warn){
+  el("status").textContent = text;
+  var bar = el("statusbar");
+  if (warn) bar.classList.add("warn"); else bar.classList.remove("warn");
+}
+
+/* ---- 导入日志 ---- */
+function loadLog(file){
+  var r = new FileReader();
+  r.onerror = function(){ setStatus("这个文件读不出来（权限或者不是文本）", true); };
+  r.onload = function(){
+    var text = r.result || "", d;
+    try { d = parseLog(text); }
+    catch (e) { setStatus("解析崩了: " + e, true); return; }
+    DATA = d;
+    IMPORTED = typeof file.name === "string" && file.name.length > 0;
+    srcEl.textContent = file.name + "  ·  " + (file.size / 1024).toFixed(0) + " KB";
+    genEl.textContent = "导入时间 " + new Date().toLocaleString("zh-CN", { hour12: false });
+    renderAll();
+    if (!d.summary.stalls){
+      setStatus("导入了 " + file.name + "，但里面一条 STALL 都没有 —— 确认是 FrameSpike 写的 frame-spikes.log", true);
+    }
+  };
+  r.readAsText(file, "utf-8");
+}
+
+/* ---- 导入字体 ---- */
+var userFaces = [];
+function loadFont(file){
+  var r = new FileReader();
+  r.onerror = function(){ setStatus("字体文件读不出来", true); };
+  r.onload = function(){
+    try {
+      var face = new FontFace("FSUser", r.result);
+      face.load().then(function(f){
+        userFaces.push(f);
+        document.fonts.add(f);
+        document.documentElement.style.setProperty("--font-ui", "'FSUser',var(--stack-ui)");
+        document.documentElement.style.setProperty("--font-num", "'FSUser',var(--stack-num)");
+        setStatus("字体已换成 " + file.name + "（只对当前这个页面有效，刷新或点重置就还原）");
+      }).catch(function(e){
+        setStatus("字体没吃进去：" + (e && e.message ? e.message : e)
+          + "　·　ttc 字体集合和部分 woff2 浏览器的 FontFace 打不开，试试单个 ttf/otf", true);
+      });
+    } catch (e) { setStatus("字体解析失败: " + e, true); }
+  };
+  r.readAsArrayBuffer(file);
+}
+
+function resetAll(){
+  DATA = EMBEDDED;
+  IMPORTED = false;
+  srcEl.textContent = SOURCE0;
+  genEl.textContent = GEN0;
+  for (var i = 0; i < userFaces.length; i++){
+    try { document.fonts.delete(userFaces[i]); } catch (e) { }
+  }
+  userFaces = [];
+  document.documentElement.style.removeProperty("--font-ui");
+  document.documentElement.style.removeProperty("--font-num");
+  renderAll();
+  setStatus("已回到内嵌数据（" + (EMBEDDED.summary ? EMBEDDED.summary.stalls : 0) + " 条停顿）");
+}
+
+/* ---- 工具栏 / 拖放 ---- */
+el("blog").onclick = function(){ el("flog").click(); };
+el("bfont").onclick = function(){ el("ffont").click(); };
+el("breset").onclick = resetAll;
+el("flog").onchange = function(){ if (this.files && this.files[0]) loadLog(this.files[0]); this.value = ""; };
+el("ffont").onchange = function(){ if (this.files && this.files[0]) loadFont(this.files[0]); this.value = ""; };
+
+function isFontName(n){ return /\.(ttf|otf|woff2?|ttc)$/i.test(n || ""); }
+
+var dropEl = el("drop"), dragDepth = 0;
+window.addEventListener("dragenter", function(e){
+  e.preventDefault(); dragDepth++; dropEl.classList.add("on");
+});
+window.addEventListener("dragover", function(e){
+  e.preventDefault();
+  if (e.dataTransfer) e.dataTransfer.dropEffect = "copy";
+});
+window.addEventListener("dragleave", function(e){
+  e.preventDefault(); dragDepth--;
+  if (dragDepth <= 0){ dragDepth = 0; dropEl.classList.remove("on"); }
+});
+window.addEventListener("drop", function(e){
+  e.preventDefault();
+  dragDepth = 0; dropEl.classList.remove("on");
+  var fs2 = e.dataTransfer && e.dataTransfer.files;
+  if (!fs2 || !fs2.length) return;
+  var logs = [], fonts = [];
+  for (var i = 0; i < fs2.length; i++){
+    (isFontName(fs2[i].name) ? fonts : logs).push(fs2[i]);
+  }
+  for (var j = 0; j < fonts.length; j++) loadFont(fonts[j]);
+  if (logs.length) loadLog(logs[0]);   /* 一次只吃一份日志，免得两份混着算统计 */
+  else if (!fonts.length) setStatus("认不出这个文件：日志给 .log/.txt，字体给 .ttf/.otf/.woff2", true);
+});
+
+/* ---- 交互事件（只绑一次，重渲染时复用） ---- */
+var tip = el("tip");
+el("flame").addEventListener("click", function(e){
+  var n = e.target.closest(".fnode");
+  if (!n) return;
+  var cur = fstack[fstack.length - 1];
+  var kid = (cur.kids || []).filter(function(k){ return k.name === n.dataset.name; })[0];
+  if (kid && (kid.kids || []).length){ fstack.push(kid); flamePaint(); }
+});
+el("crumbs").addEventListener("click", function(e){
+  if (e.target.tagName !== "U") return;
+  fstack = fstack.slice(0, (+e.target.dataset.i) + 1);
+  flamePaint();
+});
+document.addEventListener("keydown", function(e){
+  if (e.key === "Escape" && fstack.length > 1){ fstack.pop(); flamePaint(); }
+});
+el("flame").addEventListener("mousemove", function(e){
+  var n = e.target.closest(".fnode");
+  if (!n){ tip.style.display = "none"; return; }
+  var cur = fstack[fstack.length - 1], ms = +n.dataset.ms;
+  tip.style.display = "block";
+  tip.style.left = Math.min(e.clientX + 14, innerWidth - 540) + "px";
+  tip.style.top = (e.clientY + 16) + "px";
+  tip.textContent = n.dataset.name + "\n累计 " + fmtMs(ms)
+    + "（占当前层 " + (cur.ms ? (ms / cur.ms * 100).toFixed(1) : "0.0") + "%）· 出现 "
+    + n.dataset.count + " 次";
+});
+el("flame").addEventListener("mouseleave", function(){ tip.style.display = "none"; });
+el("rows").addEventListener("click", function(e){
+  var tr = e.target.closest("tr.main");
+  if (!tr) return;
+  var d = el("d" + tr.dataset.i);
+  if (!d) return;
+  var open = d.classList.toggle("open");
+  tr.querySelector(".why").textContent = open ? "栈 ▴" : "栈 ▾";
+});
+
+/* ---- 开跑（状态条文案由 renderNote 出，别在这儿再覆盖一遍） ---- */
+renderAll();
+</script>
+<script>
+/* 查看器骨架：资源树 + 多标签页 + 调用树 + 单次停顿代码视图。
+   只读主脚本里的 DATA 和几个小工具函数（fmtMs / col / esc），不改它们。 */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var tree = $("tree"), tabsEl = $("tabs"), editor = $("editor"), stallPane = $("p-stall");
+  if (!tree || !tabsEl || !editor) return;
+
+  var VIEWS = { "p-overview": "概览", "p-timeline": "时间轴", "p-flame": "火焰图", "p-calltree": "调用树",
+                "p-cpu": "CPU 与帧率", "p-rows": "全部日志", "p-crash": "崩溃", "p-cmp": "对比" };
+  var tabs = [{ key: "p-overview", title: VIEWS["p-overview"] }];
+  var active = "p-overview", lastData = null;
+
+  function D(){ return window.DATA || {}; }
+  function dur(s){ return s.total || s.detect || 0; }
+  function sev(v){ return v >= 500 ? "rd" : (v >= 200 ? "am" : ""); }
+  function sorted(){
+    var l = (D().stalls || []).slice();
+    l.sort(function(a, b){ return dur(b) - dur(a); });   /* 和明细表同一个排序口径 */
+    return l;
+  }
+  function each(list, fn){ [].forEach.call(list, fn); }
+
+  /* ---------- 栈帧着色：包名淡、类名亮、方法名强调色 ---------- */
+  function frameHtml(t){
+    var m = /^(.*?)\(([^)]*)\)\s*$/.exec(t), head = t, loc = "";
+    if (m){ head = m[1]; loc = m[2]; }
+    var k = head.lastIndexOf("."), meth = k >= 0 ? head.slice(k + 1) : head;
+    var cls = k >= 0 ? head.slice(0, k) : "";
+    var k2 = cls.lastIndexOf("."), pkg = k2 >= 0 ? cls.slice(0, k2 + 1) : "";
+    var cn = k2 >= 0 ? cls.slice(k2 + 1) : cls;
+    return '<span class="pk">' + esc(pkg) + '</span><span class="cn">' + esc(cn) + '</span>'
+      + (cls ? '<span class="pk">.</span>' : "") + '<span class="mt">' + esc(meth) + '</span>'
+      + (loc ? '<span class="lc">(' + esc(loc) + ')</span>' : "");
+  }
+
+  /* ---------- 标签页 ---------- */
+  function renderTabs(){
+    tabsEl.innerHTML = tabs.map(function(t){
+      var on = t.key === active;
+      return '<div class="tab' + (on ? " on" : "") + '" role="tab" tabindex="0" data-key="' + esc(t.key)
+        + '" aria-selected="' + on + '">'
+        + (t.color ? '<i class="dot" style="background:' + t.color + '"></i>' : "")
+        + "<span>" + esc(t.title) + "</span>"
+        + (t.key === "p-overview" ? "" : '<span class="x" data-x="1" title="关闭">\u00d7</span>')
+        + "</div>";
+    }).join("");
+    var cur = tabsEl.querySelector(".tab.on");
+    if (cur && cur.scrollIntoView){ try { cur.scrollIntoView({ block: "nearest", inline: "nearest" }); } catch (e) { } }
+  }
+
+  function setOpen(g, on){
+    g.classList.toggle("open", on);
+    var b = g.querySelector(".grp-btn");
+    if (b) b.setAttribute("aria-expanded", on ? "true" : "false");
+  }
+
+  function activate(key, quiet){
+    if (!tabs.some(function(t){ return t.key === key; })) return;
+    active = key;
+    var isStall = key === STALL_KEY;
+    each(document.querySelectorAll(".pane"), function(p){
+      p.hidden = isStall ? p.id !== "p-stall" : p.id !== key;
+    });
+    if (isStall) renderStall(stallIdx);
+    if (key === "p-timeline") tlShow();
+    each(tree.querySelectorAll(".leaf"), function(b){
+      var k = b.getAttribute("data-key");
+      var on = isStall ? (k === "s:" + stallIdx) : (k === key);
+      b.classList.toggle("on", on);
+      if (on){
+        var g = b.closest(".grp");
+        while (g){ setOpen(g, true); g = g.parentNode.closest ? g.parentNode.closest(".grp") : null; }
+      }
+    });
+    renderTabs();
+    editor.scrollTop = 0;
+    try { window.scrollTo(0, 0); } catch (e) { }
+    if (!quiet && !isStall){ try { history.replaceState(null, "", "#" + key.slice(2)); } catch (e) { } }
+  }
+
+  function openTab(key, title, color){
+    if (!tabs.some(function(t){ return t.key === key; })) tabs.push({ key: key, title: title, color: color });
+    activate(key);
+  }
+  function openView(key){ openTab(key, VIEWS[key]); }
+  var STALL_KEY = "s:detail", stallIdx = -1;
+  /* 停顿用单个可复用标签：换一条只是替换内容与标题，不再每次新增一个标签页 */
+  function openStall(i){
+    var s = sorted()[i];
+    if (!s) return;
+    stallIdx = i;
+    var title = (s.t || "").replace(/\.\d+$/, "") + " \u00b7 " + fmtMs(dur(s));
+    var t = null;
+    tabs.forEach(function(x){ if (x.key === STALL_KEY) t = x; });
+    if (!t){ t = { key: STALL_KEY, title: title, color: col(s.reason) }; tabs.push(t); }
+    else { t.title = title; t.color = col(s.reason); }
+    activate(STALL_KEY);
+  }
+  function closeTab(key){
+    var i = -1;
+    tabs.forEach(function(t, n){ if (t.key === key) i = n; });
+    if (i < 1) return;                       /* 概览不关 */
+    tabs.splice(i, 1);
+    if (key === STALL_KEY) stallIdx = -1;
+    if (active === key) activate(tabs[Math.min(i, tabs.length - 1)].key);
+    else renderTabs();
+  }
+
+  tabsEl.addEventListener("click", function(e){
+    var tab = e.target.closest(".tab");
+    if (!tab) return;
+    if (e.target.closest("[data-x]")) closeTab(tab.getAttribute("data-key"));
+    else activate(tab.getAttribute("data-key"));
+  });
+  tabsEl.addEventListener("auxclick", function(e){
+    var tab = e.target.closest(".tab");
+    if (tab && e.button === 1){ e.preventDefault(); closeTab(tab.getAttribute("data-key")); }
+  });
+  tabsEl.addEventListener("keydown", function(e){
+    var tab = e.target.closest(".tab");
+    if (tab && (e.key === "Enter" || e.key === " ")){ e.preventDefault(); activate(tab.getAttribute("data-key")); }
+  });
+
+  /* ---------- 资源树 ---------- */
+  tree.addEventListener("click", function(e){
+    var gb = e.target.closest(".grp-btn");
+    if (gb){ var g = gb.parentNode; setOpen(g, !g.classList.contains("open")); return; }
+    var lf = e.target.closest(".leaf");
+    if (!lf) return;
+    var key = lf.getAttribute("data-key");
+    if (key.indexOf("s:") === 0) openStall(+key.slice(2)); else openView(key);
+  });
+  tree.addEventListener("keydown", function(e){
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+    var items = [].slice.call(tree.querySelectorAll("button")).filter(function(b){ return b.offsetParent !== null; });
+    var i = items.indexOf(document.activeElement);
+    if (i < 0) return;
+    e.preventDefault();
+    items[Math.max(0, Math.min(items.length - 1, i + (e.key === "ArrowDown" ? 1 : -1)))].focus();
+  });
+
+  var openReasons = null;
+  function renderExplorer(){
+    var box = $("stallgroups");
+    if (box && box.firstChild && openReasons === null){
+      openReasons = {};
+    }
+    if (box){
+      var prev = {};
+      each(box.querySelectorAll(".grp"), function(g){ prev[g.getAttribute("data-reason")] = g.classList.contains("open"); });
+      var list = sorted(), groups = {}, order = [];
+      list.forEach(function(s, i){
+        var r = s.reason || "未知";
+        if (!groups[r]){ groups[r] = { ms: 0, items: [] }; order.push(r); }
+        groups[r].ms += dur(s); groups[r].items.push(i);
+      });
+      order.sort(function(a, b){ return groups[b].ms - groups[a].ms; });
+      var fresh = !box.firstChild || openReasons === null;
+      box.innerHTML = order.map(function(r, gi){
+        var g = groups[r], isOpen = fresh ? gi === 0 : !!prev[r];
+        return '<div class="grp' + (isOpen ? " open" : "") + '" data-reason="' + esc(r) + '">'
+          + '<button class="grp-btn" type="button" aria-expanded="' + isOpen + '"><i class="caret"></i>'
+          + '<i class="gd" style="background:' + col(r) + '"></i>' + esc(r)
+          + '<span class="cnt">' + g.items.length + '</span></button><div class="kids">'
+          + g.items.map(function(i){
+              var s = list[i], v = dur(s);
+              return '<button class="leaf s" type="button" data-key="s:' + i + '" title="' + esc(s.since || "") + '">'
+                + '<span class="lt">' + esc((s.t || "").replace(/\.\d+$/, "")) + '</span>'
+                + '<span class="lm ' + sev(v) + '">' + (s.est ? "~" : "") + fmtMs(v) + '</span></button>';
+            }).join("")
+          + "</div></div>";
+      }).join("");
+      openReasons = {};
+      each(box.querySelectorAll(".leaf"), function(b){
+        var k = b.getAttribute("data-key");
+        b.classList.toggle("on", active === STALL_KEY ? (k === "s:" + stallIdx) : (k === active));
+      });
+    }
+    var c = tree.querySelector("[data-cnt='stalls']");
+    if (c){ var n = (D().stalls || []).length; c.textContent = n ? String(n) : ""; }
+  }
+
+  /* ---------- 概览：最长的几次 ---------- */
+  function renderTop5(){
+    var l = sorted().slice(0, 5), box = $("top5");
+    if (!box) return;
+    box.innerHTML = l.length ? l.map(function(s, i){
+      var v = dur(s);
+      return '<button class="t5" type="button" data-i="' + i + '"><i class="gd" style="background:' + col(s.reason) + '"></i>'
+        + '<span class="lt">' + esc(s.t || "") + '</span><span class="lm ' + sev(v) + '">' + (s.est ? "~" : "") + fmtMs(v)
+        + '</span><span class="lr">' + esc(s.reason || "") + '</span><span class="ls">' + esc(s.since || "") + "</span></button>";
+    }).join("") : '<div class="empty">没有记录到停顿</div>';
+  }
+  $("top5").addEventListener("click", function(e){
+    var b = e.target.closest(".t5");
+    if (b) openStall(+b.getAttribute("data-i"));
+  });
+
+  /* ---------- 崩溃 ---------- */
+  function renderCrashes(){
+    var box = $("crashrows"), list = D().crashes || [];
+    var grp = $("grp-crash");
+    if (grp){
+      grp.hidden = !list.length;
+      var c = grp.querySelector("[data-cnt='crashes']");
+      if (c) c.textContent = list.length ? String(list.length) : "";
+    }
+    if (!box) return;
+    box.innerHTML = list.length ? list.slice(0, 20).map(function(c){
+      return '<tr class="main"><td class="mono">' + esc(c.t || c.time || "-") + "</td>"
+        + '<td class="mono" style="color:var(--tx)">' + esc(c.desc || "-") + "</td>"
+        + '<td><span class="tag" style="background:' + col(c.reason || "") + "22;color:" + col(c.reason || "") + '">'
+        + esc(c.reason || "未知") + "</span></td>"
+        + '<td class="mono" style="color:var(--tx3)">' + esc(c.file || "-") + "</td></tr>";
+    }).join("") : '<tr><td colspan="4" class="empty">这份日志里没有崩溃记录</td></tr>';
+  }
+
+  /* ---------- 概览：会话 ---------- */
+  function fmtClockMs(ms){
+    if (!ms) return "-";
+    var d = new Date(ms);
+    return p2(d.getHours()) + ":" + p2(d.getMinutes()) + ":" + p2(d.getSeconds());
+  }
+  /* 跨天的记录段只看时分秒会误以为是今天的 —— 不是今天就带上日期 */
+  function fmtClockDay(ms){
+    if (!ms) return "-";
+    var d = new Date(ms), now = new Date();
+    if (d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate())
+      return fmtClockMs(ms);
+    return p2(d.getMonth() + 1) + "-" + p2(d.getDate()) + " " + fmtClockMs(ms);
+  }
+  function renderSess(){
+    var box = $("sessinfo"), su = D().summary || {};
+    if (!box) return;
+    var rows = [];
+    if (su.sessT0 || su.sessT1){
+      rows.push(["记录区间", fmtClockDay(su.sessT0) + " → " + (su.sessT1 ? fmtClockDay(su.sessT1) : "未停止")]);
+    }
+    if (su.exitUptime) rows.push(["进程退出", "运行 " + su.exitUptime + (su.exitPending ? "（退出时仍有未结算的停顿）" : "")]);
+    if (su.crashes) rows.push(["崩溃记录", su.crashes + " 条，见左侧「崩溃」"]);
+    box.innerHTML = rows.length ? rows.map(function(r){
+      return '<div class="sr"><span>' + esc(r[0]) + "</span><b>" + esc(r[1]) + "</b></div>";
+    }).join("") : '<div class="empty">这份日志里没有会话信息（旧版本写的日志没有）</div>';
+  }
+
+  /* ---------- 对比：选第二份日志 ---------- */
+  var CMP = null, CMPNAME = "";
+  function loadCmp(file){
+    var r = new FileReader();
+    r.onerror = function(){ setStatus("对比文件读取失败", true); };
+    r.onload = function(){
+      var d;
+      try { d = parseLog(r.result || ""); }
+      catch (e) { setStatus("对比文件解析失败: " + e, true); return; }
+      CMP = d; CMPNAME = (file && file.name) || "";
+      renderCmp();
+      openView("p-cmp");
+      setStatus("对比模式：当前 vs " + CMPNAME + "（" + d.summary.stalls + " 条停顿）　·　点「取消对比」退出");
+    };
+    r.readAsText(file, "utf-8");
+  }
+  function clearCmp(){
+    CMP = null; CMPNAME = "";
+    renderCmp();
+    setStatus("已退出对比模式");
+  }
+  function fmtDelta(a, b, higherIsBad){
+    var d = (+b || 0) - (+a || 0);
+    if (!d) return '<span style="color:var(--tx3)">\u00b10</span>';
+    var up = d > 0, good = higherIsBad ? !up : up;
+    return '<span style="color:' + (good ? "var(--gn)" : "var(--rd)") + '">'
+      + (up ? "\u25b2" : "\u25bc") + " "
+      + (Math.abs(d) >= 1000 ? fmtMs(Math.abs(d)) : Math.round(Math.abs(d))) + "</span>";
+  }
+  function renderCmp(){
+    var box = $("cmppanel"), btnC = $("bcclear"), btnO = $("bcmp");
+    if (btnC) btnC.style.display = CMP ? "" : "none";
+    if (btnO) btnO.style.display = CMP ? "none" : "";
+    if (!box) return;
+    if (!CMP){ box.innerHTML = ""; return; }
+    var a = D().summary || {}, b = CMP.summary || {};
+    function row(k, x, y, hi, f){
+      return '<div class="sr"><span>' + esc(k) + "</span><b>"
+        + (f ? f(+x) : x) + " vs " + (f ? f(+y) : y) + "　" + fmtDelta(+x, +y, hi) + "</b></div>";
+    }
+    function agg(list){
+      var g = {};
+      (list || []).forEach(function(s){ g[s.reason] = (g[s.reason] || 0) + dur(s); });
+      return Object.keys(g).map(function(k){ return [k, g[k]]; }).sort(function(p, q){ return q[1] - p[1]; }).slice(0, 8);
+    }
+    function val(arr, k){ for (var i = 0; i < arr.length; i++) if (arr[i][0] === k) return arr[i][1]; return 0; }
+    var ba = a.buckets || [0, 0, 0, 0], bb = b.buckets || [0, 0, 0, 0];
+    var bn = ["<100ms", "100-199ms", "200-499ms", ">=500ms", "旧格式"];
+    var html = '<div class="tlsum"><div>'
+      + row("停顿次数", a.stalls || 0, b.stalls || 0, true)
+      + row("累计停顿", a.totalMs || 0, b.totalMs || 0, true, fmtMs)
+      + row("最长一次", a.maxMs || 0, b.maxMs || 0, true, fmtMs)
+      + row("平均帧率", Math.round(a.fpsAvg || 0), Math.round(b.fpsAvg || 0), false)
+      + row("崩溃次数", a.crashes || 0, b.crashes || 0, true)
+      + "</div><div>";
+    for (var i = 0; i < 4; i++) html += row(bn[i], ba[i], bb[i], true);
+    html += row(bn[4], (a.stalls || 0) - (a.measured || 0), (b.stalls || 0) - (b.measured || 0), true);
+    html += "</div></div>";
+    var ga = agg(D().stalls), gb = agg(CMP.stalls), keys = {};
+    ga.forEach(function(x){ keys[x[0]] = 1; });
+    gb.forEach(function(x){ keys[x[0]] = 1; });
+    var kv = Object.keys(keys).sort(function(p, q){ return (val(gb, q) + val(ga, q)) - (val(gb, p) + val(ga, p)); });
+    html += '<div class="sec" style="margin-top:22px">归因对比（当前 vs ' + esc(CMPNAME) + "）</div>"
+      + '<div class="tlsum"><div></div><div class="lg" style="margin:0">'
+      + kv.slice(0, 10).map(function(k){
+          return '<div><em style="background:' + col(k) + '"></em>' + esc(k)
+            + "<b>" + fmtMs(val(ga, k)) + " vs " + fmtMs(val(gb, k)) + "</b></div>";
+        }).join("")
+      + "</div></div>";
+    box.innerHTML = html;
+  }
+  if ($("bcmp")) $("bcmp").onclick = function(){ $("fcmp").click(); };
+  if ($("bcclear")) $("bcclear").onclick = clearCmp;
+  if ($("fcmp")) $("fcmp").onchange = function(){ if (this.files && this.files[0]) loadCmp(this.files[0]); this.value = ""; };
+
+  /* ---------- 调用树 ---------- */
+  var ctreeEl = $("ctree"), ctTotal = 1;
+  function kidsOf(n){ return (n.kids || []).slice().sort(function(a, b){ return b.ms - a.ms; }); }
+  function ctMake(n, depth){
+    var wrap = document.createElement("div");
+    wrap.className = "ct";
+    wrap._n = n; wrap._depth = depth; wrap._kw = null;
+    var has = (n.kids || []).length > 0;
+    var pct = ctTotal ? n.ms / ctTotal * 100 : 0;
+    var row = document.createElement("div");
+    row.className = "ctrow";
+    row.style.paddingLeft = (8 + depth * 16) + "px";
+    row.title = n.name;
+    row.innerHTML = '<span class="cbar" style="width:' + Math.min(100, pct).toFixed(2) + "%;background:" + (n.color || "#7c8aa5") + '"></span>'
+      + '<span class="cc">' + (has ? "<i></i>" : "") + "</span>"
+      + '<span class="cname">' + (depth === 0 ? '<span class="cn">' + esc(n.name) + "</span>" : frameHtml(n.name)) + "</span>"
+      + '<span class="cm">' + fmtMs(n.ms) + '</span><span class="cp">' + pct.toFixed(1) + '%</span><span class="cx">'
+      + n.count + "</span>";
+    wrap.appendChild(row);
+    var kids = document.createElement("div");
+    kids.className = "ctkids";
+    wrap.appendChild(kids);
+    return wrap;
+  }
+  function ctOpen(wrap, on){
+    if (!(wrap._n.kids || []).length) return;
+    if (on && !wrap._kw){
+      wrap._kw = kidsOf(wrap._n).map(function(k){ var w = ctMake(k, wrap._depth + 1); wrap.lastChild.appendChild(w); return w; });
+    }
+    wrap.classList.toggle("open", on);
+  }
+  function ctExpandAll(wrap, budget){
+    if (budget.n <= 0) return;
+    ctOpen(wrap, true);
+    (wrap._kw || []).forEach(function(w){ budget.n--; ctExpandAll(w, budget); });
+  }
+  function buildCallTree(){
+    var root = D().flame;
+    ctreeEl.innerHTML = "";
+    if (!root || !(root.kids || []).length){
+      ctreeEl.innerHTML = '<div class="empty">没有调用栈数据</div>';
+      return;
+    }
+    ctTotal = root.ms || 1;
+    var rw = ctMake(root, 0);
+    ctreeEl.appendChild(rw);
+    ctOpen(rw, true);
+    var cur = rw;                      /* 沿最重的一条路径自动展开，占比不到一半就停 */
+    for (var d = 0; d < 8 && cur._kw && cur._kw.length; d++){
+      var f = cur._kw[0];
+      if (!(cur._n.ms > 0) || f._n.ms / cur._n.ms < 0.5) break;
+      ctOpen(f, true); cur = f;
+    }
+  }
+  ctreeEl.addEventListener("click", function(e){
+    var row = e.target.closest(".ctrow");
+    if (!row) return;
+    var w = row.parentNode;
+    ctOpen(w, !w.classList.contains("open"));
+  });
+  $("ct-all").addEventListener("click", function(){
+    var r = ctreeEl.firstChild;
+    if (r && r._n) ctExpandAll(r, { n: 3000 });
+  });
+  $("ct-none").addEventListener("click", function(){
+    var r = ctreeEl.firstChild;
+    if (!r || !r._n) return;
+    each(r.querySelectorAll(".ct.open"), function(w){ w.classList.remove("open"); });
+    r.classList.add("open");
+  });
+
+  /* ---------- 单次停顿：时间线 + 代码视图 ---------- */
+  function renderStall(i){
+    var s = sorted()[i];
+    if (!s){ stallPane.innerHTML = '<div class="empty">这条停顿已不在当前数据里</div>'; return; }
+    var v = dur(s), color = col(s.reason), tl = s.timeline || [], stack = s.stack || [];
+    var mx = 0;
+    tl.forEach(function(x){ if (+x[1] > mx) mx = +x[1]; });
+    var h = '<div class="sh"><span class="big ' + sev(v) + '">' + (s.est ? "~" : "") + fmtMs(v) + "</span>"
+      + '<span class="tag" style="background:' + color + "22;color:" + color + '">' + esc(s.reason || "") + "</span>"
+      + (s.est ? '<span class="tag" style="background:rgba(255,255,255,.07);color:var(--tx3)">旧格式</span>' : "")
+      + (s.gc ? '<span class="tag" style="background:rgba(45,212,191,.14);color:var(--tl)">GC ' + esc(s.gc) + "</span>" : "")
+      + '<span class="meta">' + esc(s.t || "") + "</span>"
+      + '<span class="sub">卡在 ' + esc(s.since || "-") + "，检测到 " + fmtMs(s.detect || 0) + "，栈 " + stack.length + " 层"
+      + (s.ctx ? "，位置 " + esc(s.ctx) : "") + "</span></div>";
+    if (tl.length){
+      h += '<div class="sec">帧内时间线</div>' + tl.map(function(x){
+        return '<div class="tlr"><span class="tn">' + esc(x[0]) + '</span><span class="tb"><i style="width:'
+          + (mx ? (+x[1] / mx * 100).toFixed(1) : 0) + '%"></i></span><span class="tv">+' + (+x[1]).toFixed(2) + "ms</span></div>";
+      }).join("");
+    }
+    h += '<div class="sec">调用栈<button class="btn sm" type="button" data-copy="' + i + '">复制</button></div>';
+    h += stack.length ? '<div class="code">' + stack.map(function(t, n){
+      return '<div class="cl' + (n === 0 ? " top" : "") + '"><span class="ln">' + (n + 1) + '</span><span><span class="at">at </span>'
+        + frameHtml(t) + "</span></div>";
+    }).join("") + "</div>" : '<div class="empty">没有记录到栈</div>';
+    stallPane.innerHTML = h;
+  }
+  stallPane.addEventListener("click", function(e){
+    var b = e.target.closest("[data-copy]");
+    if (!b) return;
+    var s = sorted()[+b.getAttribute("data-copy")];
+    if (!s) return;
+    var text = (s.stack || []).join("\n");
+    function done(){ b.textContent = "已复制"; setTimeout(function(){ b.textContent = "复制"; }, 1200); }
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); } catch (er) { b.textContent = "复制失败"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
+    else fallback();
+  });
+
+  /* 全部日志里双击一行：在新标签页打开 */
+  $("rows").addEventListener("dblclick", function(e){
+    var tr = e.target.closest("tr.main");
+    if (tr) openStall(+tr.getAttribute("data-i"));
+  });
+
+  /* ---------- 时间轴（多轨道，类似 Windows Performance Analyzer） ---------- */
+  var TL = { ev: [], lanes: [], cpu: [], t0: 0, t1: 1, v0: 0, v1: 1, maxDur: 1, maxDepth: 1,
+             hover: null, mx: -1, my: -1, W: 0, L: null, drag: null, mdrag: null, raf: 0, dirty: true };
+  var tlMain = $("tl-main"), tlMini = $("tl-mini"), tlSum = $("tl-sum");
+  var GL = 136, GR = 14, TL_MIN = 0.05;
+  var SEVC = ["#3f6f8f", "#4cc9f0", "#f5a524", "#ff5d5d"];     /* 和分档条同一套颜色 */
+  function sevCol(v){ return v < 100 ? SEVC[0] : (v < 200 ? SEVC[1] : (v < 500 ? SEVC[2] : SEVC[3])); }
+  function tod(msEpoch){
+    if (!msEpoch) return null;
+    var d = new Date(msEpoch);
+    return d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds() + d.getMilliseconds() / 1000;
+  }
+  function parseT(t){
+    var m = /(\d+):(\d+):(\d+)(?:[.,](\d+))?/.exec(t || "");
+    if (!m) return null;
+    return (+m[1]) * 3600 + (+m[2]) * 60 + (+m[3]) + (m[4] ? parseFloat("0." + m[4]) : 0);
+  }
+  function p2(n){ return (n < 10 ? "0" : "") + n; }
+  function fmtClock(sec, ms){
+    var s = ((sec % 86400) + 86400) % 86400, h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+    var out = p2(h) + ":" + p2(m) + ":" + p2(Math.floor(x));
+    if (ms){
+      var f = Math.min(999, Math.round((x - Math.floor(x)) * 1000));
+      out += "." + (f < 10 ? "00" : (f < 100 ? "0" : "")) + f;
+    }
+    return out;
+  }
+  function fmtSpan(sec){
+    if (sec < 1) return Math.round(sec * 1000) + "ms";
+    if (sec < 60) return sec.toFixed(1) + " 秒";
+    if (sec < 3600) return Math.floor(sec / 60) + " 分 " + Math.round(sec % 60) + " 秒";
+    return Math.floor(sec / 3600) + " 时 " + Math.floor(sec % 3600 / 60) + " 分";
+  }
+
+  /* 停顿起点 = 检测时刻 - 检测时长（日志是在检测到时写的头行），终点 = 起点 + 真实时长 */
+  function tlBuild(){
+    var list = sorted(), ev = [], cpu = [];
+    list.forEach(function(s, i){
+      /* 模组原生的 t0/t1（epoch ms）优先；老日志退回按时刻和检测值推算 */
+      var a = tod(s.t0);
+      if (a === null){
+        var ts = parseT(s.t);
+        if (ts === null) return;
+        a = ts - (s.detect || 0) / 1000;
+      }
+      var d = dur(s) / 1000, e = tod(s.t1);
+      ev.push({ i: i, s: s, a: a, d: d, b: (e !== null && e > a) ? e : a + d,
+                dur: dur(s), depth: (s.stack || []).length, reason: s.reason || "未知" });
+    });
+    (D().cpu || []).forEach(function(c){
+      var ts = parseT(c.t);
+      if (ts !== null) cpu.push({ a: ts, fps: +c.fps || 0, tps: +c.tps || 0, cpu: +c.cpu || 0 });
+    });
+    var lo = Infinity, hi = -Infinity;
+    ev.forEach(function(e){ lo = Math.min(lo, e.a); hi = Math.max(hi, e.b); });
+    cpu.forEach(function(c){ lo = Math.min(lo, c.a); hi = Math.max(hi, c.a); });
+    if (hi - lo > 43200){                                   /* 跨午夜：把凌晨那段接到后面 */
+      ev.forEach(function(e){ if (e.a < 43200){ e.a += 86400; e.b += 86400; } });
+      cpu.forEach(function(c){ if (c.a < 43200) c.a += 86400; });
+      lo = Infinity; hi = -Infinity;
+      ev.forEach(function(e){ lo = Math.min(lo, e.a); hi = Math.max(hi, e.b); });
+      cpu.forEach(function(c){ lo = Math.min(lo, c.a); hi = Math.max(hi, c.a); });
+    }
+    if (!(lo <= hi)){ lo = 0; hi = 1; ev = []; cpu = []; }
+    if (hi - lo < 2){ var mid = (hi + lo) / 2; lo = mid - 1; hi = mid + 1; }
+    var pad = (hi - lo) * 0.01;
+    lo -= pad; hi += pad;
+
+    var agg = {}, order = [];
+    ev.forEach(function(e){
+      if (!(e.reason in agg)){ agg[e.reason] = 0; order.push(e.reason); }
+      agg[e.reason] += e.dur;
+    });
+    order.sort(function(a, b){ return agg[b] - agg[a]; });
+    var lanes = order.slice(0, 9), laneOf = {};
+    if (order.length > 9) lanes.push("其他");
+    order.forEach(function(r, k){ laneOf[r] = k < 9 ? k : 9; });
+    ev.forEach(function(e){ e.lane = laneOf[e.reason]; });
+    ev.sort(function(a, b){ return a.a - b.a; });
+    cpu.sort(function(a, b){ return a.a - b.a; });
+
+    TL.ev = ev; TL.cpu = cpu; TL.lanes = lanes; TL.t0 = lo; TL.t1 = hi; TL.v0 = lo; TL.v1 = hi;
+    TL.maxDur = Math.max.apply(null, [1].concat(ev.map(function(e){ return e.dur; })));
+    TL.maxDepth = Math.max.apply(null, [1].concat(ev.map(function(e){ return e.depth; })));
+    TL.hover = null; TL.dirty = true;
+    if (active === "p-timeline") tlSchedule();
+  }
+  function laneColor(k){ return TL.lanes[k] === "其他" ? "#7c8aa5" : col(TL.lanes[k]); }
+
+  function tlLayout(){
+    var t = {}, y = 0;
+    t.axis = { y: 0, h: 26 }; y = 26;
+    t.load = { y: y, h: 46 }; y += 46;
+    t.lanes = { y: y, h: Math.max(1, TL.lanes.length) * 20 + 8 }; y += t.lanes.h;
+    t.dur = { y: y, h: 68 }; y += 68;
+    t.depth = { y: y, h: 44 }; y += 44;
+    if (TL.cpu.length){
+      t.fps = { y: y, h: 40 }; y += 40;
+      t.tps = { y: y, h: 40 }; y += 40;
+      t.cpu = { y: y, h: 40 }; y += 40;
+    }
+    t.H = y;
+    return t;
+  }
+
+  function tlSet(a, b){
+    var full = TL.t1 - TL.t0, span = Math.max(TL_MIN, Math.min(full, b - a));
+    if (a < TL.t0) a = TL.t0;
+    if (a + span > TL.t1) a = TL.t1 - span;
+    TL.v0 = a; TL.v1 = a + span; TL.dirty = true;
+    tlSchedule();
+  }
+  function tlSchedule(){
+    if (TL.raf) return;
+    TL.raf = requestAnimationFrame(function(){
+      TL.raf = 0;
+      tlDraw(); tlDrawMini();
+      if (TL.dirty){ TL.dirty = false; tlSummary(); }
+    });
+  }
+  function tlShow(){ TL.dirty = true; tlSchedule(); }
+
+  function tlSetup(cvs, W, H){
+    var dpr = window.devicePixelRatio || 1;
+    cvs.width = Math.round(W * dpr); cvs.height = Math.round(H * dpr);
+    cvs.style.height = H + "px";
+    var g = cvs.getContext("2d");
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.clearRect(0, 0, W, H);
+    g.textBaseline = "middle";
+    return g;
+  }
+  function tlColors(){
+    var cs = getComputedStyle(document.documentElement), f = function(n, d){ return cs.getPropertyValue(n).trim() || d; };
+    return { tx: f("--tx", "#dce3ee"), tx2: f("--tx2", "#8b97ab"), tx3: f("--tx3", "#586377"),
+             line: f("--line", "#252d3a"), line2: f("--line2", "#1a2029"), ac: f("--ac", "#4cc9f0"),
+             ui: getComputedStyle(document.body).fontFamily || "sans-serif",
+             mono: f("--font-mono", "monospace") };
+  }
+  function niceStep(raw){
+    var st = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 15, 30, 60, 120, 300, 600, 900, 1800, 3600, 7200, 14400];
+    for (var i = 0; i < st.length; i++) if (st[i] >= raw) return st[i];
+    return st[st.length - 1];
+  }
+
+  function tlDraw(){
+    var W = tlMain.parentNode.clientWidth;
+    if (W < 60) return;
+    var L = TL.L = tlLayout(), H = L.H, C = tlColors();
+    TL.W = W;
+    var g = tlSetup(tlMain, W, H);
+    var pw = W - GL - GR, v0 = TL.v0, v1 = TL.v1, span = v1 - v0;
+    function X(t){ return GL + (t - v0) / span * pw; }
+
+    if (!TL.ev.length && !TL.cpu.length){
+      g.fillStyle = C.tx3; g.font = "12.5px " + C.ui; g.textAlign = "center";
+      g.fillText("没有带时间戳的数据可画", W / 2, 40);
+      g.textAlign = "left";
+      return;
+    }
+
+    /* 轨道分隔线与左侧标签 */
+    function sep(y){ g.fillStyle = C.line2; g.fillRect(0, Math.round(y) - 0.5, W, 1); }
+    function label(txt, y, h, sub){
+      g.font = "12px " + C.ui; g.fillStyle = C.tx2; g.textAlign = "left";
+      g.fillText(txt, 14, y + h / 2 - (sub ? 7 : 0));
+      if (sub){ g.font = "10.5px " + C.ui; g.fillStyle = C.tx3; g.fillText(sub, 14, y + h / 2 + 8); }
+    }
+    ["load", "lanes", "dur", "depth", "fps", "tps", "cpu"].forEach(function(k){ if (L[k]) sep(L[k].y); });
+    sep(H - 1);
+
+    /* 时间刻度 */
+    var step = niceStep(span / (pw / 120)), first = Math.ceil(v0 / step) * step;
+    g.font = "11px " + C.mono; g.textAlign = "center";
+    for (var tk = first; tk <= v1 + 1e-9; tk += step){
+      var tx = X(tk);
+      if (tx < GL || tx > W - GR) continue;
+      g.fillStyle = "rgba(255,255,255,.045)"; g.fillRect(Math.round(tx), L.axis.h, 1, H - L.axis.h);
+      g.fillStyle = C.tx3; g.fillText(fmtClock(tk, step < 1), tx, 13);
+    }
+    g.textAlign = "left";
+
+    g.save();
+    g.beginPath(); g.rect(GL, 0, pw, H); g.clip();
+
+    /* 卡顿占比：每个桶里“停顿占了多少时间” */
+    var nb = Math.max(1, Math.floor(pw / 3)), bs = span / nb, arr = new Array(nb), k;
+    for (k = 0; k < nb; k++) arr[k] = 0;
+    TL.ev.forEach(function(e){
+      if (e.b <= v0 || e.a >= v1) return;
+      var i0 = Math.max(0, Math.floor((Math.max(e.a, v0) - v0) / bs)), i1 = Math.min(nb - 1, Math.floor((Math.min(e.b, v1) - v0) / bs));
+      for (var q = i0; q <= i1; q++){
+        var b0 = v0 + q * bs;
+        arr[q] += (Math.min(e.b, b0 + bs) - Math.max(e.a, b0)) / bs;
+      }
+    });
+    var lt = L.load, peak = 0.02;
+    for (k = 0; k < nb; k++) peak = Math.max(peak, Math.min(1, arr[k]));
+    TL.peak = peak;                                        /* 按窗口内峰值归一化，放大后才看得出集中在哪 */
+    for (k = 0; k < nb; k++){
+      var fr = Math.min(1, arr[k]) / peak;
+      if (arr[k] <= 0) continue;
+      var hh = Math.max(1.5, fr * (lt.h - 8));
+      g.fillStyle = "rgba(255,93,93," + (0.35 + 0.55 * fr).toFixed(2) + ")";
+      g.fillRect(GL + k * (pw / nb), lt.y + lt.h - 3 - hh, Math.ceil(pw / nb), hh);
+    }
+
+    /* 按原因分道 */
+    var ln = L.lanes;
+    TL.lanes.forEach(function(r, j){
+      if (j % 2 === 0){ g.fillStyle = "rgba(255,255,255,.018)"; g.fillRect(GL, ln.y + 4 + j * 20, pw, 20); }
+    });
+    TL.ev.forEach(function(e){
+      var x1 = X(e.a), x2 = X(e.b);
+      if (x2 < GL || x1 > W - GR) return;
+      var w = Math.max(2, x2 - x1), hot = e === TL.hover;
+      g.fillStyle = laneColor(e.lane);
+      g.fillRect(x1, ln.y + 6 + e.lane * 20, w, 14);
+      if (hot){ g.strokeStyle = "#fff"; g.lineWidth = 1; g.strokeRect(x1 - 0.5, ln.y + 5.5 + e.lane * 20, w + 1, 15); }
+    });
+
+    /* 单次时长、栈深 */
+    var dt = L.dur, dp = L.depth;
+    TL.ev.forEach(function(e){
+      var x1 = X(e.a), x2 = X(e.b);
+      if (x2 < GL || x1 > W - GR) return;
+      var w = Math.max(2, x2 - x1), hot = e === TL.hover;
+      var h1 = Math.max(2, e.dur / TL.maxDur * (dt.h - 14));
+      g.fillStyle = sevCol(e.dur); g.fillRect(x1, dt.y + dt.h - 4 - h1, w, h1);
+      var h2 = Math.max(2, e.depth / TL.maxDepth * (dp.h - 12));
+      g.fillStyle = "rgba(76,201,240,.7)"; g.fillRect(x1, dp.y + dp.h - 4 - h2, w, h2);
+      if (hot){
+        g.strokeStyle = "#fff"; g.lineWidth = 1;
+        g.strokeRect(x1 - 0.5, dt.y + dt.h - 4.5 - h1, w + 1, h1 + 1);
+        g.strokeRect(x1 - 0.5, dp.y + dp.h - 4.5 - h2, w + 1, h2 + 1);
+      }
+    });
+
+    /* 全线程采样：fps / tps / CPU% */
+    function line(tr, key, color, mx){
+      if (!tr) return;
+      g.strokeStyle = color; g.lineWidth = 1.5; g.beginPath();
+      TL.cpu.forEach(function(c, n){
+        var xx = X(c.a), yy = tr.y + tr.h - 5 - Math.min(1, c[key] / mx) * (tr.h - 12);
+        if (n === 0) g.moveTo(xx, yy); else g.lineTo(xx, yy);
+      });
+      g.stroke();
+      g.fillStyle = color;
+      TL.cpu.forEach(function(c){
+        g.beginPath(); g.arc(X(c.a), tr.y + tr.h - 5 - Math.min(1, c[key] / mx) * (tr.h - 12), 2, 0, 6.2832); g.fill();
+      });
+    }
+    var fpsMax = 60, i;
+    for (i = 0; i < TL.cpu.length; i++) fpsMax = Math.max(fpsMax, TL.cpu[i].fps);
+    line(L.fps, "fps", "#4cc9f0", fpsMax); line(L.tps, "tps", "#a3e635", 20); line(L.cpu, "cpu", "#f5a524", 100);
+
+    /* 十字线 */
+    var inPlot = TL.mx >= GL && TL.mx <= W - GR;
+    if (inPlot && !(TL.drag && TL.drag.moved)){
+      g.fillStyle = "rgba(255,255,255,.3)"; g.fillRect(Math.round(TL.mx), L.axis.h, 1, H - L.axis.h);
+    }
+    g.restore();
+
+    /* 左侧标签 */
+    label("卡顿占比", lt.y, lt.h, "峰值 " + (TL.peak * 100).toFixed(TL.peak < 0.1 ? 1 : 0) + "%");
+    TL.lanes.forEach(function(r, j){
+      var yy = ln.y + 4 + j * 20 + 10;
+      g.fillStyle = laneColor(j); g.fillRect(14, yy - 4, 8, 8);
+      g.font = "12px " + C.ui; g.fillStyle = C.tx2;
+      var t = r; while (t.length > 1 && g.measureText(t).width > GL - 40) t = t.slice(0, -1);
+      g.fillText(t === r ? r : t + "\u2026", 28, yy);
+    });
+    label("单次时长", dt.y, dt.h, "峰值 " + fmtMs(TL.maxDur));
+    label("栈深", dp.y, dp.h, "最深 " + TL.maxDepth + " 层");
+    if (L.fps){
+      var mf = 0, mt = 0, mc = 0;
+      TL.cpu.forEach(function(c){ mf = Math.max(mf, c.fps); mt = Math.max(mt, c.tps); mc = Math.max(mc, c.cpu); });
+      label("fps", L.fps.y, L.fps.h, "峰 " + mf.toFixed(0));
+      label("tps", L.tps.y, L.tps.h, "峰 " + mt.toFixed(1));
+      label("整机 CPU %", L.cpu.y, L.cpu.h, "峰 " + mc.toFixed(0) + "%");
+    }
+    if (inPlot){
+      var tt = fmtClock(v0 + (TL.mx - GL) / pw * span, span < 20);
+      g.font = "11px " + C.mono; var tw = g.measureText(tt).width + 12;
+      var bx = Math.max(GL, Math.min(W - GR - tw, TL.mx - tw / 2));
+      g.fillStyle = "#06080c"; g.fillRect(bx, 3, tw, 17);
+      g.strokeStyle = C.line; g.lineWidth = 1; g.strokeRect(bx + 0.5, 3.5, tw - 1, 16);
+      g.fillStyle = C.tx; g.textAlign = "center"; g.fillText(tt, bx + tw / 2, 12); g.textAlign = "left";
+    }
+  }
+
+  function tlDrawMini(){
+    var W = tlMini.parentNode.clientWidth;
+    if (W < 60) return;
+    var H = 56, C = tlColors(), g = tlSetup(tlMini, W, H), pw = W - GL - GR;
+    function XM(t){ return GL + (t - TL.t0) / (TL.t1 - TL.t0) * pw; }
+    g.font = "12px " + C.ui; g.fillStyle = C.tx2; g.fillText("全程", 14, H / 2);
+    TL.ev.forEach(function(e){
+      var h = 4 + e.dur / TL.maxDur * (H - 20);
+      g.fillStyle = sevCol(e.dur); g.fillRect(XM(e.a), H - 5 - h, Math.max(1.5, XM(e.b) - XM(e.a)), h);
+    });
+    g.font = "10.5px " + C.mono; g.fillStyle = C.tx3;
+    g.textAlign = "left"; g.fillText(fmtClock(TL.t0), GL + 2, 8);
+    g.textAlign = "right"; g.fillText(fmtClock(TL.t1), W - GR - 2, 8); g.textAlign = "left";
+    var xa = XM(TL.v0), xb = XM(TL.v1);
+    g.fillStyle = "rgba(0,0,0,.5)";
+    g.fillRect(GL, 0, Math.max(0, xa - GL), H); g.fillRect(xb, 0, Math.max(0, W - GR - xb), H);
+    g.strokeStyle = C.ac; g.lineWidth = 1.5; g.strokeRect(xa + 0.75, 1.5, Math.max(2, xb - xa) - 1.5, H - 3);
+    g.fillStyle = C.ac; g.fillRect(xa - 1, H / 2 - 9, 3, 18); g.fillRect(xb - 2, H / 2 - 9, 3, 18);
+  }
+
+  /* 命中测试：停顿道 / 时长道 / 栈深道里，光标下最近的那次停顿 */
+  function tlHit(mx, my){
+    var L = TL.L;
+    if (!L || mx < GL || mx > TL.W - GR) return null;
+    var pw = TL.W - GL - GR, span = TL.v1 - TL.v0, best = null, bd = 1e9;
+    var inLanes = my >= L.lanes.y && my < L.lanes.y + L.lanes.h;
+    var inCol = (my >= L.dur.y && my < L.dur.y + L.dur.h) || (my >= L.depth.y && my < L.depth.y + L.depth.h);
+    if (!inLanes && !inCol) return null;
+    TL.ev.forEach(function(e){
+      var x1 = GL + (e.a - TL.v0) / span * pw, x2 = GL + (e.b - TL.v0) / span * pw;
+      if (mx < x1 - 3 || mx > Math.max(x2, x1 + 2) + 3) return;
+      if (inLanes){
+        var y0 = L.lanes.y + 6 + e.lane * 20;
+        if (my < y0 - 2 || my > y0 + 16) return;
+      }
+      var d = Math.abs(mx - (x1 + x2) / 2) - e.dur / 1e6;
+      if (d < bd){ bd = d; best = e; }
+    });
+    return best;
+  }
+
+  function tlTip(ev){
+    var tip = $("tip"), L = TL.L;
+    if (!L || TL.mx < GL || TL.mx > TL.W - GR || (TL.drag && TL.drag.moved)){ tip.style.display = "none"; return; }
+    var pw = TL.W - GL - GR, tt = TL.v0 + (TL.mx - GL) / pw * (TL.v1 - TL.v0), lines = [fmtClock(tt, true)];
+    var h = TL.hover;
+    if (h){
+      lines.push(fmtMs(h.dur) + "  \u00b7  " + h.reason + (h.s.est ? "（旧格式）" : ""));
+      lines.push("卡在 " + (h.s.since || "-") + "  \u00b7  栈 " + h.depth + " 层");
+      if (h.s.stack && h.s.stack.length) lines.push("栈顶 " + short(h.s.stack[0]));
+    }
+    if (L.fps && TL.my >= L.fps.y){
+      var near = null, nd = 1e9;
+      TL.cpu.forEach(function(c){ var d = Math.abs(c.a - tt); if (d < nd){ nd = d; near = c; } });
+      if (near) lines.push("fps " + near.fps.toFixed(0) + "  tps " + near.tps.toFixed(1) + "  CPU " + near.cpu.toFixed(0) + "%  （" + fmtClock(near.a) + " 采样）");
+    }
+    tip.textContent = lines.join("\n");
+    tip.style.display = "block";
+    tip.style.left = Math.min(ev.clientX + 14, innerWidth - 540) + "px";
+    tip.style.top = (ev.clientY + 16) + "px";
+  }
+
+  /* 窗口摘要：当前看到的这一段里发生了什么 */
+  function tlSummary(){
+    var v0 = TL.v0, v1 = TL.v1, span = v1 - v0, inWin = [], tot = 0, mx = 0, by = {}, order = [];
+    TL.ev.forEach(function(e){
+      if (e.b <= v0 || e.a >= v1) return;
+      inWin.push(e);
+      tot += Math.min(e.b, v1) - Math.max(e.a, v0);
+      if (e.dur > mx) mx = e.dur;
+      if (!(e.reason in by)){ by[e.reason] = { ms: 0, n: 0 }; order.push(e.reason); }
+      by[e.reason].ms += e.dur; by[e.reason].n++;
+    });
+    order.sort(function(a, b){ return by[b].ms - by[a].ms; });
+    var h = '<div><div class="sec">' + fmtClock(v0, span < 20) + " \u2013 " + fmtClock(v1, span < 20) + "\u3000" + fmtSpan(span) + "</div>"
+      + '<div class="sr">停顿次数<b>' + inWin.length + " 次</b></div>"
+      + '<div class="sr">窗口内停顿时长<b>' + fmtMs(tot * 1000) + "</b></div>"
+      + '<div class="sr">占窗口时间<b>' + (span ? (tot / span * 100).toFixed(1) : "0.0") + "%</b></div>"
+      + '<div class="sr">最长一次<b>' + fmtMs(mx) + "</b></div>";
+    order.slice(0, 6).forEach(function(r, n){
+      h += '<div class="sr' + (n === 0 ? " sp" : "") + '"><i class="gd" style="background:' + col(r) + '"></i>' + esc(r)
+        + "<b>" + fmtMs(by[r].ms) + " \u00b7 " + by[r].n + " 次</b></div>";
+    });
+    h += "</div><div><div class=\"sec\">窗口内最长的停顿</div>";
+    var top = inWin.slice().sort(function(a, b){ return b.dur - a.dur; }).slice(0, 8);
+    h += top.length ? top.map(function(e){
+      return '<button class="t5" type="button" data-i="' + e.i + '"><i class="gd" style="background:' + col(e.reason) + '"></i>'
+        + '<span class="lt">' + esc(e.s.t || "") + '</span><span class="lm ' + sev(e.dur) + '">' + (e.s.est ? "~" : "") + fmtMs(e.dur)
+        + '</span><span class="lr">' + esc(e.reason) + '</span><span class="ls">' + esc(e.s.since || "") + "</span></button>";
+    }).join("") : '<div class="empty">这一段没有停顿</div>';
+    tlSum.innerHTML = h + "</div>";
+  }
+  tlSum.addEventListener("click", function(e){
+    var b = e.target.closest(".t5");
+    if (b) openStall(+b.getAttribute("data-i"));
+  });
+
+  /* 主图交互：滚轮缩放，拖动平移，点击打开 */
+  function tlPos(e){ var r = tlMain.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+  tlMain.addEventListener("pointerdown", function(e){
+    if (e.button !== 0) return;
+    var p = tlPos(e);
+    TL.drag = { x0: p[0], a: TL.v0, b: TL.v1, moved: false };
+    try { tlMain.setPointerCapture(e.pointerId); } catch (er) { }
+  });
+  tlMain.addEventListener("pointermove", function(e){
+    var p = tlPos(e);
+    TL.mx = p[0]; TL.my = p[1];
+    if (TL.drag){
+      var dx = TL.mx - TL.drag.x0;
+      if (Math.abs(dx) > 4) TL.drag.moved = true;
+      if (TL.drag.moved){
+        var pw = TL.W - GL - GR, dt = -dx / pw * (TL.drag.b - TL.drag.a);
+        tlSet(TL.drag.a + dt, TL.drag.b + dt);
+      }
+    }
+    TL.hover = TL.drag && TL.drag.moved ? null : tlHit(TL.mx, TL.my);
+    tlTip(e);
+    tlMain.style.cursor = TL.drag && TL.drag.moved ? "grabbing" : (TL.hover ? "pointer" : "crosshair");
+    tlSchedule();
+  });
+  tlMain.addEventListener("pointerup", function(e){
+    var d = TL.drag;
+    TL.drag = null;
+    try { tlMain.releasePointerCapture(e.pointerId); } catch (er) { }
+    if (d && !d.moved && TL.hover) openStall(TL.hover.i);
+    tlSchedule();
+  });
+  tlMain.addEventListener("pointerleave", function(){
+    if (TL.drag) return;
+    TL.mx = -1; TL.hover = null; $("tip").style.display = "none"; tlSchedule();
+  });
+  tlMain.addEventListener("wheel", function(e){
+    e.preventDefault();
+    var p = tlPos(e), pw = TL.W - GL - GR, span = TL.v1 - TL.v0, full = TL.t1 - TL.t0;
+    var f = Math.max(0, Math.min(1, (p[0] - GL) / pw)), tc = TL.v0 + f * span;
+    var dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY;
+    var ns = Math.max(TL_MIN, Math.min(full, span * Math.exp(dy * 0.0015)));
+    tlSet(tc - f * ns, tc - f * ns + ns);
+  }, { passive: false });
+  tlMain.addEventListener("dblclick", function(){ tlSet(TL.t0, TL.t1); });
+
+  function tlZoom(k){
+    var mid = (TL.v0 + TL.v1) / 2, ns = Math.max(TL_MIN, Math.min(TL.t1 - TL.t0, (TL.v1 - TL.v0) * k));
+    tlSet(mid - ns / 2, mid + ns / 2);
+  }
+  $("tl-in").addEventListener("click", function(){ tlZoom(0.5); });
+  $("tl-out").addEventListener("click", function(){ tlZoom(2); });
+  $("tl-fit").addEventListener("click", function(){ tlSet(TL.t0, TL.t1); });
+
+  /* 缩略条：拖框移动，拖边缘缩放，点空白处居中 */
+  function miniX(e){ return e.clientX - tlMini.getBoundingClientRect().left; }
+  function miniT(x){ return TL.t0 + (x - GL) / (tlMini.parentNode.clientWidth - GL - GR) * (TL.t1 - TL.t0); }
+  function miniMode(x){
+    var W = tlMini.parentNode.clientWidth, pw = W - GL - GR, k = pw / (TL.t1 - TL.t0);
+    var xa = GL + (TL.v0 - TL.t0) * k, xb = GL + (TL.v1 - TL.t0) * k;
+    return Math.abs(x - xa) <= 6 ? "l" : (Math.abs(x - xb) <= 6 ? "r" : (x > xa && x < xb ? "m" : "c"));
+  }
+  tlMini.addEventListener("pointerdown", function(e){
+    var x = miniX(e), mode = miniMode(x);
+    if (mode === "c"){
+      var half = (TL.v1 - TL.v0) / 2, c = miniT(x);
+      tlSet(c - half, c + half); mode = "m";
+    }
+    TL.mdrag = { mode: mode, t: miniT(x), a: TL.v0, b: TL.v1 };
+    try { tlMini.setPointerCapture(e.pointerId); } catch (er) { }
+  });
+  tlMini.addEventListener("pointermove", function(e){
+    var x = miniX(e), d = TL.mdrag;
+    if (!d){
+      var m = miniMode(x);
+      tlMini.style.cursor = (m === "l" || m === "r") ? "ew-resize" : (m === "m" ? "grab" : "pointer");
+      return;
+    }
+    var dt = miniT(x) - d.t;
+    if (d.mode === "m") tlSet(d.a + dt, d.b + dt);
+    else if (d.mode === "l") tlSet(Math.min(d.a + dt, d.b - TL_MIN), d.b);
+    else tlSet(d.a, Math.max(d.b + dt, d.a + TL_MIN));
+  });
+  tlMini.addEventListener("pointerup", function(e){
+    TL.mdrag = null;
+    try { tlMini.releasePointerCapture(e.pointerId); } catch (er) { }
+  });
+  window.addEventListener("resize", function(){ if (active === "p-timeline") tlShow(); });
+
+  /* ---------- 数据变了（导入 / 重置）就重建这些视图 ---------- */
+  function onData(){
+    var d = D();
+    if (d !== lastData){
+      lastData = d;
+      tabs = tabs.filter(function(t){ return t.key !== STALL_KEY; });
+      stallIdx = -1;
+      openReasons = null;
+      if (active === STALL_KEY) active = "p-overview";
+    }
+    renderExplorer(); renderTop5(); renderCrashes(); renderSess(); renderCmp(); buildCallTree(); tlBuild();
+    activate(active, true);
+  }
+  if (window.MutationObserver) new MutationObserver(onData).observe($("rows"), { childList: true });
+
+  function fromHash(){
+    var h = (location.hash || "").replace(/^#/, "");
+    if (h && VIEWS["p-" + h]) openTab("p-" + h, VIEWS["p-" + h]);
+  }
+  window.addEventListener("hashchange", fromHash);
+  onData();
+  fromHash();
+})();
+</script>
+</body>
+</html>
