@@ -25,13 +25,13 @@ FrameSpike 在 JVM 内部直接采样：每帧必经的方法入口都有检查�
 
 | 加载器 | 版本 |
 |---|---|
-| Forge（coremod） | 1.8.9、1.12.2 |
-| Fabric | 1.16.5+（1.20.1 已实测） |
+| Forge（coremod） | 1.8.9 – 1.12.2（1.9.x / 1.10.x / 1.11.x / 1.12.x 已实测，Lunar Client 也可用） |
+| Fabric | 1.20.1 – 1.20.6（已实测；1.16.5+ 理论兼容） |
 | NeoForge | 1.20.1 |
 
 ## 使用
 
-放进对应版本的 `mods` 目录，游戏内用 `/fs` 命令控制：`/fs start` 开始记录 → 打一局 → `/fs stop` 输出汇总并生成报告
+放进对应版本的 `mods` 目录，游戏内用 `/fs` 命令控制：`/fs start` 开始记录 → 打一局 → `/fs stop` 输出汇总并生成报告。1.8.9 – 1.12.2 各版本共用同一份 Forge jar
 
 ## 命令一览
 
@@ -117,13 +117,13 @@ FrameSpike samples inside the JVM itself, in three steps:
 
 | Loader | Version |
 |---|---|
-| Forge (coremod) | 1.8.9, 1.12.2 |
-| Fabric | 1.16.5+ (1.20.1 tested) |
+| Forge (coremod) | 1.8.9 – 1.12.2 (1.9.x / 1.10.x / 1.11.x / 1.12.x tested; works on Lunar Client too) |
+| Fabric | 1.20.1 – 1.20.6 (tested; 1.16.5+ expected to work) |
 | NeoForge | 1.20.1 |
 
 ## Usage
 
-Drop the jar into the version's `mods` folder and control it in-game with `/fs`: `/fs start` to record → play → `/fs stop` for the summary and a report
+Drop the jar into the version's `mods` folder and control it in-game with `/fs`: `/fs start` to record → play → `/fs stop` for the summary and a report. All versions 1.8.9 – 1.12.2 share the same Forge jar
 
 ## Commands
 
