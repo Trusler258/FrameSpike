@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "framespike.fabric.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "framespike.refmap.json",
+  "client": [
+    "MinecraftClientMixin",
+    "GameRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

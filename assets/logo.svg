@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="FrameSpike 帧刺">
+  <title>FrameSpike 帧刺</title>
+  <desc>帧尖峰波形：主线程冻住的那一刻。</desc>
+  <defs>
+    <linearGradient id="fsLine" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#4cc9f0"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <linearGradient id="fsPlate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#162034"/>
+      <stop offset="1" stop-color="#090d15"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="128" height="128" rx="24" fill="url(#fsPlate)"/>
+
+  <path d="M24 74h14l7-14 9 26 9-44 9 36 7-4h25"
+        fill="none" stroke="url(#fsLine)" stroke-width="7"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

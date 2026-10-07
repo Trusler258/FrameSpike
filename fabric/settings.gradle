@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        maven { name = 'Fabric'; url = 'https://maven.fabricmc.net/' }
+        // 国内镜像放前面：plugins.gradle.org 通但慢，走阿里云代理快很多
+        maven { name = 'AliyunPlugin'; url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'FrameSpike-Fabric'

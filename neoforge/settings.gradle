@@ -1,0 +1,16 @@
+pluginManagement {
+    repositories {
+        maven { name = 'NeoForged'; url = 'https://maven.neoforged.net/releases' }
+        // NeoGradle 自己依赖 org.jetbrains:annotations 之类的中央仓库构件 ——
+        // pluginManagement 的仓库列表也参与解析插件的传递依赖，少配中央仓库会直接报
+        // "could not resolve plugin artifact"（坑：错误信息看起来像插件坐标错了，其实是依赖解析失败）。
+        // 注意本机 repo1.maven.org 的 DNS 是不通的，必须用 mavenCentral() 的 repo.maven.apache.org，
+        // 或者阿里云镜像。
+        maven { name = 'Aliyun'; url = 'https://maven.aliyun.com/repository/public' }
+        maven { name = 'AliyunPlugin'; url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'FrameSpike-NeoForge'

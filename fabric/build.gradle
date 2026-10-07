@@ -1,0 +1,81 @@
+plugins {
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+}
+
+/*
+ * 版本号从核心源码里读，不写第二遍 —— 这样 FrameSpike.FabricJar 的版本
+ * 永远等于 FrameSpike.MOD_VERSION，不会出现「代码 v0.6.4 / jar 还是 0.6.3」。
+ */
+def coreVersion = '0.0.0'
+file('../src/framespike/FrameSpike.java').withReader('UTF-8') { r ->
+    def m = r.text =~ /MOD_VERSION\s*=\s*"([^"]+)"/
+    if (m.find()) coreVersion = m.group(1)
+}
+
+group = project.maven_group
+version = coreVersion
+// 产物名带上本模块实际编译的游戏版本：FrameSpike-Fabric-<mc>-<mod>.jar
+// 换 gradle.properties 里的 minecraft_version，文件名会自动跟着变
+base { archivesName = "${project.archives_base_name}-${project.minecraft_version}".toString() }
+
+repositories {
+    maven { name = 'Fabric'; url = 'https://maven.fabricmc.net/' }
+    maven { name = 'Aliyun'; url = 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    // 只为了 /fs 的命令注册（fabric-command-api-v2）。运行时是软依赖：没装就降级到 ctrl 文件通道。
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+/*
+ * ★ 多版本的关键一行：核心（Cfg / FrameSpike / Report / Cmd）零 MC 依赖，
+ *   直接拿 1.8.9 coremod 的同一份源码编译，一个字都不复制、不改。
+ *   只挂 ../src/framespike，绝不挂 ../src —— 那样会把 forge189 的两个入口也拖进来，
+ *   而它们需要 launchwrapper / FML 的 API。
+ */
+sourceSets {
+    main {
+        java {
+            srcDir file('../src/framespike')
+        }
+        /* ★ 核心的资源也要带：report.html 模板 + logo。漏了它 /fs report 生成的页面
+           会显示「模板缺失」—— 而且没有任何报错（实测踩到） */
+        resources {
+            srcDir file('../resources')
+        }
+    }
+}
+
+loom {
+    mixin {
+        defaultRefmapName = 'framespike.refmap.json'
+    }
+    runConfigs.client {
+        // 方便在开发环境里直接看到日志；生产环境下 ini 落在 <gameDir>/framespike/
+        programArgs '--username', 'Dev'
+    }
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcver', project.minecraft_version
+    filesMatching('fabric.mod.json') {
+        expand version: project.version, mcver: project.minecraft_version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    // 1.16.5 时把 gradle.properties 的 java_release 改成 8
+    options.release = project.java_release as int
+}
+
+jar {
+    from('../README.md') { rename { 'FrameSpike-README.md' } }
+    from('../CHANGELOG.md') { rename { 'FrameSpike-CHANGELOG.md' } }
+}

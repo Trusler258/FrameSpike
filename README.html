@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FrameSpike 帧刺 · Minecraft 1.8.9 帧时间尖峰与卡顿分析 mod</title>
+<style>
+:root{
+  --bg:#0b0f15; --panel:#10161f; --panel2:#141c27;
+  --line:#243044; --line2:#1b2432;
+  --tx:#e2e9f4; --tx2:#97a6bd; --tx3:#61708a;
+  --ac:#4cc9f0; --ac2:#8b6dff;
+  --font:"MiSans","HarmonyOS Sans SC","Source Han Sans SC","Noto Sans SC","PingFang SC","Microsoft YaHei UI",system-ui,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono",Consolas,Menlo,"Microsoft YaHei UI",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:var(--font);font-size:14px;line-height:1.8}
+a{color:var(--ac);text-decoration:none}
+code{font-family:var(--mono);font-size:.9em;background:var(--panel2);
+  border:1px solid var(--line2);border-radius:5px;padding:1px 6px;white-space:nowrap}
+::selection{background:rgba(76,201,240,.25)}
+
+.layout{display:flex;max-width:1200px;margin:0 auto}
+
+/* ---------------- 左侧目录树 ---------------- */
+aside{width:250px;flex:none;position:sticky;top:0;height:100vh;overflow-y:auto;
+  padding:30px 12px 30px 22px;border-right:1px solid var(--line2)}
+.brand{display:flex;gap:11px;align-items:center;padding:0 8px 6px}
+.brand img{width:32px;height:32px}
+.brand .n{font-weight:600;font-size:15px;letter-spacing:.01em}
+.brand .n small{display:block;font-weight:400;font-size:11px;color:var(--tx3);line-height:1.5;margin-top:1px}
+.vline{margin:14px 8px 18px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--ac),var(--ac2),transparent);
+  background-size:200% 100%;animation:slide 6s linear infinite}
+@keyframes slide{to{background-position:-200% 0}}
+.tree{font-size:13px}
+.tree .grp{margin:1px 0}
+.tree .grp-btn{display:flex;align-items:center;gap:8px;width:100%;text-align:left;
+  background:none;border:0;color:var(--tx2);font:inherit;font-weight:500;
+  padding:6px 9px;border-radius:7px;cursor:pointer;letter-spacing:.02em;
+  transition:color .15s,background .15s,padding-left .15s}
+.tree .grp-btn:hover{background:var(--panel2);color:var(--tx);padding-left:12px}
+.tree .caret{width:0;height:0;border-left:5px solid var(--tx3);border-top:4px solid transparent;
+  border-bottom:4px solid transparent;transition:transform .18s ease;flex:none}
+.tree .open>.grp-btn .caret{transform:rotate(90deg)}
+.tree .open>.grp-btn{color:var(--tx)}
+.tree .kids{display:none;margin:1px 0 5px;padding-left:10px;border-left:1px solid var(--line2);margin-left:12px}
+.tree .open>.kids{display:block}
+.tree .kids a{display:block;color:var(--tx2);padding:4px 10px;border-radius:6px;line-height:1.5;
+  transition:color .15s,background .15s,padding-left .15s}
+.tree .kids a:hover{background:var(--panel2);color:var(--tx);padding-left:14px}
+.tree .kids a.on{color:var(--ac);background:rgba(76,201,240,.1)}
+.aside-foot{margin-top:24px;padding:14px 10px 0;border-top:1px solid var(--line2);
+  font-size:12px;color:var(--tx3);line-height:1.9;font-family:var(--mono)}
+
+/* ---------------- 正文 ---------------- */
+main{flex:1;min-width:0;padding:40px 44px 90px;max-width:860px}
+
+/* 顶栏：一行身份，不是 hero 卡 */
+.top{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.top h1{margin:0;font-size:23px;font-weight:600;letter-spacing:.01em}
+.top h1 .cn{color:var(--tx2);font-weight:500}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);
+  font-size:11.5px;color:var(--tx3);border:1px solid var(--line);border-radius:99px;
+  padding:2px 10px;vertical-align:3px}
+.badge i{width:6px;height:6px;border-radius:99px;background:var(--gn);
+  animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(123,216,143,.5)}
+  50%{opacity:.55;box-shadow:0 0 0 4px rgba(123,216,143,0)}}
+.sub{margin:4px 0 0;color:var(--tx2)}
+.meta{margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--tx3)}
+.lede{font-size:15.5px;color:var(--tx);border-left:2px solid var(--ac);
+  padding:2px 0 2px 16px;margin:26px 0 6px}
+
+section{padding-top:10px}
+h2{font-size:18px;font-weight:600;margin:52px 0 10px;letter-spacing:.01em;
+  scroll-margin-top:24px;display:flex;align-items:center;gap:12px}
+h2::before{content:"";width:14px;height:2px;background:var(--ac);flex:none;border-radius:2px}
+h3{font-size:14.5px;font-weight:600;margin:26px 0 6px;color:var(--tx)}
+p{color:var(--tx2);margin:10px 0}
+ul,ol{color:var(--tx2);padding-left:22px;margin:10px 0}
+li{margin:4px 0}
+li b,p b{color:var(--tx);font-weight:600}
+li>ul{margin:4px 0}
+
+pre.block{font-family:var(--mono);font-size:12.5px;line-height:1.75;color:#c6d2e2;
+  background:var(--panel);border:1px solid var(--line2);border-radius:10px;
+  padding:15px 17px;overflow-x:auto;margin:14px 0}
+pre.block .c{color:var(--tx3)}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0}
+th{text-align:left;font-weight:500;color:var(--tx3);font-size:11.5px;letter-spacing:.04em;
+  padding:6px 12px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--tx2)}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:rgba(255,255,255,.025)}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap}
+td code{white-space:normal}
+
+/* 折叠块：去框，只留分隔线，像 wiki */
+details{border:0;border-bottom:1px solid var(--line2);border-radius:0;margin:0}
+details summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px;
+  padding:12px 4px;font-weight:600;color:var(--tx);transition:color .15s}
+details summary:hover{color:var(--ac)}
+details summary::-webkit-details-marker{display:none}
+details summary .caret{width:0;height:0;border-left:5px solid var(--tx3);
+  border-top:4px solid transparent;border-bottom:4px solid transparent;
+  transition:transform .18s ease;flex:none;align-self:center}
+details[open]>summary .caret{transform:rotate(90deg)}
+details summary .tip{margin-left:auto;font-weight:400;font-size:12px;color:var(--tx3);white-space:nowrap}
+details .body{padding:0 4px 16px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.vers-list{border-top:1px solid var(--line)}
+
+.note{border-left:2px solid var(--ac);background:rgba(76,201,240,.06);
+  padding:9px 14px;color:var(--tx2);font-size:13px;margin:14px 0;border-radius:0 8px 8px 0}
+
+/* 滚动进入的动效：整节淡入上移 */
+main section{opacity:0;transform:translateY(14px);
+  transition:opacity .55s ease,transform .55s ease}
+main section.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  main section{opacity:1;transform:none;transition:none}
+  .vline,.badge i{animation:none}
+}
+
+@media (max-width:880px){
+  .layout{display:block}
+  aside{position:static;width:auto;height:auto;border-right:0;border-bottom:1px solid var(--line2)}
+  main{padding:26px 18px 60px}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<aside>
+  <div class="brand">
+    <img src="assets/logo.svg" alt="FrameSpike 帧刺">
+    <div class="n">FrameSpike 帧刺<small>Minecraft 1.8.9 帧时间尖峰与卡顿分析 mod</small></div>
+  </div>
+  <div class="vline"></div>
+
+  <nav class="tree" id="tree">
+    <div class="grp open">
+      <button class="grp-btn" type="button"><i class="caret"></i>开始</button>
+      <div class="kids">
+        <a href="#intro">简介</a>
+        <a href="#features">功能</a>
+        <a href="#install">安装</a>
+      </div>
+    </div>
+    <div class="grp open">
+      <button class="grp-btn" type="button"><i class="caret"></i>使用</button>
+      <div class="kids">
+        <a href="#commands">游戏内指令</a>
+        <a href="#report">HTML 分析报告</a>
+        <a href="#config">配置</a>
+      </div>
+    </div>
+    <div class="grp">
+      <button class="grp-btn" type="button"><i class="caret"></i>参考</button>
+      <div class="kids">
+        <a href="#log">日志格式</a>
+        <a href="#hooks">触发点</a>
+        <a href="#data">实测数据</a>
+      </div>
+    </div>
+    <div class="grp">
+      <button class="grp-btn" type="button"><i class="caret"></i>开发</button>
+      <div class="kids">
+        <a href="#tests">离线验证</a>
+        <a href="#tree-sec">项目结构</a>
+        <a href="#limits">已知限制</a>
+      </div>
+    </div>
+    <div class="grp">
+      <button class="grp-btn" type="button"><i class="caret"></i>记录</button>
+      <div class="kids">
+        <a href="#changelog">版本</a>
+        <a href="#pits">踩过的坑</a>
+      </div>
+    </div>
+    <div class="grp">
+      <button class="grp-btn" type="button"><i class="caret"></i>关于</button>
+      <div class="kids">
+        <a href="#license">署名与许可</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="aside-foot">
+    v0.4.0 · by Trusler<br>
+    Forge 11.15.1 + ichor<br>
+    Zulu 17 · 零外部依赖
+  </div>
+</aside>
+
+<main>
+
+<div class="top">
+  <h1>FrameSpike <span class="cn">帧刺</span></h1>
+  <span class="badge"><i></i>v0.4.0</span>
+</div>
+<p class="sub">Minecraft 1.8.9 帧时间尖峰与卡顿分析 mod</p>
+<p class="meta">Trusler · Forge 11.15.1 + ichor · Zulu 17 · 纯 coremod，零外部依赖</p>
+<p class="lede">不猜硬件、不猜驱动。在主线程冻住的那一刻抓调用栈，把「卡了多久」和「卡在哪」同时写进日志和聊天栏。</p>
+
+<section id="intro">
+  <h2>简介</h2>
+  <p>客户端卡顿通常有三种归因：GC、网络、渲染。但这个环境里三样都不是 ——
+  <code>-XX:+DisableAttachMechanism</code> 封掉了 jstack / jcmd / JFR，服务端 spark 又只能给出<b>时间窗总量</b>、
+  没有单帧时间戳。FrameSpike 补的就是这一段：<b>从 JVM 内部自采，抓单次冻结的栈和真实时长。</b></p>
+  <p>它只做三件事：</p>
+  <ol>
+    <li>在 7 个每帧必经的方法入口注入检查点（约 20ns / 次）</li>
+    <li>发现主线程超过阈值没推进，就抓一次栈，并记录帧内时间线</li>
+    <li>等下一个检查点到来时<b>结算真实时长</b>，归好原因，写日志、可选推聊天</li>
+  </ol>
+</section>
+
+<section id="features">
+  <h2>功能</h2>
+  <ul>
+    <li><b>停顿取证</b>：调用栈 + 帧内时间线（哪一步推进到哪）+ 真实时长分档</li>
+    <li><b>原因归类</b>：按栈顶前 6 帧归成一句简写 —— 写文件 / 类加载-remap / 窗口合成 / GL 驱动 / 音效 / 字体缓存 / 小地图 / OptiFine / 网络</li>
+    <li><b>游戏内指令</b>：14 个子命令，Tab 补全，全部可热改，不用重启</li>
+    <li><b>聊天播报</b>：卡顿时推一行 <code>[FS] 312ms  写文件  FileOutputStream.writeBytes:0</code>（三道闸防刷屏）</li>
+    <li><b>全线程 CPU 表</b>：用 <code>ThreadMXBean.getThreadCpuTime</code>（不需要 safepoint），补 spark 只采 Client thread 的盲区</li>
+    <li><b>glFinish 干预</b>：可选接管每帧的 <code>GL11.glFinish()</code>，并用 <code>/fs glfinish on|off</code> 游戏内秒切做 A/B</li>
+    <li><b>崩溃感知</b>：扫描 crash-reports，解析崩溃栈并归因（报告页「崩溃」区块）；JVM 退出钩子留下死前时间线</li>
+    <li><b>GC 关联</b>：每次停顿自动标注是不是 GC（<code>gc=</code> 标注 + 聊天 <code>[GC]</code> + 报告页明细）</li>
+    <li><b>fps 骤降检测</b>：滑动窗口，均值掉到一半以下提示</li>
+    <li><b>世界上下文</b>：停顿行附带维度/坐标（尽力而为，失败静默）</li>
+    <li><b>ini 热重载</b>：改 <code>framespike.ini</code> 约 2.5 秒后生效，不用重启</li>
+  </ul>
+</section>
+
+<section id="install">
+  <h2>安装</h2>
+<pre class="block"><span class="c"># 1) 完全退出 Lunar Client
+#    （运行中的 jar 会被 JVM 锁住；此时只装新版会让两个 coremod 同时加载 = 双份注入）</span>
+
+<span class="c"># 2) 放入 mods —— 注意是 forge-1.8.9 子目录，不是 mods 根目录</span>
+copy dist\FrameSpike-0.4.0.jar "%USERPROFILE%\.lunarclient\profiles\1.8\mods\forge-1.8.9\"
+
+<span class="c"># 3) 重启游戏，日志在</span>
+%USERPROFILE%\.lunarclient\profiles\1.8\framespike\frame-spikes.log</pre>
+  <p>卸载 = 删掉那个 jar，没有其他改动。</p>
+</section>
+
+<section id="commands">
+  <h2>游戏内指令</h2>
+  <table>
+    <tr><th>指令</th><th>说明</th></tr>
+    <tr><td><code>/fs</code></td><td>快速上手 4 步（start → 打一局 → stop → tail）</td></tr>
+    <tr><td><code>/fs start</code></td><td>开始记录，重置本段统计（建议进服稳定后再打）</td></tr>
+    <tr><td><code>/fs stop</code></td><td>输出汇总并停止记录；<b>聊天播报继续</b>（卡顿照样提示），<code>/fs start</code> 恢复完整记录</td></tr>
+    <tr><td><code>/fs status</code></td><td>逐行状态：记录开关、阈值、glFinish 模式与调用点数、注册详情、chat 设置、日志路径</td></tr>
+    <tr><td><code>/fs dump</code></td><td>立刻抓一次主线程栈（并给出原因简写）</td></tr>
+    <tr><td><code>/fs mark &lt;文本&gt;</code></td><td>往日志插标记，把时间线和实际事件对齐</td></tr>
+    <tr><td><code>/fs tail [n]</code></td><td>把最近 n 条 STALL 的首行回显到聊天（默认 3，上限 20）</td></tr>
+    <tr><td><code>/fs threshold &lt;ms&gt;</code></td><td>停顿判定阈值，默认 60（范围 20-5000）</td></tr>
+    <tr><td><code>/fs chat on|off</code></td><td>卡顿聊天提示开关，默认开</td></tr>
+    <tr><td><code>/fs chatmin &lt;ms&gt;</code></td><td>聊天提示门槛，默认 150（冷却 1000ms）</td></tr>
+    <tr><td><code>/fs glfinish on|off</code></td><td>on = 跳过每帧 glFinish，off = 恢复原生（需 <code>glFinishMode=proxy</code>）</td></tr>
+    <tr><td><code>/fs report</code></td><td>生成一份自包含的 <b>HTML 分析报告</b>（火焰图 / 归因 / 分档 / CPU 趋势 / 停顿明细）</td></tr>
+    <tr><td><code>/fs serve [端口|off]</code></td><td>起本地报告服务（默认 8731，只绑 127.0.0.1），页面每次刷新重读日志</td></tr>
+    <tr><td><code>/fs cpu</code></td><td>立刻输出全线程 CPU 表</td></tr>
+    <tr><td><code>/fs help [子命令]</code></td><td>分组全表（行尾带当前值）/ 单条详情</td></tr>
+  </table>
+  <p>别名 <code>framespike</code>、<code>fspike</code>。命令名被别的 mod 占用会自动换名，<code>/fs status</code> 里能看到最终生效的名字。</p>
+</section>
+
+<section id="report">
+  <h2>HTML 分析报告</h2>
+  <p><code>/fs report</code> 生成的报告是<b>单文件、数据内嵌</b>的，双击就能看，不需要联网也不需要服务器。
+  <code>/fs stop</code> 会自动出一份（<code>autoReport=true</code>）。</p>
+  <table>
+    <tr><th>区块</th><th>内容</th></tr>
+    <tr><td>KPI</td><td>停顿次数（可测条数）、累计时长、最长一次、平均 fps / tps</td></tr>
+    <tr><td>时长分档</td><td>&lt;100 / 100-199 / 200-499 / &ge;500ms 四档 —— 这才是「难受程度」</td></tr>
+    <tr><td>原因归因</td><td>按栈顶归类，宽度 = 累计时长</td></tr>
+    <tr><td><b>火焰图</b></td><td>层数 = 调用深度，宽度 = 累计停留时长；点一下聚焦某一支，Esc 回退</td></tr>
+    <tr><td>CPU / 帧率</td><td>每 60 秒一次采样的趋势线（fps / tps / 整机 CPU%）</td></tr>
+    <tr><td>崩溃</td><td>从 crash-reports 解析：时间 / 异常 / 归因 / 报告文件（没有崩溃时隐藏）</td></tr>
+    <tr><td>对比</td><td>选第二份日志，指标 / 分档 / 归因逐项对比，变差红、变好绿</td></tr>
+    <tr><td>停顿明细</td><td>时刻、真实时长、原因（GC 标注）、卡在哪一步、帧内时间线；点「栈」展开完整调用栈</td></tr>
+  </table>
+
+  <h3>报告页可以自己喂文件</h3>
+  <p>报告是单文件的，所以它自己带了一套解析器（页面里的 <code>/*==PARSE-BEGIN==*/</code> 区块，
+  和 Java 侧同一套口径，有测试逐字段对齐）—— 于是不重开游戏也能看别的日志：</p>
+  <table>
+    <tr><th>拖进去的东西</th><th>会发生什么</th></tr>
+    <tr><td>任意一份 <code>frame-spikes.log</code></td><td>页面直接换成那份数据（KPI / 分档 / 归因 / 火焰图 / 明细全部重算）</td></tr>
+    <tr><td><code>.ttf</code> <code>.otf</code> <code>.woff</code> <code>.woff2</code></td><td>整个页面换成这个字体（<code>FontFace</code> 内嵌，不联网；刷新或「重置」还原）</td></tr>
+    <tr><td>别的杂文件</td><td>明确告诉你「一条 STALL 都没有」，不会白屏</td></tr>
+  </table>
+  <p>字体默认就是<b>圆体</b>：圆体拉丁（Nunito / Quicksand / Varela Round）→ 圆体中文
+  （MiSans / HarmonyOS Sans / OPPO Sans / 阿里巴巴普惠体 / 思源黑体）→ 系统兜底，
+  <b>装了哪个用哪个</b>；调用栈和代码块仍保持等宽，不会因为「圆」而看不出缩进。</p>
+
+  <h3>不开游戏出报告</h3>
+<pre class="block">java -cp out/main;resources;out/test ReportGen "&lt;日志路径&gt;" ["&lt;输出目录&gt;"]</pre>
+  <p>报告只带<b>最长的 400 条</b>、每条栈<b>最多 24 层</b>（否则几百 KB 会变几 MB）。
+  没有真实时长（旧格式、无 <code>STALL-END</code>）的记录会标成「旧格式」并加 <code>~</code>，<b>不参与统计</b> ——
+  它们的时长只能等于阈值，混进来会把最长/分档带偏。</p>
+</section>
+
+<section id="config">
+  <h2>配置</h2>
+  <p>首次启动生成 <code>…\profiles\1.8\framespike\framespike.ini</code>：</p>
+  <table>
+    <tr><th>键</th><th>默认</th><th>说明</th></tr>
+    <tr><td><code>enabled</code></td><td>true</td><td>总开关</td></tr>
+    <tr><td><code>stallThresholdMs</code></td><td>60</td><td>停顿判定阈值</td></tr>
+    <tr><td><code>maxDumps</code></td><td>2000</td><td>单次会话最多抓多少次</td></tr>
+    <tr><td><code>stackDepth</code></td><td>48</td><td>抓多少层栈</td></tr>
+    <tr><td><code>glFinishMode</code></td><td>off</td><td><code>off</code> 完全不碰字节码；<code>proxy</code> 接管调用点（改这个需重启一次）</td></tr>
+    <tr><td><code>chatNotify</code></td><td>true</td><td>卡顿聊天提示</td></tr>
+    <tr><td><code>chatMinMs</code></td><td>150</td><td>提示门槛</td></tr>
+    <tr><td><code>chatCooldownMs</code></td><td>1000</td><td>两条提示的最小间隔</td></tr>
+    <tr><td><code>cpuSampleSec</code></td><td>60</td><td>全线程 CPU 表间隔</td></tr>
+    <tr><td><code>commandName</code> / <code>commandAliases</code></td><td>fs / framespike,fspike</td><td>指令名与别名</td></tr>
+    <tr><td><code>ctrlFile</code></td><td>空</td><td>指令注册失败时的降级控制文件</td></tr>
+    <tr><td><code>autoReport</code></td><td>true</td><td><code>/fs stop</code> 时自动生成 HTML 报告</td></tr>
+    <tr><td><code>reportDir</code></td><td>空</td><td>报告输出目录，留空 = 与日志同目录</td></tr>
+  </table>
+</section>
+
+<section id="log">
+  <h2>日志格式</h2>
+<pre class="block">=== FrameSpike 帧刺 v0.4.0  by Trusler ===
+=== Minecraft 1.8.9 帧时间尖峰与卡顿分析 mod ===
+patch net/minecraft/client/Minecraft: hooks=2/2
+        命中: [notch av -&gt; runGameLoop, notch s -&gt; runTick]
+
+03:03:52.104  STALL-DETECT 61ms  since='hudForge'  frames=8942  ticks=1204  stall#7  reason=写文件
+  timeline:
+    runTick              t+   0.412ms
+    updateCameraAndRender t+   0.910ms
+    renderWorldPass      t+   1.004ms
+    hudForge             t+  33.221ms
+  stack of "Client thread":
+    java.io.FileOutputStream.writeBytes(Native Method)
+    java.io.FileOutputStream.write(BufferedOutputStream.java:678)
+    ...
+  STALL-END    total=372ms  detected@61ms  since='hudForge'  next='runGameLoop'  reason=写文件</pre>
+  <p><code>STALL-DETECT</code> 是检测瞬间（只能知道「至少 60ms」），<code>STALL-END</code> 才是<b>真实时长</b> ——
+  两者必须分开，否则一次 1.6s 的冻结会被记成 60ms。</p>
+</section>
+
+<section id="hooks">
+  <h2>触发点</h2>
+  <table>
+    <tr><th>类（运行时名）</th><th>方法</th><th>说明</th></tr>
+    <tr><td><code>net.minecraft.client.Minecraft</code></td><td><code>func_71411_J</code> / notch <code>av</code></td><td>runGameLoop</td></tr>
+    <tr><td><code>net.minecraft.client.Minecraft</code></td><td><code>func_71407_l</code> / notch <code>s</code></td><td>runTick</td></tr>
+    <tr><td><code>net.minecraft.client.renderer.EntityRenderer</code></td><td><code>func_181560_a</code> / notch <code>a</code></td><td>updateCameraAndRender</td></tr>
+    <tr><td><code>net.minecraft.client.renderer.EntityRenderer</code></td><td><code>func_78471_a</code> / notch <code>b</code></td><td>renderWorld</td></tr>
+    <tr><td><code>net.minecraft.client.renderer.EntityRenderer</code></td><td><code>func_175068_a</code> / notch <code>a</code></td><td>renderWorldPass</td></tr>
+    <tr><td><code>net.minecraft.client.gui.GuiIngame</code></td><td><code>func_175180_a</code> / notch <code>a</code></td><td>renderGameOverlay</td></tr>
+    <tr><td><code>net.minecraftforge.client.GuiIngameForge</code></td><td><code>func_175180_a</code> / notch <code>a</code></td><td>renderGameOverlay（Forge）</td></tr>
+  </table>
+  <p><b>为什么两套名字都写</b>：1.8.9 运行时 MC 类的成员名是 <b>notch 混淆名</b>（<code>av()V</code>），
+  不是 spark 栈里显示的 <code>func_71411_J</code> —— 那是 spark 自己反混淆后的显示名。
+  按 SRG 名写 hook 会<b>全部 0 命中且没有任何报错</b>。所以两列都匹配，并把命中项打进日志。</p>
+</section>
+
+<section id="data">
+  <h2>实测数据</h2>
+  <p>24 分钟真实对局、100 次停顿，按栈顶归因：</p>
+  <table>
+    <tr><th>归因</th><th>累计</th><th>占比</th></tr>
+    <tr><td>类加载 / remap / 字节码</td><td>2439ms</td><td>39.3%</td></tr>
+    <tr><td>零散一次性初始化（21 条各 1 次）</td><td>1281ms</td><td>20.7%</td></tr>
+    <tr><td>Windows 窗口合成 / 消息泵</td><td>914ms</td><td>14.7%</td></tr>
+    <tr><td>GL 驱动调用</td><td>782ms</td><td>12.6%</td></tr>
+    <tr><td>写文件 / 音效 / 字体缓存</td><td>783ms</td><td>12.7%</td></tr>
+  </table>
+  <p>其中 &ge;200ms 的有 18 次，最长 <b>1589ms</b>（Xaero 小地图在进服时加载全部路径点），
+  其次 750ms（窗口消息泵）、620ms（OptiFine 自定义天空）、464ms（换维度反射创建 WorldProvider）、
+  6&times;219~372ms（Lunar 自己丢到主线程的写文件任务）。
+  同场 GC 仅 16 次 / 418ms（占 2.6%），可以排除。</p>
+</section>
+
+<section id="tests">
+  <h2>离线验证</h2>
+  <p>不开游戏也能验到「字节码改对了没有」：</p>
+  <table>
+    <tr><th>套件</th><th>规模</th><th>覆盖</th></tr>
+    <tr><td>SelfTest</td><td>16 项</td><td>注入数 / 替换数 / JVM 字节码校验器 / 停顿端到端</td></tr>
+    <tr><td>CmdTest</td><td>96 项</td><td>Proxy 注册 / 形态分派 / 14 子命令 / Tab / 时长结算回归 / 分类器 / 报告与服务</td></tr>
+    <tr><td>RoundTrip</td><td>两段</td><td>40 个真实类往返无损 + 真实 notch 类注入验证</td></tr>
+    <tr><td>ReportCheck</td><td>48&times;2 + 61 项</td><td>模板占位符 / 导入入口 / <b>JS 解析器与 Java 侧逐字段对齐</b> / 假 DOM 整页跑导入流程</td></tr>
+    <tr><td>打包</td><td>通过</td><td>jar cfm + MANIFEST 检查</td></tr>
+  </table>
+  <p>RoundTrip 第二段最关键：拿真实游戏类跑 transformer，断言 <code>ave.class</code> 注入 2 个检查点、
+  <code>bfk.class</code> 注入 3 个，方法集合不变、唯一差异是目标方法开头的 <code>LDC + INVOKESTATIC</code>。</p>
+  <p>ReportCheck 是报告页的护栏 —— 页面里那份 JS 解析器和 Java 侧口径必须<b>逐字段相等</b>
+  （同一条日志跑两边，比停顿条数、累计时长、分档、每条明细的栈与时间线、火焰树逐节点；
+  真实日志那 9280 个节点全等），标准答案由 <code>JsonDump</code> 出。</p>
+<pre class="block">python build.py        <span class="c"># 或双击 build.bat（只需 JDK 17，不需要 Gradle / JDK 8）</span>
+
+<span class="c"># 单独跑网页那两套（需要 node）</span>
+node test/parse_check.js resources/framespike/report.html
+node test/page_check.js  resources/framespike/report.html</pre>
+</section>
+
+<section id="tree-sec">
+  <h2>项目结构</h2>
+<pre class="block">src/framespike/      Cfg 配置 · FrameSpike 运行时与指令 · Cmd 指令反射桥 · Plugin/Transformer ASM · Report 报告
+stubsrc/             离线自检用的假类（Minecraft / EntityRenderer / ICommand / ClientCommandHandler …）
+test/                SelfTest · CmdTest · RoundTrip · ReportGen · JsonDump · parse_check.js · page_check.js
+lib/stubapi/         从 Lunar 自带 jar 里抽出的编译期 API（ASM、IFMLLoadingPlugin）
+assets/              logo.svg（项目图标）+ icons/（27 个手写 SVG 图标）
+resources/           report.html 报告模板（打进 jar；自带一份 JS 解析器）
+probe/               整机探测：sysprobe.ps1 · join_stalls.py · etw_capture.ps1（不需要改 mod）
+dist/                成品 jar + report-示例.html（真实日志生成的样板）
+CHANGELOG.md         更新日志</pre>
+</section>
+
+<section id="limits">
+  <h2>已知限制</h2>
+  <ul>
+    <li>只采<b>客户端线程</b>：后台线程的栈看不到（有 CPU 表兜底）。要全采得改 <code>thread_dumper</code> 配置。</li>
+    <li>采样间隔 2ms，加上 Windows 定时器粒度约 15.6ms，所以 50ms 级别的小抖动只能给出近似值；&ge;200ms 的停顿检出很可靠。</li>
+    <li>单次冻结无法定位到「具体某一行」以外的东西 —— 只能给栈顶若干帧。</li>
+    <li><code>glFinishMode=proxy</code> 需要重启一次才生效（<code>-XX:+DisableAttachMechanism</code> 封了 retransform）。</li>
+  </ul>
+</section>
+
+<section id="changelog">
+  <h2>版本</h2>
+  <div class="vers-list">
+  <details open>
+    <summary><i class="caret"></i>0.4.0 <span class="tip">报告页可导入文件 · 字体圆滑 · 两套网页自检</span></summary>
+    <div class="body">
+      <ul>
+        <li><b>报告页可导入自己的文件</b>（不用重开游戏、不用重新生成）
+          <ul>
+            <li>把任意一份 <code>frame-spikes.log</code> <b>拖进页面</b>就直接换成那份数据（也能点右上角「导入日志」选文件）</li>
+            <li>把 <code>.ttf / .otf / .woff2</code> 拖进去就<b>换掉整个页面的字体</b>（<code>FontFace</code> 内嵌进页面，不联网）</li>
+            <li>「重置」一键回到报告自带的那份数据 + 默认字体</li>
+            <li>拖放时全屏虚线提示，按扩展名分流；一次只吃一份日志，免得两份统计混在一起</li>
+          </ul></li>
+        <li><b>字体改圆滑</b>：圆体拉丁 → 圆体中文 → 系统兜底，装了哪个用哪个；栈和代码仍保持等宽；
+          数字单独一套圆体 + <code>tabular-nums</code></li>
+        <li><b>报告页自带一份 JS 解析器</b>（<code>/*==PARSE-BEGIN==*/</code> 区块），页面/命令行共用</li>
+        <li><b>新增两套网页自检</b>：parse_check（JS↔Java 口径逐字段对齐，真实日志 9280 节点全等）+ page_check（假 DOM 整页 61 项）</li>
+        <li>顺带修复：JS 解析器原先把 CPU 采样返回成数组，渲染层按 <code>x.fps</code> 取值，导入的日志 CPU 面板会画成直线</li>
+        <li>新增命令行工具 <code>JsonDump</code>；<code>/fs help report|serve</code> 补上导入说明</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><i class="caret"></i>0.3.0 <span class="tip">HTML 分析报告 · 本地报告服务</span></summary>
+    <div class="body">
+      <ul>
+        <li><b>HTML 分析报告</b>（类似 spark 的查看器，但不需要联网）：<code>/fs report</code> 生成自包含的
+          <code>report-&lt;时间&gt;.html</code>；时长分档 / 原因归因 / 火焰图（可点击聚焦）/ CPU 趋势 / 停顿明细</li>
+        <li><b>体积控制</b>：最多带最长的 400 条，每条栈最多 24 层</li>
+        <li><b>本地报告服务</b> <code>/fs serve [端口|off]</code>：只绑 127.0.0.1，默认 8731，页面每次刷新重读日志，零依赖</li>
+        <li><code>/fs stop</code> 自动出报告（<code>autoReport</code>，可关）</li>
+        <li>新增命令行工具 <code>ReportGen</code>：不开游戏也能把旧日志变成报告</li>
+        <li><b>统计口径修正</b>：只统计有真实时长的记录；旧格式标成「旧格式」并加 <code>~</code></li>
+        <li>修复两个解析 bug：判头行用 <code>contains</code>；时间线 <code>t+</code> 两种排版都要吃</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><i class="caret"></i>0.2.0 <span class="tip">署名 · 帮助体系 · 聊天提示 · 两个测量修复</span></summary>
+    <div class="body">
+      <ul>
+        <li><b>署名</b>：日志开头、<code>/fs status</code>、<code>/fs help</code>、jar 的 MANIFEST 都带上版本与作者</li>
+        <li><b>帮助体系重做</b>：裸 <code>/fs</code> 快速上手 4 步；<code>/fs help</code> 分组全表（行尾带当前值）；<code>/fs help &lt;子命令&gt;</code> 单条详情</li>
+        <li><b>卡顿聊天提示</b>：<code>[FS] 312ms  写文件  FileOutputStream.writeBytes:0</code>，三道闸防刷屏</li>
+        <li><b>修复：停顿时长测量错误</b>（重要）—— 检测时抓栈（<code>STALL-DETECT</code>），下一个检查点结算真实时长（<code>STALL-END total=</code>）；
+          回归测试：同一个停顿旧逻辑 61ms / 新逻辑 551ms</li>
+        <li><b>修复：帧数/tick 数混为一谈</b> —— 拆成 fps 与 tps 两项</li>
+        <li><b>修复：hook 全不命中</b>（notch 名问题，见「踩过的坑」）</li>
+        <li><b>修复：processCommand 参数约定</b> —— vanilla 会先 <code>dropFirstString</code>，两种约定都归一化</li>
+        <li>新增 Tab 补全；新增指令 <code>help</code>、<code>chat</code>、<code>chatmin</code>；glFinish 干预可热切</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><i class="caret"></i>0.1.0 <span class="tip">首个可用版本</span></summary>
+    <div class="body">
+      <ul>
+        <li>帧暂停取证：检查点 + 停顿抓栈 + 帧内时间线 + 全线程 CPU 表</li>
+        <li>glFinish 调用点替换（默认 off）</li>
+        <li>客户端指令系统（Proxy + 反射注册 + 形态分派）</li>
+        <li>离线验证：存根注入自测（含 JVM 校验器）、真实类往返无损、真实 notch 类注入验证</li>
+      </ul>
+    </div>
+  </details>
+  </div>
+</section>
+
+<section id="pits">
+  <h2>踩过的坑</h2>
+  <p>这四条都是「静默失效」型，最难查。</p>
+  <div class="vers-list">
+  <details open>
+    <summary><i class="caret"></i>notch 名字不是 SRG 名</summary>
+    <div class="body"><p>1.8.9 运行时 MC 类的成员名是 <b>notch 混淆名</b>（<code>av()V</code>），
+    不是 spark 栈里显示的 <code>func_71411_J</code> —— 那是 spark 自己反混淆后的显示名。
+    按它写 hook 会全 0 命中，而且<b>一句报错都没有</b>。</p></div>
+  </details>
+  <details>
+    <summary><i class="caret"></i>参数被砍了一截</summary>
+    <div class="body"><p>vanilla 的 executeCommand 会先 <b>dropFirstString</b>：<b><code>/fs start</code></b> 到手是 <code>["start"]</code>。
+    按 <code>["fs","start"]</code> 写就会读不到，每个子命令都掉进「未知」。两种约定都要归一化。</p></div>
+  </details>
+  <details>
+    <summary><i class="caret"></i>检测时刻 ≠ 时长</summary>
+    <div class="body"><p>阈值型看门狗如果「一越过就记录」，记到的是<b>阈值本身</b>：
+    一次 1589ms 会被记成 60ms，分档/最长/累计全废。必须等下一次推进再结算。</p></div>
+  </details>
+  <details>
+    <summary><i class="caret"></i>游戏开着换 jar</summary>
+    <div class="body"><p>运行中的 jar 被 JVM 锁住，旧版挪不走。此时<b>绝不能只装新版</b>——
+    两个 coremod 会被同时加载 = 双份字节码注入。装机脚本会先做占用检测并拒绝。</p></div>
+  </details>
+  </div>
+</section>
+
+<section id="license">
+  <h2>署名与许可</h2>
+  <p><b>FrameSpike 帧刺 v0.4.0 · by Trusler</b></p>
+  <p>签名会出现在：jar 的 MANIFEST（<code>Implementation-Title/Version/Vendor</code>）、
+  每次启动的日志 banner（含正式副标题「Minecraft 1.8.9 帧时间尖峰与卡顿分析 mod」）、
+  <code>/fs status</code>、<code>/fs help</code>、报告页页脚和每个源码文件头。</p>
+  <p>许可：暂未指定（目前是自用工具，若要分发请先补一个 LICENSE）。</p>
+</section>
+
+</main>
+</div>
+
+<script>
+/* 目录树：展开/收起 + 点击高亮 + 滚动跟随 */
+(function(){
+  var tree = document.getElementById("tree");
+  var links = [].slice.call(tree.querySelectorAll(".kids a"));
+
+  tree.addEventListener("click", function(e){
+    var btn = e.target.closest(".grp-btn");
+    if (btn) { btn.parentNode.classList.toggle("open"); return; }
+    var a = e.target.closest("a");
+    if (a) {
+      links.forEach(function(x){ x.classList.remove("on"); });
+      a.classList.add("on");
+      var grp = a.parentNode.parentNode;
+      if (grp) grp.classList.add("open");
+    }
+  });
+
+  var secs = links.map(function(a){ return document.getElementById(a.getAttribute("href").slice(1)); });
+  function pick(){
+    var cur = -1;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i] && secs[i].getBoundingClientRect().top <= 120) cur = i;
+    }
+    if (cur >= 0){
+      links.forEach(function(x, i){ x.classList.toggle("on", i === cur); });
+      var grp = links[cur].parentNode.parentNode;
+      if (grp) grp.classList.add("open");
+    }
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function(){
+    if (ticking) return;
+    ticking = true;
+    setTimeout(function(){ pick(); ticking = false; }, 120);
+  }, { passive: true });
+  pick();
+})();
+
+/* 滚动进入：整节淡入上移（没有 IntersectionObserver 就直接显示） */
+(function(){
+  var secs = [].slice.call(document.querySelectorAll("main section"));
+  if (!("IntersectionObserver" in window)){
+    secs.forEach(function(s){ s.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.04 });
+  secs.forEach(function(s){ io.observe(s); });
+})();
+</script>
+</body>
+</html>

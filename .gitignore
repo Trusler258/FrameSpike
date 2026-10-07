@@ -1,0 +1,62 @@
+# ---- Python 构建产物 ----
+out/
+dist/
+build_out.txt
+install_out.txt
+reportgen_out.txt
+
+# ---- 分析用的中间数据（体积大、可重生成）----
+spark_raw.json
+spark_tree.txt
+tree.json
+pb_intro.txt
+pb_probe2.txt
+log_analysis.txt
+spark_chain.txt
+spark_deep.txt
+spark_top.txt
+stall_stacks.txt
+stall_classify.txt
+align_pauses.txt
+seg_check.txt
+kin_out.txt
+peek_out.txt
+diag_load.txt
+ree_out.txt
+logs_list.txt
+mc_settings.txt
+mc_settings2.txt
+sys_probe.txt
+disk_probe.txt
+jdk_probe.txt
+pb_*.txt
+spark_*.txt
+_proc.txt
+_run.log
+_run2.log
+_wpr*.txt
+
+# ---- Gradle（fabric / neoforge 两个子工程）----
+.gradle/
+build/
+run/
+*/build/
+*/.gradle/
+*/run/
+gradle-app.setting
+.gradletasknamecache
+
+# ---- IDE ----
+.idea/
+*.iml
+.vscode/
+*.swp
+.classpath
+.project
+.settings/
+
+# ---- 本地环境 / 备份 ----
+FrameSpike-*.jar.bak*
+*.bak
+*.bak-*
+logs/

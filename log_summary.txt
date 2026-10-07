@@ -1,0 +1,88 @@
+log: 521126 bytes, mtime 10-05 12:25:37, now 10-05 12:25:39
+总行数 6545
+
+=== 会话切分：6 个 coremod 构造（同一次启动会出现多次）===
+patch 行总数: 34
+  patch net/minecraft/client/Minecraft                 ['hooks=0/2', 'hooks=0/2', 'hooks=0/2', 'hooks=0/2', 'hooks=0/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2', 'hooks=2/2']
+  patch net/minecraft/client/gui/GuiIngame             ['hooks=0/1', 'hooks=1/1', 'hooks=1/1', 'hooks=1/1', 'hooks=1/1']
+  patch net/minecraftforge/client/GuiIngameForge       ['hooks=0/1', 'hooks=1/1', 'hooks=1/1', 'hooks=1/1']
+  patch net/minecraft/client/renderer/EntityRenderer   ['hooks=0/3', 'hooks=3/3', 'hooks=3/3', 'hooks=3/3']
+  patch net/minecraft/client/renderer/RenderGlobal     ['hooks=0/0', 'hooks=0/0', 'hooks=0/0', 'hooks=0/0']
+
+=== 命中行 ===
+    17 命中: [notch av -> runGameLoop, notch s -> runTick]
+    19 命中: [notch av -> runGameLoop, notch s -> runTick]
+    21 命中: [notch av -> runGameLoop, notch s -> runTick]
+    23 命中: [notch av -> runGameLoop, notch s -> runTick]
+    25 命中: [notch av -> runGameLoop, notch s -> runTick]
+    27 命中: [notch a -> hudVanilla]
+    29 命中: [notch a -> hudForge]
+    31 命中: [notch a -> updateCameraAndRender, notch b -> renderWorld, notch a -> renderWorldPass]
+  2650 命中: [notch av -> runGameLoop, notch s -> runTick]
+  2652 命中: [notch a -> updateCameraAndRender, notch b -> renderWorld, notch a -> renderWorldPass]
+  3157 命中: [notch av -> runGameLoop, notch s -> runTick]
+  3160 命中: [notch a -> hudForge]
+  3162 命中: [notch a -> hudVanilla]
+  3164 命中: [notch a -> hudVanilla]
+  3455 命中: [notch av -> runGameLoop, notch s -> runTick]
+  3457 命中: [notch av -> runGameLoop, notch s -> runTick]
+  3459 命中: [notch av -> runGameLoop, notch s -> runTick]
+  3461 命中: [notch av -> runGameLoop, notch s -> runTick]
+  3463 命中: [notch av -> runGameLoop, notch s -> runTick]
+  3465 命中: [notch a -> hudVanilla]
+  3467 命中: [notch a -> hudForge]
+  3469 命中: [notch a -> updateCameraAndRender, notch b -> renderWorld, notch a -> renderWorldPass]
+
+=== [cmd] 行 ===
+  [cmd] 客户端命令注册成功: /fs [framespike, fspike]  (ok, via net.minecraft.command.CommandHandler.func_71560_a(net.minecraft.command.ICommand)net.minecraft.command.ICommand)
+  [cmd] registered=true name=/fs aliases=[framespike, fspike] gaveUp=false register=ok, via net.minecraft.command.CommandHandler.func_71560_a(net.minecraft.command.ICommand)net.minecraft.command.IComman
+  [cmd] 客户端命令注册成功: /fs [framespike, fspike]  (ok, via net.minecraft.command.CommandHandler.func_71560_a(net.minecraft.command.ICommand)net.minecraft.command.ICommand)
+  [cmd] registered=true name=/fs aliases=[framespike, fspike] gaveUp=false register=ok, via net.minecraft.command.CommandHandler.func_71560_a(net.minecraft.command.ICommand)net.minecraft.command.IComman
+  [cmd] tabComplete#1 -> [start, stop, status, dump, mark, tail, threshold, cpu, glfinish, help]
+  [cmd] tabComplete#2 -> [start, stop, status, dump, mark, tail, threshold, cpu, glfinish, help]
+  [cmd] tabComplete#3 -> [start, stop, status, dump, mark, tail, threshold, cpu, glfinish, help]
+
+=== [glfinish] / [ctrl] 行 ===
+
+=== MARK 行 ===
+
+=== 记录段开始/结束 ===
+
+=== 停顿统计：STALL 94 次，SNAPSHOT 0 次 ===
+  最长 10: [103, 86, 83, 74, 65, 63, 63, 62, 62, 62]
+  分档: {'<100': 93, '100-199': 1, '200-499': 0, '>=500': 0}
+  累计: 5835 ms
+
+=== 最长那次的前 16 行 ===
+  04:52:11.266  STALL 103ms  since='hudForge'  frames=3256  stall#32  glFinishSkipped=0
+    timeline:
+      updateCameraAndRender t+  33.406ms
+      renderWorld          t+  33.408ms
+      renderWorldPass      t+  33.445ms
+      hudForge             t+  34.731ms
+      runGameLoop          t+  65.369ms
+      runTick              t+  65.782ms
+      updateCameraAndRender t+  66.608ms
+      renderWorld          t+  66.612ms
+      renderWorldPass      t+  66.664ms
+      hudForge             t+  68.242ms
+      runGameLoop          t+ 100.736ms
+      updateCameraAndRender t+ 100.900ms
+      renderWorld          t+ 100.902ms
+      renderWorldPass      t+ 100.912ms
+
+=== 分段汇总（RECORDING STOPPED 后几行）===
+
+=== CPU 表（最后一次）===
+  12:24:44.891  [CPU] 60.1s window, 8 cores, machine busy=8.2%  (totalCpu=39.5s)  frames=4513 stalls=41 glFinishSkipped=0
+      Client thread                  60.0% of one core  (36.1s)
+      spark-monitoring-thread         2.3% of one core  (1.4s)
+      Thread-35                       0.7% of one core  (0.4s)
+      Netty Client IO #6              0.5% of one core  (0.3s)
+      lunar-streamer-mode-thread-3-1    0.4% of one core  (0.2s)
+      Thread-46                       0.3% of one core  (0.2s)
+      Chunk Batcher 1                 0.2% of one core  (0.1s)
+      Chunk Batcher 0                 0.2% of one core  (0.1s)
+  
+  12:25:06.562  STALL 61ms  since='hudForge'  frames=4945  stall#42  glFinishSkipped=0
+CPU 表次数: 13

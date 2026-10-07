@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "framespike",
+  "version": "${version}",
+  "name": "FrameSpike 帧刺",
+  "description": "在主线程冻住的那一刻抓调用栈：真实停顿时长、原因归因、GC 关联、崩溃现场，并生成可导入其他日志的分析网页。纯客户端，不向外部发送任何数据。",
+  "authors": [
+    "Trusler"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Trusler258",
+    "sources": "https://github.com/Trusler258"
+  },
+  "license": "GPL-3.0-only",
+  "icon": "framespike/logo.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "framespike.fabric.FrameSpikeFabric"
+    ]
+  },
+  "mixins": [
+    "framespike.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.21",
+    "minecraft": ">=1.16.5",
+    "java": ">=8"
+  },
+  "recommends": {
+    "fabric-api": "*"
+  }
+}

@@ -1,0 +1,112 @@
+/*
+ * NeoForge 1.20.1（net.neoforged:forge:1.20.1-47.1.x）。
+ *
+ * 为什么用 buildscript classpath 而不是 plugins { id 'net.neoforged.gradle.userdev' version ... }：
+ *   userdev 的 plugin marker（net.neoforged.gradle.userdev:<id>.gradle.plugin:7.0.192）在
+ *   maven.neoforged.net 上确实存在、POM 也合法，但 Gradle 的插件解析就是拿不到它。
+ *   直接 classpath 声明真实构件（net.neoforged.gradle:userdev）绕开 marker，一次就过。
+ *   插件描述符在 jar 里的 META-INF/gradle-plugins/net.neoforged.gradle.userdev.properties，
+ *   所以 apply plugin 照样认得。
+ */
+buildscript {
+    repositories {
+        maven { name = 'NeoForged'; url = 'https://maven.neoforged.net/releases' }
+        // NeoGradle 的传递依赖分散在三个地方，缺一个就报 "Could not find xxx"：
+        //   gradle-idea-ext 只在 Gradle 插件门户（plugins.gradle.org/m2）
+        //   org.jetbrains:annotations 之类在 Maven 中央仓库
+        // 本机 repo1.maven.org 的 DNS 不通，必须用 mavenCentral()（repo.maven.apache.org）或阿里云镜像。
+        maven { name = 'GradlePluginPortal'; url = 'https://plugins.gradle.org/m2/' }
+        maven { name = 'Aliyun'; url = 'https://maven.aliyun.com/repository/public' }
+        maven { name = 'AliyunPlugin'; url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+        mavenCentral()
+    }
+    dependencies {
+        // 版本不能随便挑最新：NeoGradle 会声明自己要求的 Gradle API 版本，本机 Gradle 是 8.10.2。
+        //   7.0.170 / 7.0.180 -> 要求 Gradle 8.10  ✅
+        //   7.0.185 及以上      -> 要求 Gradle 8.13  ✗（会报 "No matching variant ... api-version 8.13"）
+        // 想升 NeoGradle 就先升 Gradle。查法：看 maven 上 userdev-<ver>.module 里的
+        // "org.gradle.plugin.api-version" 字段，别靠猜。
+        classpath group: 'net.neoforged.gradle', name: 'userdev', version: '7.0.180'
+    }
+}
+
+apply plugin: 'net.neoforged.gradle.userdev'
+
+def coreVersion = '0.0.0'
+file('../src/framespike/FrameSpike.java').withReader('UTF-8') { r ->
+    def m = r.text =~ /MOD_VERSION\s*=\s*"([^"]+)"/
+    if (m.find()) coreVersion = m.group(1)
+}
+
+group = project.maven_group
+version = coreVersion
+// 产物名带上本模块实际编译的游戏版本：FrameSpike-NeoForge-<mc>-<mod>.jar
+base { archivesName = "${project.archives_base_name}-${project.minecraft_version}".toString() }
+
+repositories {
+    maven { name = 'NeoForged'; url = 'https://maven.neoforged.net/releases' }
+    maven { name = 'Aliyun'; url = 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+/*
+ * ★ 与 Fabric 模块同一手法：核心（零 MC 依赖）直接编译 ../src/framespike，不复制代码。
+ *   这里与 Fabric 唯一的实质差异是 mixin 走**官方映射名**：
+ *     Minecraft.runTick(boolean) / Minecraft.tick() / GameRenderer.render(float,long,boolean)
+ *   而 Fabric 那边是 Yarn 名 MinecraftClient.render / tick。
+ */
+sourceSets {
+    main {
+        java {
+            srcDir file('../src/framespike')
+        }
+        /* ★ 核心的资源也要带：report.html 模板 + logo。漏了它 /fs report 生成的页面
+           会显示「模板缺失」—— 而且没有任何报错（实测踩到） */
+        resources {
+            srcDir file('../resources')
+        }
+    }
+}
+
+/*
+ * NeoGradle 7.0.180 的 DSL 与 7.1.x 之后**不一样**，别照着新版文档抄：
+ *   7.0.x  ：扩展叫 minecraft（只管命名通道 / mappings / AT），Minecraft 版本由**依赖坐标**决定，
+ *            所以写 dependencies { implementation "net.neoforged:forge:<mc>-<build>" }。
+ *   7.1.x+ ：才有 neoForge { version = "..." } 这种写法。
+ * 怎么确认：跑一个只有 buildscript+apply plugin 的空工程，打印
+ *   project.extensions.extensionsSchema.elements  就知道当前版本注册了哪些扩展名
+ * （实测 7.0.180 注册的是 minecraft / mappings / runs / runTypes …，没有 neoForge）。
+ */
+dependencies {
+    implementation "net.neoforged:forge:${project.neo_version}"
+}
+
+/*
+ * NeoGradle 的 jarJar 任务会读 provider 'languageVersion'，不声明 toolchain 就报
+ *   "Cannot query the value of this provider because it has no value available"
+ * 这句错误完全看不出跟 toolchain 有关 —— 是 NeoGradle 7.0.x 模板里的必需项。
+ */
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(project.java_release as int)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = project.java_release as int
+}
+
+// 多版本 mod 的 manifest 必须有 Implementation-Version：
+// mods.toml 里的 ${file.jarVersion} 就是读它，缺了会在加载期直接报错
+tasks.named('jar', Jar) {
+    manifest {
+        attributes(
+                'Implementation-Title': 'FrameSpike',
+                'Implementation-Version': project.version,
+                'Implementation-Vendor': 'Trusler'
+        )
+    }
+    from('../README.md') { rename { 'FrameSpike-README.md' } }
+    from('../CHANGELOG.md') { rename { 'FrameSpike-CHANGELOG.md' } }
+}
