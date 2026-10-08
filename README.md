@@ -26,6 +26,16 @@ v0.7.0 · Trusler · Forge coremod（1.8.9 / 1.12.2）· Fabric（1.16.5+）· N
 
 发生停顿时会向聊天栏推送一行摘要，形如 `[FS] 312ms 写文件 FileOutputStream.writeBytes:0`。设有门槛与冷却，避免刷屏。
 
+## 实际效果
+
+TNT 引爆时的卡顿取证（自动捕获 + 归因 + 聊天提示）：
+
+![TNT 卡顿测试](assets/screenshots/tnt-stall.png)
+
+Fabric 1.20.1 的 `/fs help`（分组帮助全表）：
+
+![Fabric 1.20.1 help](assets/screenshots/fabric-help.png)
+
 0.6.2 补充了以下能力，均来自实际排查中的缺口。
 
 ### 崩溃感知

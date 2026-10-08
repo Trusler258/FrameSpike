@@ -60,7 +60,7 @@ public final class FrameSpike {
     public static String MC_VER = "1.8.9";
     /** 非 final：final 会被编译期内联，加载器就没法按实际游戏版本重算标题了 */
     public static String MOD_TITLE = "Minecraft " + MC_VER + " \u5e27\u65f6\u95f4\u5c16\u5cf0\u4e0e\u5361\u987f\u5206\u6790 mod";
-    public static final String MOD_VERSION = "0.7.2";
+    public static final String MOD_VERSION = "0.8.0";
     public static final String MOD_AUTHOR = "Trusler";
     /** 加载器描述（如 "NeoForge 47.1.106" / "Fabric 0.19.5" / "Forge coremod"），由加载器启动时设置 */
     public static String LOADER = "";
@@ -134,6 +134,16 @@ public final class FrameSpike {
     private static volatile String pendingLabel;
     private static volatile String pendingReason;
     private static volatile StackTraceElement[] pendingStack;
+    /** 停顿期间的补充栈采样（2026-10-08）：最多 SAMPLE_MAX 次，endStall 时统计栈顶占比出归因置信度 */
+    private static final java.util.ArrayList<StackTraceElement[]> pendingSamples = new java.util.ArrayList<StackTraceElement[]>();
+    private static int pendingSampleCount;
+    private static long lastSampleMs;
+    private static final int SAMPLE_MAX = 5;
+    private static final long SAMPLE_INTERVAL_MS = 40L;
+    /** micro-stutter 滚动窗口（2026-10-08）：最近 checkpoint 间隔超阈值的事件 [ts, maxMs, avgMs]，上限 32 条 */
+    private static final java.util.ArrayList<long[]> microEvents = new java.util.ArrayList<long[]>();
+    private static int microStutterCount;
+    private static int stutterTick;
     private static volatile long lastChatMs;
     private static volatile String pendingChat;
     /** 这条聊天如果有可点链接，放这儿（客户端线程发完清掉） */
@@ -533,9 +543,10 @@ public final class FrameSpike {
                             }
                             GarbageCollectionNotificationInfo garbageCollectionNotificationInfo = GarbageCollectionNotificationInfo.from((CompositeData)notification.getUserData());
                             long l = garbageCollectionNotificationInfo.getGcInfo().getDuration();
+                            long endNs = System.nanoTime();
                             List list = gcEvents;
                             synchronized (list) {
-                                gcEvents.add(new GcEvent(System.currentTimeMillis(), l, garbageCollectionNotificationInfo.getGcName()));
+                                gcEvents.add(new GcEvent(System.currentTimeMillis(), l, garbageCollectionNotificationInfo.getGcName(), endNs - l * 1000000L, endNs));
                                 while (gcEvents.size() > 64) {
                                     gcEvents.remove(0);
                                 }
@@ -567,6 +578,24 @@ public final class FrameSpike {
                     long l;
                     long l2;
                     Thread.sleep(2L);
+                    /* 停顿期间的补充栈采样（2026-10-08）：单次快照只能证明"卡顿时线程在哪"，
+                       多次采样统计栈顶占比才能出 Most likely blocking path (n/m)。 */
+                    if (pendingStall && pendingSampleCount < SAMPLE_MAX && System.currentTimeMillis() - lastSampleMs >= SAMPLE_INTERVAL_MS) {
+                        lastSampleMs = System.currentTimeMillis();
+                        try {
+                            Thread st = clientThread;
+                            if (st != null) {
+                                StackTraceElement[] s = st.getStackTrace();
+                                if (s != null && s.length > 0) {
+                                    pendingSamples.add(s);
+                                    pendingSampleCount++;
+                                }
+                            }
+                        }
+                        catch (Throwable ignored) {
+                            // 采样失败不影响检测
+                        }
+                    }
                     if (++wdTick >= 1250) {
                         wdTick = 0;
                         FrameSpike.checkIni();
@@ -575,6 +604,10 @@ public final class FrameSpike {
                             lastCrashScan = l2;
                             FrameSpike.scanCrashes(false);
                         }
+                    }
+                    if (++stutterTick >= 12000) {
+                        stutterTick = 0;
+                        FrameSpike.checkStutter();
                     }
                     if (Cmd.gaveUp && ++ctrlPollTick >= 250) {
                         ctrlPollTick = 0;
@@ -601,6 +634,13 @@ public final class FrameSpike {
                         }
                         pendingReason = FrameSpike.classify(stackTraceElementArray);
                         pendingStack = stackTraceElementArray;
+                        pendingSamples.clear();
+                        pendingSampleCount = 0;
+                        if (stackTraceElementArray != null && stackTraceElementArray.length > 0) {
+                            pendingSamples.add(stackTraceElementArray);
+                            pendingSampleCount = 1;
+                            lastSampleMs = System.currentTimeMillis();
+                        }
                         continue;
                     }
                     l2 = lastNs;
@@ -621,6 +661,13 @@ public final class FrameSpike {
                     }
                     pendingReason = FrameSpike.classify(stackTraceElementArray);
                     pendingStack = stackTraceElementArray;
+                    pendingSamples.clear();
+                    pendingSampleCount = 0;
+                    if (stackTraceElementArray != null && stackTraceElementArray.length > 0) {
+                        pendingSamples.add(stackTraceElementArray);
+                        pendingSampleCount = 1;
+                        lastSampleMs = System.currentTimeMillis();
+                    }
                     FrameSpike.dumpStall(l, false, stackTraceElementArray);
                 }
             }
@@ -791,7 +838,7 @@ public final class FrameSpike {
         StringBuilder stringBuilder = new StringBuilder(8192);
         stringBuilder.append('\n');
         String string = FrameSpike.worldContext();
-        stringBuilder.append(FrameSpike.ts()).append(bl ? "  SNAPSHOT " : "  STALL-DETECT ").append(l).append("ms").append("  since='").append(lastLabel).append('\'').append("  frames=").append(frames.get()).append("  ticks=").append(ticks.get()).append("  stall#").append(bl ? stalls.get() : stalls.incrementAndGet()).append("  reason=").append(bl ? FrameSpike.classify(stackTraceElementArray) : pendingReason).append("  glFinishSkipped=").append(glSkipped.get()).append(string.length() > 0 ? "  ctx=" + string : "").append("  t0=").append(System.currentTimeMillis() - l);
+        stringBuilder.append(FrameSpike.ts()).append(bl ? "  SNAPSHOT " : "  STALL-DETECT ").append(l).append("ms").append("  since='").append(lastLabel).append('\'').append("  frames=").append(frames.get()).append("  ticks=").append(ticks.get()).append("  stall#").append(bl ? stalls.get() : stalls.incrementAndGet()).append("  reason=").append(bl ? FrameSpike.classify(stackTraceElementArray) : pendingReason).append("  glFinishSkipped=").append(glSkipped.get()).append(string.length() > 0 ? "  ctx=" + string : "").append(FrameSpike.sourceJarOf(stackTraceElementArray).length() > 0 ? "  src=" + FrameSpike.sourceJarOf(stackTraceElementArray) : "").append("  t0=").append(System.currentTimeMillis() - l);
         stringBuilder.append('\n').append("  timeline:");
         FrameSpike.appendTimeline(stringBuilder, l);
         stringBuilder.append('\n').append("  stack of \"").append(thread == null ? "?" : thread.getName()).append("\":");
@@ -829,10 +876,52 @@ public final class FrameSpike {
         if (l2 < pendingDetectMs) {
             l2 = pendingDetectMs;
         }
+        /* 采样统计（2026-10-08）：majority 栈顶 + 占比 -> 归因置信度。
+           watchdog 可能同时在 add，加锁读。 */
+        String majorityTop = "";
+        int majorityCount = 0;
+        int totalSamples = 0;
+        try {
+            synchronized (pendingSamples) {
+                totalSamples = pendingSampleCount;
+                if (totalSamples > 0) {
+                    java.util.HashMap<String, Integer> votes = new java.util.HashMap<String, Integer>();
+                    for (int i = 0; i < pendingSamples.size(); ++i) {
+                        StackTraceElement[] s = pendingSamples.get(i);
+                        if (s == null || s.length == 0) continue;
+                        String k = FrameSpike.topFrame(s);
+                        if (k.length() == 0) continue;
+                        Integer c = votes.get(k);
+                        votes.put(k, c == null ? Integer.valueOf(1) : Integer.valueOf(c.intValue() + 1));
+                    }
+                    for (java.util.Map.Entry<String, Integer> e : votes.entrySet()) {
+                        if (e.getValue().intValue() > majorityCount) {
+                            majorityCount = e.getValue().intValue();
+                            majorityTop = e.getKey();
+                        }
+                    }
+                }
+            }
+        }
+        catch (Throwable throwable) {
+            // 统计失败不影响结算
+        }
+        String confidence;
+        if (totalSamples <= 1) {
+            confidence = "Medium";
+        } else if (majorityCount * 2 >= totalSamples) {
+            confidence = "High";
+        } else if (majorityCount * 5 >= totalSamples * 2) {
+            confidence = "Medium";
+        } else {
+            confidence = "Low";
+        }
+        String evidence = FrameSpike.topFrame(pendingStack);
+        String sourceJar = FrameSpike.sourceJarOf(pendingStack);
         String string2 = pendingReason;
-        String string3 = FrameSpike.gcOverlap(l2);
+        String string3 = FrameSpike.gcOverlap(l, l2);
         if (recording) {
-            FrameSpike.note("  STALL-END    total=" + l2 + "ms  detected@" + pendingDetectMs + "ms  since='" + pendingLabel + "'  next='" + string + "'  reason=" + string2 + (string3 != null ? "  gc=" + string3 : "") + "  t1=" + System.currentTimeMillis());
+            FrameSpike.note("  STALL-END    total=" + l2 + "ms  detected@" + pendingDetectMs + "ms  since='" + pendingLabel + "'  next='" + string + "'  reason=" + string2 + (string3 != null ? "  gc=" + string3 : "") + (majorityTop.length() > 0 ? "  votes=" + majorityCount + "/" + totalSamples + "  majority=" + majorityTop + "  conf=" + confidence : "") + (sourceJar.length() > 0 ? "  src=" + sourceJar : "") + "  t1=" + System.currentTimeMillis());
             if (l2 > maxStallMs) {
                 maxStallMs = l2;
             }
@@ -857,6 +946,7 @@ public final class FrameSpike {
             lastChatMs = l4;
                 Cmd.chat("\u00a7e[FS]\u00a7r \u00a7c" + l2 + "ms\u00a7r " + string2
                         + " \u00a77" + FrameSpike.topFrame(pendingStack) + "\u00a7r"
+                        + (majorityTop.length() > 0 && totalSamples > 1 ? " \u00a77(" + majorityCount + "/" + totalSamples + " " + confidence + ")\u00a7r" : "")
                         + (gcTag != null ? " \u00a7b[GC " + gcTag + "]\u00a7r" : ""));
         }
     }
@@ -882,22 +972,26 @@ public final class FrameSpike {
         }
     }
 
-    private static String gcOverlap(long l) {
+    /** 精确 interval overlap（nanoTime 体系，2026-10-08）：返回 "收集器名 overlap/时长ms"，无交集返回 null */
+    private static String gcOverlap(long stallEndNs, long stallDurMs) {
         try {
             List<GcEvent> list = gcEvents;
             synchronized (list) {
                 if (gcEvents.isEmpty()) {
                     return null;
                 }
-                long l2 = System.currentTimeMillis();
-                long l3 = l2 - l;
-                GcEvent gcEvent = null;
+                long stallStartNs = stallEndNs - stallDurMs * 1000000L;
+                GcEvent best = null;
+                long bestOverlap = 0L;
                 for (int i = 0; i < gcEvents.size(); ++i) {
-                    GcEvent gcEvent2 = gcEvents.get(i);
-                    if (gcEvent2.endMs < l3 - 100L || gcEvent2.endMs > l2 + 100L || gcEvent != null && gcEvent2.durMs <= gcEvent.durMs) continue;
-                    gcEvent = gcEvent2;
+                    GcEvent g = gcEvents.get(i);
+                    long ov = Math.min(g.endNs, stallEndNs) - Math.max(g.startNs, stallStartNs);
+                    if (ov > bestOverlap) {
+                        bestOverlap = ov;
+                        best = g;
+                    }
                 }
-                return gcEvent == null ? null : gcEvent.name + " " + gcEvent.durMs + "ms";
+                return best == null ? null : best.name + " " + (bestOverlap / 1000000L) + "/" + best.durMs + "ms";
             }
         }
         catch (Throwable throwable) {
@@ -925,6 +1019,76 @@ public final class FrameSpike {
         }
         catch (Throwable throwable) {
             return "";
+        }
+    }
+
+    /** 类名 → 来源 jar 文件名（缓存，2026-10-08 Mod ownership）。JDK/目录类返回 "" */
+    private static final java.util.Map<String, String> classSourceCache = new java.util.HashMap<String, String>();
+
+    private static String sourceJarOf(StackTraceElement[] stack) {
+        try {
+            if (stack == null || stack.length == 0) return "";
+            String cls = stack[0].getClassName();
+            String cached = classSourceCache.get(cls);
+            if (cached != null) return cached;
+            String jar = "";
+            try {
+                Class<?> c = Class.forName(cls, false, FrameSpike.class.getClassLoader());
+                java.security.CodeSource cs = c.getProtectionDomain().getCodeSource();
+                if (cs != null && cs.getLocation() != null) {
+                    String p = cs.getLocation().getPath();
+                    int n = p.lastIndexOf('/');
+                    jar = n >= 0 ? p.substring(n + 1) : p;
+                    if (!jar.endsWith(".jar")) jar = "";  // 目录 / jrt:/ 模块不算来源 jar
+                    else if (jar.length() > 48) jar = jar.substring(0, 48);
+                }
+            }
+            catch (Throwable ignored) { }
+            classSourceCache.put(cls, jar);
+            return jar;
+        }
+        catch (Throwable t) {
+            return "";
+        }
+    }
+
+    /** micro-stutter 检查（2026-10-08）：最近 16 个 checkpoint 间隔的 max/avg（ms），max > 40ms 记一条（每 30s 最多一次）。
+        覆盖低于 stallThreshold 的连续轻微卡顿（21/23/25ms 连续抖动），那是 hard freeze 检测路径的盲区。 */
+    private static void checkStutter() {
+        try {
+            int n2 = seq.get();
+            if ((n2 & 1) != 0) return;
+            long[] iv = new long[16];
+            int n = 0;
+            long prev = 0L;
+            for (int i = 0; i < 16; ++i) {
+                int idx = (hHead + i) % 16;
+                long t = hTime[idx];
+                if (t == 0L) continue;
+                if (prev > 0L) {
+                    long d = (t - prev) / 1000000L;
+                    if (d > 0L && d < 100000L) iv[n++] = d;
+                }
+                prev = t;
+            }
+            int n3 = seq.get();
+            if (n2 != n3 || n < 4) return;
+            java.util.Arrays.sort(iv, 0, n);
+            long max = iv[n - 1];
+            long sum = 0L;
+            for (int i = 0; i < n; ++i) sum += iv[i];
+            long avg = sum / n;
+            if (max > 40L) {
+                microStutterCount++;
+                synchronized (microEvents) {
+                    microEvents.add(new long[]{System.currentTimeMillis(), max, avg});
+                    while (microEvents.size() > 32) microEvents.remove(0);
+                }
+                FrameSpike.note("[stutter] 最近窗口 checkpoint 间隔 max=" + max + "ms  avg=" + avg + "ms（" + n + " 个间隔）");
+            }
+        }
+        catch (Throwable ignored) {
+            // 统计失败不影响主流程
         }
     }
 
@@ -2216,11 +2380,16 @@ public final class FrameSpike {
         final long endMs;
         final long durMs;
         final String name;
+        /** nanoTime 体系（2026-10-08）：与停顿窗口同一时钟，精确 interval overlap */
+        final long startNs;
+        final long endNs;
 
-        GcEvent(long l, long l2, String string) {
+        GcEvent(long l, long l2, String string, long startNs, long endNs) {
             this.endMs = l;
             this.durMs = l2;
             this.name = string;
+            this.startNs = startNs;
+            this.endNs = endNs;
         }
     }
 }

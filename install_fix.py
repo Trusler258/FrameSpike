@@ -1,7 +1,7 @@
 import os, shutil, hashlib
 
 MODS = os.path.expandvars(r"%USERPROFILE%\.lunarclient\profiles\1.8\mods\forge-1.8.9")
-NEW = r"C:\Users\Huang\WorkBuddy\2026-10-05-03-06-50\dist\FrameSpike-Forge-1.8.9-1.12.2-0.7.2.jar"
+NEW = r"C:\Users\Huang\WorkBuddy\2026-10-05-03-06-50\dist\FrameSpike-Forge-1.8.9-1.12.2-0.8.0.jar"
 NEWNAME = os.path.basename(NEW)
 
 

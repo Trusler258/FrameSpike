@@ -173,8 +173,13 @@ public final class Report {
         boolean ended;
         String since = "";
         String reason = "未知";
-        /** 这次停顿是不是 GC（从 STALL-END 行的 gc= 来） */
+        /** 这次停顿是不是 GC（从 STALL-END 行的 gc= 来，新格式带 overlap：名字 重叠/总时长） */
         String gc = "";
+        /** 多次栈采样统计（2026-10-08）：votes=4/5、majority 栈顶、置信度、来源 jar */
+        String votes = "";
+        String majority = "";
+        String conf = "";
+        String src = "";
         /** 模组原生写的墙钟时间戳（epoch ms）：t0 = 停顿起点，t1 = 停顿结束 */
         long t0, t1;
         /** 停顿那一刻的维度/坐标（模组尽力而为写的 ctx=） */
@@ -208,6 +213,8 @@ public final class Report {
     }
 
     private static final List<Crash> crashes = new ArrayList<Crash>();
+    /** micro-stutter 事件（2026-10-08）：[stutter] 行解析出 [时间, maxMs, avgMs] */
+    private static final List<String[]> stutters = new ArrayList<String[]>();
 
     /**
      * 报告默认只统计最后一段记录：RECORDING STARTED → RECORDING STOPPED。
@@ -254,7 +261,12 @@ public final class Report {
                 if (cur != null) {
                     int v = num(s, "total=(\\d+)ms");
                     if (v > 0) { cur.total = v; cur.ended = true; }
-                    cur.gc = str(s, "gc=(.+)$");
+                    /* 新格式（0.7.2+）：gc=名字 重叠/总时长，后面跟 votes=/conf=/src=；旧格式 gc 后直接 t1 */
+                    cur.gc = str(s, "gc=(.+?)(?:  votes=|  t1=)");
+                    cur.votes = str(s, "votes=(\\d+/\\d+)");
+                    cur.majority = str(s, "majority=(\\S+)");
+                    cur.conf = str(s, "conf=(\\S+)");
+                    cur.src = str(s, "src=([^\\s]+)");
                     long t1v = lng(s, "t1=(\\d+)");
                     if (t1v > 0) cur.t1 = t1v;
                     cur = null;
@@ -279,6 +291,13 @@ public final class Report {
                 if (s.startsWith("reason=")) { curCrash.reason = s.substring(7).trim(); continue; }
                 if (s.startsWith("---")) { curCrash = null; continue; }
             }
+            if (s.indexOf("[stutter]") >= 0) {
+                int mx = num(s, "max=(\\d+)ms");
+                if (mx > 0) {
+                    int sp = l.indexOf(' ');
+                    stutters.add(new String[]{sp > 0 ? l.substring(0, sp) : "", String.valueOf(mx), str(s, "avg=(\\d+)ms")});
+                }
+            }
             if (isHeader(s)) {
                 Stall st = new Stall();
                 int sp = l.indexOf(' ');
@@ -292,7 +311,10 @@ public final class Report {
                 st.reason = r.length() > 0 ? r : "\u672a\u77e5";
                 long t0v = lng(s, "t0=(\\d+)");
                 if (t0v > 0) st.t0 = t0v;
-                st.ctx = str(s, "ctx=(.+)$");
+                /* 新格式（0.7.2+）：STALL-DETECT 带 src=（Mod ownership），ctx 解析避开它 */
+                st.src = str(s, "src=([^\\s]+)");
+                String ctxLine = st.src.length() > 0 ? s.substring(0, s.indexOf("  src=")) : s;
+                st.ctx = str(ctxLine, "ctx=(.+)$");
                 out.add(st);
                 cur = st;
                 mode = 0;
@@ -404,6 +426,7 @@ public final class Report {
         /* 崩块与会话从整份日志扫（崩溃可能发生在记录段之后），然后只把本段交给停顿解析 */
         parse(logText);
         List<Crash> allCrashes = new ArrayList<Crash>(crashes);
+        List<String[]> allStutters = new ArrayList<String[]>(stutters);
         long s0 = sessT0, s1 = sessT1;
         String ex = exitUptime;
         boolean ep = exitPending;
@@ -411,6 +434,8 @@ public final class Report {
         List<Stall> stalls = parse(segText);
         crashes.clear();
         crashes.addAll(allCrashes);
+        stutters.clear();
+        stutters.addAll(allStutters);
         sessT0 = s0; sessT1 = s1; exitUptime = ex; exitPending = ep;
         allStalls = stalls.size();
         boolean truncated = false;
@@ -488,6 +513,14 @@ public final class Report {
         sb.append(",\"exitUptime\":\"").append(esc(exitUptime)).append('"');
         sb.append(",\"exitPending\":").append(exitPending ? "true" : "false");
         sb.append(",\"crashes\":").append(crashes.size());
+        sb.append(",\"microStutters\":").append(stutters.size());
+        sb.append(",\"stutters\":[");
+        for (int i = 0; i < stutters.size() && i < 32; i++) {
+            if (i > 0) sb.append(',');
+            String[] st = stutters.get(i);
+            sb.append("{\"t\":\"").append(esc(st[0])).append("\",\"max\":").append(st[1]).append(",\"avg\":").append(st[2]).append('}');
+        }
+        sb.append(']');
         if (truncated) sb.append(",\"note\":\"日志共 ").append(allStalls)
                 .append(" 条停顿，报告只带最长的 ").append(stalls.size()).append(" 条\"");
         sb.append("},\"stalls\":[");
@@ -501,6 +534,12 @@ public final class Report {
             sb.append(",\"reason\":\"").append(esc(s.reason)).append('"');
             if (s.gc != null && s.gc.length() > 0) sb.append(",\"gc\":\"").append(esc(s.gc)).append('"');
             if (s.ctx != null && s.ctx.length() > 0) sb.append(",\"ctx\":\"").append(esc(s.ctx)).append('"');
+            if (s.src != null && s.src.length() > 0) sb.append(",\"src\":\"").append(esc(s.src)).append('"');
+            if (s.votes != null && s.votes.length() > 0) {
+                sb.append(",\"votes\":\"").append(esc(s.votes)).append('"');
+                sb.append(",\"majority\":\"").append(esc(s.majority)).append('"');
+                sb.append(",\"conf\":\"").append(esc(s.conf)).append('"');
+            }
             if (s.t0 > 0) sb.append(",\"t0\":").append(s.t0);
             if (s.t1 > 0) sb.append(",\"t1\":").append(s.t1);
             if (!s.ended) sb.append(",\"est\":true");

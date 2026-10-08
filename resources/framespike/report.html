@@ -700,7 +700,7 @@ function parseLog(text, wholeLog){
   var fullText = String(text === null || text === undefined ? "" : text);
   /* 停顿与 CPU 采样只统计最后一段记录；崩溃块与会话信息用整份日志（见下） */
   var lines = (wholeLog ? fullText : fsSegment(fullText)).split(/\r?\n/);
-  var list = [], crashes = [], cur = null, curCrash = null, mode = 0;
+  var list = [], crashes = [], stutters = [], cur = null, curCrash = null, mode = 0;
 
   for (var i = 0; i < lines.length; i++){
     var l = lines[i], s = l.replace(/^\s+|\s+$/g, "");
@@ -711,8 +711,17 @@ function parseLog(text, wholeLog){
         if (v > 0){ cur.total = v; cur.ended = true; }
         var t1v = fsNum(s, "t1=(\\d+)");
         if (t1v) cur.t1 = t1v;
-        var gv = fsStr(s, "gc=(.+)$");
+        /* 新格式（0.7.2+）：gc=名字 重叠/总时长，后面跟 votes=/conf=/src=；旧格式 gc 后直接 t1 */
+        var gv = fsStr(s, "gc=(.+?)(?:  votes=|  t1=)");
         if (gv.length) cur.gc = gv;
+        var vv = fsStr(s, "votes=(\\d+/\\d+)");
+        if (vv.length) cur.votes = vv;
+        var mv = fsStr(s, "majority=(\\S+)");
+        if (mv.length) cur.majority = mv;
+        var cf = fsStr(s, "conf=(\\S+)");
+        if (cf.length) cur.conf = cf;
+        var sv = fsStr(s, "src=([^\\s]+)");
+        if (sv.length) cur.src = sv;
         cur = null;
       }
       mode = 0;
@@ -733,6 +742,10 @@ function parseLog(text, wholeLog){
       if (s.indexOf("reason=") === 0){ curCrash.reason = s.substring(7); continue; }
       if (s.indexOf("---") === 0){ curCrash = null; continue; }
     }
+    if (s.indexOf("[stutter]") >= 0){
+      var mxs = fsNum(s, "max=(\\d+)ms");
+      if (mxs){ var sps = l.indexOf(" "); stutters.push({ t: sps > 0 ? l.substring(0, sps) : "", max: mxs, avg: fsNum(s, "avg=(\\d+)ms") }); }
+    }
     if (fsIsHeader(s)){
       var sp = l.indexOf(" ");
       var d = fsNum(s, "STALL-DETECT (\\d+)ms");
@@ -744,7 +757,10 @@ function parseLog(text, wholeLog){
               timeline: [], stack: [] };
       var t0v = fsNum(s, "t0=(\\d+)");
       if (t0v) cur.t0 = t0v;
-      var cv = fsStr(s, "ctx=(.+)$");
+      /* 新格式（0.7.2+）：STALL-DETECT 带 src=（Mod ownership），ctx 解析避开它 */
+      var sv = fsStr(s, "src=([^\\s]+)");
+      if (sv.length) cur.src = sv;
+      var cv = fsStr(sv.length ? s.substring(0, s.indexOf("  src=")) : s, "ctx=(.+)$");
       if (cv.length) cur.ctx = cv;
       list.push(cur);
       mode = 0;
@@ -883,10 +899,11 @@ function parseLog(text, wholeLog){
       tpsAvg: cpu.length ? tpsSum / cpu.length : 0,
       cpuSamples: cpu.length,
       crashes: crashesAll.length,
+      microStutters: stutters.length,
       sessT0: sess.t0, sessT1: sess.t1, exitUptime: sess.exit, exitPending: sess.pending,
       durText: fsSegDuration(text)
     },
-    stalls: list, crashes: crashesAll, cpu: cpuOut, flame: root
+    stalls: list, crashes: crashesAll, cpu: cpuOut, flame: root, stutters: stutters.slice(0, 32)
   };
 }
 
@@ -1107,6 +1124,8 @@ function renderRows(){
       + '<td><span class="tag" style="background:' + col(s.reason) + '22;color:' + col(s.reason) + '">'
         + esc(s.reason) + '</span>'
         + (s.gc ? ' <span class="tag" style="background:rgba(45,212,191,.14);color:var(--tl)">GC</span>' : "")
+        + (s.conf ? ' <span class="tag" style="background:' + (s.conf === "High" ? "rgba(163,230,53,.14);color:#a3e635" : s.conf === "Low" ? "rgba(244,114,182,.14);color:#f472b6" : "rgba(245,165,36,.14);color:#f5a524") + '">' + esc(s.conf) + '</span>' : "")
+        + (s.src ? ' <span class="tag" style="background:rgba(139,109,255,.12);color:var(--tx3)">' + esc(s.src) + '</span>' : "")
         + (s.est ? ' <span class="tag" style="background:rgba(255,255,255,.07);color:var(--tx3)">旧格式</span>' : "")
         + '</td>'
       + '<td class="mono" style="color:var(--tx3)">' + esc(s.since || "-") + '</td>'
@@ -1114,6 +1133,7 @@ function renderRows(){
       + '<td><span class="why">栈 ▾</span></td></tr>'
       + (frames.length ? '<tr class="detail" id="d' + i + '"><td colspan="6">'
           + (tl ? '<div class="tl">' + tl + "</div>" : "")
+          + (s.majority ? '<div class="ev" style="margin:6px 0;color:var(--tx2)">Most likely blocking path: <b style="color:var(--tx)">' + esc(s.majority) + '</b>（' + esc(s.votes || "?") + " 次采样，置信度 " + esc(s.conf || "?") + "）</div>" : "")
           + "<pre>" + esc(frames.join("\n")) + "</pre></td></tr>" : "");
   }).join("");
 }
@@ -1139,6 +1159,7 @@ function renderNote(){
   msg.push(s.stalls + " 条停顿");
   if (s.measured < s.stalls) msg.push("其中 " + s.measured + " 条有真实时长");
   if (!s.measured) msg.push("没有 STALL-END，这次的日志多半是旧格式");
+  if (s.microStutters) msg.push(s.microStutters + " 次 micro-stutter（低于阈值的连续抖动，最多记 32 条）");
   if (s.truncated) msg.push("日志共 " + s.allStalls + " 条，只展示最长的 " + s.stalls + " 条");
   if (!s.cpuSamples) msg.push("没有 CPU 采样行");
   if (!IMPORTED) msg.push("拖 .log 进来换数据，拖 .ttf 进来换字体");
