@@ -15,6 +15,7 @@ buildscript {
         //   gradle-idea-ext 只在 Gradle 插件门户（plugins.gradle.org/m2）
         //   org.jetbrains:annotations 之类在 Maven 中央仓库
         // 本机 repo1.maven.org 的 DNS 不通，必须用 mavenCentral()（repo.maven.apache.org）或阿里云镜像。
+        maven { name = 'NeoForged'; url = 'http://127.0.0.1:8765' }
         maven { name = 'GradlePluginPortal'; url = 'https://plugins.gradle.org/m2/' }
         maven { name = 'Aliyun'; url = 'https://maven.aliyun.com/repository/public' }
         maven { name = 'AliyunPlugin'; url = 'https://maven.aliyun.com/repository/gradle-plugin' }
@@ -27,6 +28,15 @@ buildscript {
         // 想升 NeoGradle 就先升 Gradle。查法：看 maven 上 userdev-<ver>.module 里的
         // "org.gradle.plugin.api-version" 字段，别靠猜。
         classpath group: 'net.neoforged.gradle', name: 'userdev', version: '7.0.180'
+    }
+    /* ★ 网络坑绕过（buildscript 级，2026-10-08 踩到）：
+       NeoGradle 的传递依赖带一堆 *.+ 动态版本（forgespi 4.0.+ / modlauncher 10.0.+ ...），
+       Gradle 默认缓存 24h 过期后就重新 HEAD maven-metadata.xml——这台机器（Java TLS 栈）
+       对 maven.neoforged.net 的 HEAD 间歇性稳定 Connection reset，连续 6 次挂在同一步
+       （Python 直连却 3/3 通）。缓存里已有昨天成功解析的记录，把动态版本缓存放长到 1 年，
+       Gradle 直接用缓存不再查网。buildscript 与 project 两级都要加。 */
+    configurations.classpath {
+        resolutionStrategy.cacheDynamicVersionsFor 365, 'days'
     }
 }
 
@@ -44,9 +54,20 @@ version = coreVersion
 base { archivesName = "${project.archives_base_name}-${project.minecraft_version}".toString() }
 
 repositories {
-    maven { name = 'NeoForged'; url = 'https://maven.neoforged.net/releases' }
+    /* ★ 本地反代（2026-10-08）：maven.neoforged.net 的 CDN 对 Java TLS 指纹主动断握手
+       （"Remote host terminated the handshake"，Java 3/3 稳定复现，Python 却通），
+       Gradle 走本地明文 HTTP 反代绕过 TLS 握手，反代用 Python 直连上游。
+       用法：python neoforge/neoforge_proxy.py 先起反代（127.0.0.1:8765 -> neoforged）。
+       换了网络环境不再需要时，把这两处 URL 改回 https://maven.neoforged.net/releases 即可。 */
+    maven { name = 'NeoForged'; url = 'http://127.0.0.1:8765' }
+    maven { name = 'ForgeMaven'; url = 'https://maven.minecraftforge.net' }
     maven { name = 'Aliyun'; url = 'https://maven.aliyun.com/repository/public' }
     mavenCentral()
+}
+
+/* ★ 同上：project 级也放长动态版本缓存（root project 的 implementation 链上的 *.+ 同样中招） */
+configurations.all {
+    resolutionStrategy.cacheDynamicVersionsFor 365, 'days'
 }
 
 /*

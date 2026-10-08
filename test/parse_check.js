@@ -113,9 +113,9 @@ var jsonPath = rest[1];
 
 var html = fs.readFileSync(htmlPath, "utf8");
 
-/* --- 1. 模板占位符：必须刚好是 Java 侧会替换的那 6 个 --- */
+/* --- 1. 模板占位符：必须刚好是 Java 侧会替换的那 7 个 --- */
 console.log("== 1. 模板占位符 ==");
-var known = ["TITLE", "SOURCE", "GENERATED", "VERSION", "AUTHOR", "DATA"];
+var known = ["TITLE", "SOURCE", "GENERATED", "VERSION", "MCVER", "AUTHOR", "DATA"];
 var found = {};
 (html.match(/__[A-Z][A-Z0-9]*__/g) || []).forEach(function (m) {
   found[m.replace(/__/g, "")] = (found[m.replace(/__/g, "")] || 0) + 1;
@@ -124,7 +124,7 @@ var keys = Object.keys(found).sort();
 var bad = keys.filter(function (k) { return known.indexOf(k) < 0; });
 check(bad.length === 0, "没有多余的占位符" + (bad.length ? "（多了 " + bad.join(",") + "）" : ""));
 var missing = known.filter(function (k) { return !found[k]; });
-check(missing.length === 0, "6 个占位符都在" + (missing.length ? "（缺 " + missing.join(",") + "）" : ""));
+check(missing.length === 0, "7 个占位符都在" + (missing.length ? "（缺 " + missing.join(",") + "）" : ""));
 check(found["DATA"] === 1, "__DATA__ 只出现 1 次（出现 " + found["DATA"] + " 次）");
 
 /* --- 2. 导入入口齐全 --- */

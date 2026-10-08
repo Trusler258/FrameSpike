@@ -68,12 +68,14 @@ public final class Report {
     }
 
     public static String buildHtml(String logText, String source, boolean wholeLog) {
+        FrameSpike.probeGameVersion();
         String tpl = readResource();
         if (tpl == null) tpl = "<html><body><pre>模板缺失</pre></body></html>";
         return tpl.replace("__TITLE__", FrameSpike.MOD_NAME + " " + FrameSpike.MOD_CN + " · 卡顿报告")
                   .replace("__SOURCE__", esc(source))
                   .replace("__GENERATED__", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()))
                   .replace("__VERSION__", FrameSpike.MOD_VERSION)
+                  .replace("__MCVER__", FrameSpike.MC_VER)
                   .replace("__AUTHOR__", FrameSpike.MOD_AUTHOR)
                   .replace("__DATA__", buildJson(logText, wholeLog));
     }

@@ -9,7 +9,7 @@ NODE = r"C:\Users\Huang\.workbuddy\binaries\node\versions\22.22.2-3\node.exe"
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SEP = os.pathsep
 
-VER = "0.7.0"
+VER = "0.7.1"
 
 # 产物命名：FrameSpike-<loader>-<游戏版本>-<mod 版本>.jar（跟 fabric/neoforge 两个模块一致）
 LOADER = "Forge"

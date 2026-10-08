@@ -60,7 +60,7 @@ public final class FrameSpike {
     public static String MC_VER = "1.8.9";
     /** 非 final：final 会被编译期内联，加载器就没法按实际游戏版本重算标题了 */
     public static String MOD_TITLE = "Minecraft " + MC_VER + " \u5e27\u65f6\u95f4\u5c16\u5cf0\u4e0e\u5361\u987f\u5206\u6790 mod";
-    public static final String MOD_VERSION = "0.7.0";
+    public static final String MOD_VERSION = "0.7.1";
     public static final String MOD_AUTHOR = "Trusler";
     /** 加载器描述（如 "NeoForge 47.1.106" / "Fabric 0.19.5" / "Forge coremod"），由加载器启动时设置 */
     public static String LOADER = "";
@@ -77,6 +77,39 @@ public final class FrameSpike {
         MC_VER = v;
         MOD_TITLE = "Minecraft " + v + " 帧时间尖峰与卡顿分析 mod";
         SIGN = MOD_NAME + " " + MOD_CN + " v" + MOD_VERSION + "  by " + MOD_AUTHOR;
+    }
+
+    /** 已探测过真实 MC 版本（幂等标记） */
+    private static volatile boolean mcVerProbed = false;
+
+    /**
+     * 探测真实游戏版本（Forge coremod 路径专用：加载器不会替我们调 setGameVersion）。
+     * 1.8.9-1.12.2 两条路：FML 的 Loader.getMCVersionString()（FML 类先于 MC 类加载，最早可用）、
+     * Minecraft 实例的 getVersion()（游戏跑起来后才有）。探测成功后不再重复，失败保持默认 1.8.9。
+     */
+    public static void probeGameVersion() {
+        if (mcVerProbed) return;
+        mcVerProbed = true;
+        String v = null;
+        try {
+            Class<?> loader = Class.forName("net.minecraftforge.fml.common.Loader");
+            Object inst = loader.getMethod("instance").invoke(null);
+            if (inst != null) v = (String) loader.getMethod("getMCVersionString").invoke(inst);
+        } catch (Throwable t) { /* 1.13+ 或非 Forge 环境，走下一条 */ }
+        if (v == null || v.trim().length() == 0) {
+            try {
+                Class<?> mc = Class.forName("net.minecraft.client.Minecraft");
+                Object inst = mc.getMethod("getMinecraft").invoke(null);
+                if (inst != null) v = (String) mc.getMethod("getVersion").invoke(inst);
+            } catch (Throwable t) { /* 探测不到，保持默认 */ }
+        }
+        if (v != null) {
+            v = v.trim();
+            if (v.length() > 0 && !v.equals(MC_VER)) {
+                setGameVersion(v);
+                note("探测到游戏版本: " + v);
+            }
+        }
     }
 
     private static final int HIST = 16;
@@ -420,8 +453,9 @@ public final class FrameSpike {
             }, "FrameSpike-Cpu");
             thread2.setDaemon(true);
             thread2.start();
+            FrameSpike.probeGameVersion();
             FrameSpike.note("=== " + SIGN + " ===");
-            FrameSpike.note("=== Minecraft 1.8.9 \u5e27\u65f6\u95f4\u5c16\u5cf0\u4e0e\u5361\u987f\u5206\u6790 mod ===");
+            FrameSpike.note("=== " + FrameSpike.MOD_TITLE + " ===");
             FrameSpike.note("=== FrameSpike started === " + Cfg.summary() + "  t0=" + System.currentTimeMillis());
             FrameSpike.note("\u6307\u4ee4: " + FrameSpike.usage() + "   (\u522b\u540d " + Cmd.activeAliases + ")");
             bootMs = System.currentTimeMillis();
@@ -1079,6 +1113,7 @@ public final class FrameSpike {
 
     /** 无参数时：只报 mod 版本 / MC+加载器 / JDK 版本（用户要求精简，带颜色） */
     public static String[] quickLines() {
+        FrameSpike.probeGameVersion();
         String ld = LOADER.length() > 0 ? ("  \u00a77\u00b7 " + LOADER + "\u00a7r") : "";
         return new String[]{
                 "\u00a7e" + MOD_NAME + " " + MOD_CN + "\u00a7r \u00a77v" + MOD_VERSION + "\u00a7r",
@@ -1090,12 +1125,13 @@ public final class FrameSpike {
 
     /** /fs version：一行行报身份与运行环境，排查时截图给作者就够 */
     public static String[] versionLines() {
+        FrameSpike.probeGameVersion();
         String p = "/" + Cmd.activeName;
         return new String[]{
                 "\u00a7e" + MOD_NAME + " " + MOD_CN + "\u00a7r \u00a77v" + MOD_VERSION
                         + "  by " + MOD_AUTHOR + "\u00a7r",
                 "\u00a77" + MOD_TITLE,
-                "\u00a77纯 coremod \u00b7 零外部依赖 \u00b7 不向外部发送任何数据 \u00b7 Forge 1.8.9 / Lunar Client",
+                "\u00a77纯 coremod \u00b7 零外部依赖 \u00b7 不向外部发送任何数据 \u00b7 Forge " + MC_VER + " / Lunar Client",
                 "\u00a77环境=" + (envName.length() > 0 ? envName : "未探测")
                         + (envKinds.length() > 0 ? ("（" + envKinds + "）") : "")
                         + "   java=" + System.getProperty("java.version", "?")
@@ -1525,7 +1561,7 @@ public final class FrameSpike {
                     Cmd.reply(object, "  cpusec     = " + Cfg.cpuSampleSec + "s   CPU 表间隔");
                     Cmd.reply(object, "  cputop     = " + Cfg.cpuTopN + "   CPU 表前 N 行进聊天");
                     Cmd.reply(object, "  autoreport = " + Cfg.autoReport + "   /fs stop 时自动出报告");
-                    Cmd.reply(object, "设置: " + string + " config <键> <值>    保存: " + string + " config save");
+                    Cmd.reply(object, "设置: " + string + "config <键> <值>    保存: " + string + "config save");
                     return;
                 }
                 String k = objectArray[1] == null ? "" : objectArray[1].toLowerCase();
