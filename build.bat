@@ -54,13 +54,13 @@ if exist "%VC%" (
 )
 
 echo ===== 5/5 package jar =====
-if exist dist\FrameSpike-Forge-1.8.9-1.12.2-0.7.1.jar del dist\FrameSpike-Forge-1.8.9-1.12.2-0.7.1.jar
-"%JDK%\jar.exe" cfm dist\FrameSpike-Forge-1.8.9-1.12.2-0.7.1.jar MANIFEST.MF -C "%ROOT%out\main" . -C "%ROOT%resources" .
+if exist dist\FrameSpike-Forge-1.8.9-1.12.2-0.7.2.jar del dist\FrameSpike-Forge-1.8.9-1.12.2-0.7.2.jar
+"%JDK%\jar.exe" cfm dist\FrameSpike-Forge-1.8.9-1.12.2-0.7.2.jar MANIFEST.MF -C "%ROOT%out\main" . -C "%ROOT%resources" .
 if errorlevel 1 goto fail
 
 echo.
 echo ================================
-echo  BUILD OK  -^>  dist\FrameSpike-Forge-1.8.9-1.12.2-0.7.1.jar
+echo  BUILD OK  -^>  dist\FrameSpike-Forge-1.8.9-1.12.2-0.7.2.jar
 echo  copy it into:
 echo    %USERPROFILE%\.lunarclient\profiles\1.8\mods\forge-1.8.9\
 echo ================================

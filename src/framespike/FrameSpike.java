@@ -60,7 +60,7 @@ public final class FrameSpike {
     public static String MC_VER = "1.8.9";
     /** 非 final：final 会被编译期内联，加载器就没法按实际游戏版本重算标题了 */
     public static String MOD_TITLE = "Minecraft " + MC_VER + " \u5e27\u65f6\u95f4\u5c16\u5cf0\u4e0e\u5361\u987f\u5206\u6790 mod";
-    public static final String MOD_VERSION = "0.7.1";
+    public static final String MOD_VERSION = "0.7.2";
     public static final String MOD_AUTHOR = "Trusler";
     /** 加载器描述（如 "NeoForge 47.1.106" / "Fabric 0.19.5" / "Forge coremod"），由加载器启动时设置 */
     public static String LOADER = "";
@@ -582,7 +582,9 @@ public final class FrameSpike {
                     }
                     if (!recording) {
                         l2 = lastNs;
-                        if (l2 == 0L || clientThread == null || !Cfg.chatEnabled || (l = (System.nanoTime() - l2) / 1000000L) < (long)Cfg.stallThresholdMs || pendingStall || !captured.compareAndSet(false, true)) continue;
+                        /* chat on|off 只控制聊天提示（endStall 的推送处单独检查 chatEnabled），
+                           不参与捕获条件——chat off 仍要抓栈、记日志、结算（2026-10-08 修） */
+                        if (l2 == 0L || clientThread == null || (l = (System.nanoTime() - l2) / 1000000L) < (long)Cfg.stallThresholdMs || pendingStall || !captured.compareAndSet(false, true)) continue;
                         pendingFromNs = l2;
                         pendingDetectMs = l;
                         pendingLabel = lastLabel;

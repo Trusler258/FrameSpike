@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 FMLCorePlugin: framespike.FrameSpikePlugin
 Implementation-Title: FrameSpike
-Implementation-Version: 0.7.1
+Implementation-Version: 0.7.2
 Implementation-Vendor: Trusler
 Implementation-Vendor-Id: trusler
 Built-For: Minecraft 1.8.9, 1.12.2
