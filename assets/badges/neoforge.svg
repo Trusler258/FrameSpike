@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="143" height="24" role="img" aria-label="NeoForge: 1.20.1">
+  <title>NeoForge: 1.20.1</title>
+  <linearGradient id="g" x2="0" y2="100%">
+    <stop offset="0" stop-color="#ffffff" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#000000" stop-opacity=".12"/>
+  </linearGradient>
+  <clipPath id="r"><rect width="143" height="24" rx="3" fill="#fff"/></clipPath>
+  <g clip-path="url(#r)">
+    <rect width="86" height="24" fill="#3a3f4b"/>
+    <rect x="86" width="57" height="24" fill="#c96e2b"/>
+    <rect width="143" height="24" fill="url(#g)"/>
+  </g>
+  <g fill="#ffffff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="12">
+    <image x="6" y="4" width="16" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsSAAALEgHS3X78AAADgklEQVR42u2dPWhTYRSGk2qlZKia+BMNFuJQERehuFiogoNSJ7tIi4MKFkELInapVYOIS8SlCqKoiwji5OhStLQOlUz+YUFrC2li7I26hGCwEbXrOTec5OKN93nWw/363S8PJ7w9yU0oBAAAASWsFdPXb1Q5ouZn+Oxp8XVu4XiCDQIgACAAIAAgAASQlVrU6+07aFp0bTTqq5v8WiwG/XWu0gEAAQABAAEAAQABYDkGWuPc5PiEWIttXCfWIpGIebP3L4+arjt28YpYK5VKYu3Rtaumv3f43IgnL5bzedF05nQAQABAAEAAQABAAKgxBr5781asbUl2mKKVVnOLXts6EmLt/XzWdADWWKrtRbuHeiKiNerRAQABAAEAAQABAAGgxhgY3xQXa/lc3hSt3CZ6WrwaOHlKrF0akePVhwuDttNp3WDay8NbN00RsZ6YqE0K6QCAAIAAgACAAIAAgABQy/8BtKyvoY18eyoF9dqJebn2aXrBtG4i9tN0Hz1OwbQXbTTtdv9WtFHx3Mc5OgAgACAAIAAgACAA1BID/wX97TmxVh4/L9a6OitibXW8zbSXeL4sR2RlL/3t8ppZZ4Un58Y4GBAAEAAQABAAEAB8GgPdJnPxWKUpDs6rfS7RAQABAAEAAQABAAGg+WJgy+0hc3zampoSa8XsrFj7dueIaa/flYmfxpoTD8RaNJGUL0x1q+vmlbNbGhyjAwACAAIAAgACAAJAvTGwkFts+KJaXNFizp8YqNT2HDoq1p70Nj7qhYx7eTX9XL5/p1Vdt+3MXdN+HKWmvcZ0AN4CAAEAAQABAAEgcDHQeqH2XbQf9+QfatS+w/cbbeLnfMkpV643Ry8JbXKp7UW7B7dpaEZ5rO2q46N0AEAAQABAAEAAQACok/DwcKoqFQ/07TfFQA0tIv6NieX/+sAzM/rjaryIei+nMnQAQABAAEAAQABAAFjGd08KtU7udo89E2ubk52mNRdmZ8Tai6G9dABAAEAAQABAAEAAQADg/wAuuI07sy7jYguvJ582fE3rL394Me6lAwACAAIAAgACAAJAg2Kg9slf7ZOmu7q7PIuJEo8H9vkqznqBF2dOB+AtABAAEAAQABAAiIE1smPndl/diN+mbF7gxZnTAXgLAAQABAAEAASAoBHWitrzg6B5SKdTYToAIAAgACAAIAAgAAAAAECQ+QUUBtshXi5agwAAAABJRU5ErkJggg=="/>
+    <text x="50.0" y="16" fill="#ffffff">NeoForge</text>
+    <text x="114" y="16" fill="#ffffff">1.20.1</text>
+  </g>
+</svg>

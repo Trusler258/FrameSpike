@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="179" height="24" role="img" aria-label="Forge: 1.8.9 – 1.12.2">
+  <title>Forge: 1.8.9 – 1.12.2</title>
+  <linearGradient id="g" x2="0" y2="100%">
+    <stop offset="0" stop-color="#ffffff" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#000000" stop-opacity=".12"/>
+  </linearGradient>
+  <clipPath id="r"><rect width="179" height="24" rx="3" fill="#fff"/></clipPath>
+  <g clip-path="url(#r)">
+    <rect width="64" height="24" fill="#3a3f4b"/>
+    <rect x="64" width="115" height="24" fill="#1e6bb8"/>
+    <rect width="179" height="24" fill="url(#g)"/>
+  </g>
+  <g fill="#ffffff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="12">
+    <image x="6" y="4" width="16" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABvFBMVEUdLUEcLEEcLEAbK0AaKj4lNUguPVAuPU8vPVAnNkkoN0o5R1g3RVc0QlQ5R1lPXGuCi5ba3ODY2t7W2d3U19vS1trR1NjQ09jQ09fP09fP0tfS1dnT1tqBipUbKz8bLEA4Rlivtbzk5uji5Ofi5OadpK3d4OOxt77////8/Pz09fbq7O7h4+bX2t3N0dXDyM27wMa0ucChqLB9hpJkb3xDUGE7SVqyt775+fq/w8nw8fLKzdL+/v7v8PKqsLhaZnQpOUsZKj6HkJrs7u/4+fno6evX2d1hbHohMUVXY3LFyc77/Pz5+vr9/f5HVGQaKj8tO052gIy9wcfa3eDo6uz19vb29/hmcX4ZKT4jMkYwP1E9S1xZZXTO0dYqOUwXJzxoc4C5vsQgMERqdIIxQFIZKT01Q1VncX+pr7dQXWz7+/zb3uHz9PXb3eD3+PjV2NtVYXA6SFrV2Nz6+vqfpq+8wcfP0taTm6Tx8vM2RVZYZHP3+Pnn6Ot8hZGwtr2Kkp1yfIlweoeEjZivtLuAiZT19vdTX25HVGW6vsXBxcqrsblFUmMkM0chMESco6zBxsu4vcNEUWIeLkIiMkV8HzjGAAAAAWJLR0QovbC1sgAAAAd0SU1FB+AJFRIdHqqGUp8AAAE8SURBVDjLY2AYBRiAkQkNgEWZmCGAiZmFlY2dnZ0NDjg4wQq4uHnAgJePX0BQSFhEVExcQlJSSkJaRlhWDigvr6CopKyioqIsoqqmrqGhqaWto6unb2BoZGxiYgq2g8nMXFMDCCwsraw1IMBGw9bO3oHFUQ7iNDkuJ2eQqJqLqw1UhZu7BwsTwvFMDJ5e3hoaPja+UHlhP0c0//kHBAYFK4WEQuTDwiMwQoDJPzJKITpGD6wgNo6JAQtgYpaLT/AGKUhMwhGQ8vHJYAW6KalYjWBISxfRAPlDMyMzBYu0nL2gT1Z2DjBAcvO08gvk0OWZC4s0iktKQaFUVl6hIV4pj6aApapao6a2rr6hsam5RVqjtY0F3Yb2js6u7h6WiAjH3sK+/gkTMeyYNHmyBxMjxMe9kydPompKG/QAACylQX+0Y9EnAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE2LTA5LTIxVDE4OjI5OjMwKzAyOjAw62z2vAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNi0wOS0yMVQxODoyOTozMCswMjowMJoxTgAAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC"/>
+    <text x="40.0" y="16" fill="#ffffff">Forge</text>
+    <text x="121" y="16" fill="#ffffff">1.8.9 – 1.12.2</text>
+  </g>
+</svg>
