@@ -7,7 +7,7 @@
 
   当主线程冻住的那一刻，自动抓取调用栈与帧内时间线，结算真实停顿时长并归因——让你知道每一次卡顿到底卡在哪、为什么卡
 
-<img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/forge.svg"/> <img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/fabric.svg"/> <img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/forge.svg"/> ![版本](https://img.shields.io/badge/版本-0.8.0-2ea44f?style=flat-square&logo=modrinth&logoColor=white) ![许可](https://img.shields.io/badge/License-GPL--3.0-c4a227?style=flat-square&logo=gnu&logoColor=white)
+<img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/forge.svg" alt="Forge 1.8.9 – 1.12.2"/> <img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/fabric.svg" alt="Fabric 1.20.1 – 1.20.6"/> <img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/neoforge.svg" alt="NeoForge 1.20.1"/> ![版本](https://img.shields.io/badge/版本-0.8.0-2ea44f?style=flat-square&logo=modrinth&logoColor=white) ![许可](https://img.shields.io/badge/License-GPL--3.0-c4a227?style=flat-square&logo=gnu&logoColor=white)
 </div>
 
 ---
@@ -26,7 +26,7 @@ TNT 引爆时的卡顿取证（自动捕获 + 归因 + 聊天提示）：
 
 Fabric 1.20.1 的 `/fs status`（一行行看当前状态）：
 
-![Fabric 1.20.1 help](https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/screenshots/fabric-status.png)
+![Fabric 1.20.1 status](https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/screenshots/fabric-status.png)
 
 ## 功能
 
@@ -116,7 +116,7 @@ https://github.com/Trusler258/FrameSpike
 
   The exact moment the main thread freezes, it captures the call stack and in-frame timeline, measures the real stall duration and attributes the cause — so you know where every lag spike happened and why
 
-<img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/forge.svg"/> <img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/fabric.svg"/> <img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/forge.svg"/> ![Version](https://img.shields.io/badge/Version-0.8.0-2ea44f?style=flat-square&logo=modrinth&logoColor=white) ![License](https://img.shields.io/badge/License-GPL--3.0-c4a227?style=flat-square&logo=gnu&logoColor=white)
+<img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/forge.svg" alt="Forge 1.8.9 – 1.12.2"/> <img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/fabric.svg" alt="Fabric 1.20.1 – 1.20.6"/> <img src="https://raw.githubusercontent.com/Trusler258/FrameSpike/main/assets/badges/neoforge.svg" alt="NeoForge 1.20.1"/> ![Version](https://img.shields.io/badge/Version-0.8.0-2ea44f?style=flat-square&logo=modrinth&logoColor=white) ![License](https://img.shields.io/badge/License-GPL--3.0-c4a227?style=flat-square&logo=gnu&logoColor=white)
 </div>
 
 ---
