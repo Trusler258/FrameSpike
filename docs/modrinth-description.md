@@ -10,8 +10,8 @@
   ![Forge](https://img.shields.io/badge/Forge-1.8.9_–_1.12.2-1e6bb8?style=flat-square&logo=minecraft&logoColor=white)
   ![Fabric](https://img.shields.io/badge/Fabric-1.20.1_–_1.20.6-8a7f4d?style=flat-square&logo=minecraft&logoColor=white)
   ![NeoForge](https://img.shields.io/badge/NeoForge-1.20.1-c96e2b?style=flat-square&logo=minecraft&logoColor=white)
-  ![版本](https://img.shields.io/badge/版本-0.8.0-2ea44f?style=flat-square)
-  ![许可](https://img.shields.io/badge/License-GPL--3.0-c4a227?style=flat-square)
+  ![版本](https://img.shields.io/badge/版本-0.8.0-2ea44f?style=flat-square&logo=modrinth&logoColor=white)
+  ![许可](https://img.shields.io/badge/License-GPL--3.0-c4a227?style=flat-square&logo=gnu&logoColor=white)
 </div>
 
 ---
@@ -123,8 +123,8 @@ https://github.com/Trusler258/FrameSpike
   ![Forge](https://img.shields.io/badge/Forge-1.8.9_–_1.12.2-1e6bb8?style=flat-square&logo=minecraft&logoColor=white)
   ![Fabric](https://img.shields.io/badge/Fabric-1.20.1_–_1.20.6-8a7f4d?style=flat-square&logo=minecraft&logoColor=white)
   ![NeoForge](https://img.shields.io/badge/NeoForge-1.20.1-c96e2b?style=flat-square&logo=minecraft&logoColor=white)
-  ![Version](https://img.shields.io/badge/Version-0.8.0-2ea44f?style=flat-square)
-  ![License](https://img.shields.io/badge/License-GPL--3.0-c4a227?style=flat-square)
+  ![Version](https://img.shields.io/badge/Version-0.8.0-2ea44f?style=flat-square&logo=modrinth&logoColor=white)
+  ![License](https://img.shields.io/badge/License-GPL--3.0-c4a227?style=flat-square&logo=gnu&logoColor=white)
 </div>
 
 ---
