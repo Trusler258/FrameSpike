@@ -32,9 +32,9 @@ TNT 引爆时的卡顿取证（自动捕获 + 归因 + 聊天提示）：
 
 ![TNT 卡顿测试](assets/screenshots/tnt-stall.png)
 
-Fabric 1.20.1 的 `/fs help`（分组帮助全表）：
+Fabric 1.20.1 的 `/fs status`（一行行看当前状态）：
 
-![Fabric 1.20.1 help](assets/screenshots/fabric-help.png)
+![Fabric 1.20.1 help](assets/screenshots/fabric-status.png)
 
 0.6.2 补充了以下能力，均来自实际排查中的缺口。
 
